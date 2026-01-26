@@ -71,7 +71,7 @@ local defaultDebug = {
 }
 local defaultConfig = {
 	Entity = {
-		Name = "A-60",
+		Name = "G-95",
 		Asset = "https://github.com/Timofey2339/Depth-doors-model/blob/main/EntitiesCustom/G95.rbxm?raw=true",
 		HeightOffset = 0
 	},
