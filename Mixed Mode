@@ -1,0 +1,43 @@
+loadstring(game:HttpGet("https://github.com/Timofey2339/Depth-doors-model/blob/main/Massage%20Raw.lua"))()
+
+loadstring(game:HttpGet("https://pastebin.com/raw/61g9ihYM"))()
+
+coroutine.wrap(function()
+    while true do
+        wait(250)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+	loadstring(game:HttpGet("https://github.com/Timofey2339/Depth-doors-model/blob/main/Depth%20Raw.lua"))()
+end
+
+end)()
+
+coroutine.wrap(function()
+    while true do
+        wait(450)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+	loadstring(game:HttpGet("https://github.com/Timofey2339/Depth-doors-model/blob/main/A-60%20Raw.lua"))()
+end
+
+coroutine.wrap(function()
+    while true do
+        wait(250)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+	loadstring(game:HttpGet("https://github.com/Timofey2339/Depth-doors-model/blob/main/Rebound%20Raw.lua"))()
+end
+
+end)()
+
+coroutine.wrap(function()
+    while true do
+        wait(80)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+	loadstring(game:HttpGet("https://github.com/Timofey2339/Depth-doors-model/blob/main/Greg%20Raw.lua"))()
+        end
+
+        end)()
+
+      
