@@ -20,10 +20,10 @@ local entity = spawner.Create({
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = true, Duration = 6},
-            Shatter = true, Repair = false
+            Flicker = { Enabled = false, Duration = 6},
+            Shatter = false, Repair = false
         },
-        Earthquake = { Enabled = true },
+        Earthquake = { Enabled = false },
         CameraShake = { Enabled = true, Range = 100, Values = {20, 20, 0.1, 1} },
         Movement = { Speed = 300, Delay = 2, Reversed = false },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
