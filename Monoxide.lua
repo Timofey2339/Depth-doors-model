@@ -1,6 +1,6 @@
 local sound = Instance.new("Sound")
 sound.Parent = workspace
-sound.SoundId = "rbxassetid://166047422"
+sound.SoundId = "rbxassetid://130481102433430"
 sound.Volume = 7
 sound.Looped = false
 sound.PlaybackSpeed = 0.8
