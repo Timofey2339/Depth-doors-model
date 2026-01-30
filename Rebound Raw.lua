@@ -86,7 +86,7 @@ local entity = spawner.Create({
 
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
     entity:Run()
-wait(12)
+wait(25)
 local sound = Instance.new("Sound")
 sound.Parent = workspace
 sound.SoundId = "rbxassetid://71840455801134"
