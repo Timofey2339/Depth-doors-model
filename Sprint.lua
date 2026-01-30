@@ -42,7 +42,7 @@ end)
 local ExhaustText = Instance.new("TextLabel")
 ExhaustText.Parent = Gui
 ExhaustText.Text = "You're Exhausted"
-ExhaustText.Size = UDim2.new(0.3,0,0.04,0)
+ExhaustText.Size = UDim2.new(0.6,0,0.08,0)
 ExhaustText.Position = UDim2.new(0.2,0,0.45,0)
 ExhaustText.BackgroundTransparency = 1
 ExhaustText.TextColor3 = Color3.new(1,1,1)
@@ -78,11 +78,10 @@ SprintButton.Text = "SPRINT"
 SprintButton.Size = UDim2.new(0,90,0,90)
 SprintButton.AnchorPoint = Vector2.new(1,0.5)
 SprintButton.Position = UDim2.new(1,-20,0.24,0) -- 🔥 NAIK LAGI
-SprintButton.BackgroundColor3 = Color3.fromRGB(255, 209, 153)
+SprintButton.BackgroundColor3 = Color3.fromRGB(200,200,200)
 SprintButton.TextColor3 = Color3.new(1,1,1)
 SprintButton.TextStrokeColor3 = Color3.new(0,0,0)
 SprintButton.TextStrokeTransparency = 0
-SprintButton.BackgroundTransparency = 0.6
 SprintButton.TextScaled = true
 SprintButton.Font = Enum.Font.SourceSansBold
 
