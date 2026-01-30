@@ -9,7 +9,7 @@ TextLabelCaption.Position = UDim2.new(0.5, 0, 0.8, 0)
 TextLabelCaption.AnchorPoint = Vector2.new(0.5, 0.5)
 TextLabelCaption.Size = UDim2.new(1, 0, 1, 0)
 TextLabelCaption.TextSize = 18
-
+wait(1)
 TextLabelCaption.Text = "Mixed Mode has been loaded!"
 wait(3)
 TextLabelCaption.Text = "Made by Timofey2339"
