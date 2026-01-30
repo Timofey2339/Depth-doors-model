@@ -42,7 +42,7 @@ end)
 local ExhaustText = Instance.new("TextLabel")
 ExhaustText.Parent = Gui
 ExhaustText.Text = "You're Exhausted"
-ExhaustText.Size = UDim2.new(0.6,0,0.08,0)
+ExhaustText.Size = UDim2.new(0.3,0,0.04,0)
 ExhaustText.Position = UDim2.new(0.2,0,0.45,0)
 ExhaustText.BackgroundTransparency = 1
 ExhaustText.TextColor3 = Color3.new(1,1,1)
@@ -78,10 +78,11 @@ SprintButton.Text = "SPRINT"
 SprintButton.Size = UDim2.new(0,90,0,90)
 SprintButton.AnchorPoint = Vector2.new(1,0.5)
 SprintButton.Position = UDim2.new(1,-20,0.24,0) -- 🔥 NAIK LAGI
-SprintButton.BackgroundColor3 = Color3.fromRGB(200,200,200)
+SprintButton.BackgroundColor3 = Color3.fromRGB(255, 209, 153)
 SprintButton.TextColor3 = Color3.new(1,1,1)
 SprintButton.TextStrokeColor3 = Color3.new(0,0,0)
 SprintButton.TextStrokeTransparency = 0
+SprintButton.BackgroundTransparency = 0.6
 SprintButton.TextScaled = true
 SprintButton.Font = Enum.Font.SourceSansBold
 
@@ -96,9 +97,10 @@ BtnStroke.Thickness = 3
 local Bar = Instance.new("Frame")
 Bar.Parent = Gui
 Bar.AnchorPoint = Vector2.new(0.5,1)
-Bar.Position = UDim2.new(0.5,0,0.94,0)
-Bar.Size = UDim2.new(0.26,0,0.022,0)
+Bar.Position = UDim2.new(0.8,0,0.94,0)
+Bar.Size = UDim2.new(0.07,0,0.02,0)
 Bar.BackgroundColor3 = Color3.new(0,0,0)
+Bar.Rotation = 180
 
 local BarStroke = Instance.new("UIStroke")
 BarStroke.Parent = Bar
@@ -108,7 +110,7 @@ BarStroke.Thickness = 2
 local Fill = Instance.new("Frame")
 Fill.Parent = Bar
 Fill.Size = UDim2.new(1,0,1,0)
-Fill.BackgroundColor3 = Color3.fromRGB(220,220,220)
+Fill.BackgroundColor3 = Color3.fromRGB(255, 215, 146)
 
 --------------------------------------------------
 -- CHARACTER
