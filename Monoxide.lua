@@ -1,6 +1,6 @@
 local sound = Instance.new("Sound")
 sound.Parent = workspace
-sound.SoundId = "rbxassetid://130481102433430"
+sound.SoundId = "rbxassetid://166047422"
 sound.Volume = 7
 sound.Looped = false
 sound.PlaybackSpeed = 0.8
@@ -33,8 +33,8 @@ local entity = spawner.Create({
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = true, Duration = 6},
-            Shatter = true, Repair = false
+            Flicker = { Enabled = false, Duration = 6},
+            Shatter = false, Repair = false
         },
         Earthquake = { Enabled = true },
         CameraShake = { Enabled = true, Range = 100, Values = {1, 1, 0.1, 1} },
