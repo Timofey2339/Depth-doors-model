@@ -23,7 +23,7 @@ frame.AnchorPoint = Vector2.new(0.5,0.5)
 frame.Size = UDim2.new(3, 0, 3, 0)
 frame.BackgroundTransparency = 0.5
 game:GetService("TweenService"):Create(frame,TweenInfo.new(1.2,Enum.EasingStyle.Sine),{BackgroundTransparency=1}):Play()
-wait(1.3)
+wait(0.3)
 frame:Destroy()
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
