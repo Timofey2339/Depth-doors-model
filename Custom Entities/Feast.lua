@@ -2,7 +2,7 @@ local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = Creator.createEntity({
     CustomName = "Feast", -- Custom name of your entity
-    Model = https://github.com/BaneFromDiscord/RobloxTest/blob/main/feast.rbxm?raw=true,
+    Model = "https://github.com/BaneFromDiscord/RobloxTest/blob/main/feast.rbxm?raw=true",
     Speed = 75, -- Percentage, 100 = default Rush speed
     DelayTime = 3, -- Time before starting cycles (seconds)
     HeightOffset = 0,
