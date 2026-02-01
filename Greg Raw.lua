@@ -11,6 +11,18 @@ local entity = spawner.Create({
         },
         Earthquake = { Enabled = false },
         CameraShake = { Enabled = true, Range = 100, Values = {5, 5, 0.1, 1} },
+                Jumpscare = {
+            true, -- Enabled
+            {
+                Image1 = "rbxassetid://10483855823", -- A-60 Jumpscare Image
+                Image2 = "rbxassetid://11360803115",
+                Shake = true,
+                Sound1 = {18459521002, 1}, -- Jumpscare sound
+                Sound2 = {18459521002, 1},
+                Flashing = {true, Color3.fromRGB(255, 0, 0)},
+                Tease = {true, Min = 1, Max = 3},
+            },
+        },
         Movement = { Speed = 300, Delay = 2, Reversed = false },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
