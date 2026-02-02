@@ -56,7 +56,7 @@ local entity = spawner.Create({
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = false, Range = 40, Resist = false, Break = true },
         Death = {
-            Type = "Guiding",
+            Type = "Curious",
             Hints = {"You died by Rebound", "if you your Screen blue hide", "and now","Bye Bye"}, 
             Cause = "Rebound"
         }
@@ -131,7 +131,7 @@ local entity = spawner.Create({
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = false, Range = 40, Resist = false, Break = true },
         Death = {
-            Type = "Guiding",
+            Type = "Curious",
             Hints = {"You died by Rebound", "if you your Screen Blue hide", "and now","Bye Bye"}, 
             Cause = "Rebound"
         }
