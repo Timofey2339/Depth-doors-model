@@ -37,7 +37,7 @@ local Window = Rayfield:CreateWindow({
       Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
-local Tab = Window:CreateTab("idk", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
 
 -- MAIN SPAWNING
 local Main = Window:CreateTab("Custom Entity Spawner")
@@ -50,47 +50,89 @@ local Main4 = Window:CreateTab("Modes Entities Spawner")
 local Main4Section = Main4:CreateSection("Hardcore")
 local Main5Section = Main4:CreateSection("Impossible")
 
-MainSection:CreateButton("Greg", "Spawning", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
-  end)
-MainSection:NewButton("A-25 From Rooms but Doors", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-25%20Rooms%20but%20doors.lua"))()
-  end)
-MainSection:NewButton("A-35 From IR", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua"))()
-  end)
-MainSection:NewButton("Trollace", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/TrollFace.lua"))()
-  end)
-MainSection:NewButton("Depth", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Depth%20Raw.lua"))()
-  end)
-MainSection:NewButton("Monoxide", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Monoxide.lua"))()
-  end)
-MainSection:NewButton("A-60", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-60%20Raw.lua"))()
-  end)
-Main2Section:NewButton("Rush", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Entities/Rush.lua"))()
-  end)
-Main2Section:NewButton("Ambush", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Entities/Ambush.lua"))()
-  end)
-Main2Section:NewButton("Blitz", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Entities/Blitz.lua"))()
-  end)
-Main4Section:NewButton("Ripper", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/Ripper.lua"))()
-  end)
-Main4Section:NewButton("Rebound", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rebound%20Raw.lua"))()
-  end)
-Main5Section:NewButton("Smiller", "Spawning", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/Smiler.lua"))()
-  end)
-Main3Section:NewButton("Crucfix", "Giving", function()
-   	loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/refs/heads/main/Doors/Entity%20Spawner/Crucifix.lua"))()
-  end)
+local Button = MainSection:CreateButton({
+   Name = "Spawn Greg",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
+   end,
+})
+local Button = MainSection:CreateButton({
+   Name = "Spawn A-25 From Rooms But Doors",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-25%20Rooms%20but%20doors.lua"))()
+   end,
+})
+local Button = MainSection:CreateButton({
+   Name = "Spawn A-35 From IR",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua"))()
+   end,
+})
+local Button = MainSection:CreateButton({
+   Name = "Spawn TrollFace",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/TrollFace.lua"))()
+   end,
+})
+local Button = MainSection:CreateButton({
+   Name = "Spawn Monoxide",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Monoxide.lua"))()
+   end,
+})
+local Button = MainSection:CreateButton({
+   Name = "Spawn Depth",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Depth%20Raw.lua"))()
+   end,
+})
+local Button = MainSection:CreateButton({
+   Name = "Spawn A-60",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-60%20Raw.lua"))()
+   end,
+})
+local Button = Main2Section:CreateButton({
+   Name = "Spawn Rush",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Entities/Rush.lua"))()
+   end,
+})
+local Button = Main2Section:CreateButton({
+   Name = "Spawn Ambush",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Entities/Ambush.lua"))()
+   end,
+})
+local Button = Main2Section:CreateButton({
+   Name = "Spawn Blitz",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Entities/Blitz.lua"))()
+   end,
+})
+local Button = Main4Section:CreateButton({
+   Name = "Spawn Ripper",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/Ripper.lua"))()
+   end,
+})
+local Button = Main4Section:CreateButton({
+   Name = "Spawn Rebound",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rebound%20Raw.lua"))()
+   end,
+})
+local Button = Main5Section:CreateButton({
+   Name = "Spawn Smiller",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/Smiler.lua"))()
+   end,
+})
+local Button = Main3Section:CreateButton({
+   Name = "Give Crucfix",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/refs/heads/main/Doors/Entity%20Spawner/Crucifix.lua"))()
+   end,
+})
 
 Rayfield:LoadConfiguration()
