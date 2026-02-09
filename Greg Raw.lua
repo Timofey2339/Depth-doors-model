@@ -59,7 +59,7 @@ wait(5)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
-		local model = game.Workspace:FindFirstChild("Greg").Jumpscare:Clone()
+		local model = game.Workspace:FindFirstChild("Greg").RushNew.Jumpscare:Clone()
         model.Parent = game.Players.LocalPlayer.PlayerGui
 	end
 	end)
