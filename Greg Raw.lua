@@ -57,5 +57,12 @@ wait(5)
         end
     end)
 
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		local model = game.Workspace:FindFirstChild("Greg").Jumpscare:Clone()
+        model.Parent = game.Players.LocalPlayer.PlayerGui
+	end
+	end)
+
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
     entity:Run()
