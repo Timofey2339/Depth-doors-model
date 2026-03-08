@@ -12,7 +12,7 @@ local entity = spawner.Create({
         Earthquake = { Enabled = false },
         CameraShake = { Enabled = true, Range = 100, Values = {5, 5, 0.1, 1} },
                 Jumpscare = {
-            true, -- Enabled
+            false, -- Enabled
             {
                 Image1 = "rbxassetid://10483855823", -- A-60 Jumpscare Image
                 Image2 = "rbxassetid://11360803115",
