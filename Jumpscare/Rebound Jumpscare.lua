@@ -31,7 +31,7 @@ scare.Name = "MyEarsBurn"
 scare.SoundId = "rbxassetid://109582246349306"
 scare.PlaybackSpeed = 1
 scare.Volume = 10
-scare.TimePosition = 0.4
+scare.TimePosition = 0
 
 local shift = Instance.new("PitchShiftSoundEffect")
 shift.Octave = 1
