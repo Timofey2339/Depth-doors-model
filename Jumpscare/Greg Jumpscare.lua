@@ -4,6 +4,7 @@
     local Face = Instance.new("ImageLabel")
 	local SizeValue = Instance.new("NumberValue")
 
+	SizeValue.Name = "SizeValue"
 	SizeValue.Value = -0.15
 
     JumpscareGui.Name = "Jumpscare"
