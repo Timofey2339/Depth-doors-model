@@ -74,7 +74,7 @@ for v5 = 1, 30 do
 	Face.Rotation = math.random(-10, 10);
 	SizeValue.Value = SizeValue.Value + 0.02;
 	wait(0);
-end;
+end
 Face.ImageColor3 = Color3.new(1, 1, 1)
 Background.BackgroundColor3 = Color3.new(0, 0, 0)
 JumpscareGui.Enabled = false
