@@ -24,7 +24,6 @@ end)
 camShake:Start()
 camShake:ShakeOnce(10,3,0.1,6,2,0.5)
 wait(4.96)
-frame:Destroy()
 local sound = Instance.new("Sound")
 sound.Parent = workspace
 sound.SoundId = "rbxassetid://9114221327"
