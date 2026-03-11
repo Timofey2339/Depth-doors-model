@@ -30,7 +30,8 @@ scare.Parent = JumpscareGui
 scare.Name = "MyEarsBurn"
 scare.SoundId = "rbxassetid://109582246349306"
 scare.PlaybackSpeed = 1
-scare.Volume = 6
+scare.Volume = 10
+scare.TimePosition = 0.4
 
 local shift = Instance.new("PitchShiftSoundEffect")
 shift.Octave = 1
@@ -51,5 +52,5 @@ distort.Level = 0.55
 
     game.TweenService:Create(Face, TweenInfo.new(0.6), {Size = UDim2.new(0, 1850, 0, 1050), ImageTransparency = 0}):Play()
     scare:Play()
-    task.wait(0.7)
-    JumpscareGui:Destroy()
+    task.wait(0.8)
+    JumpscareGui.Enabled = false
