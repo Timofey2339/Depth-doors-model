@@ -48,7 +48,7 @@ local v2 = Random.new()
 SizeValue.Value = -0.15
 local v4 = math.random(1, 2)
 scare:Play()
-while true do
+for v5 = 1, 30 do
 	local v6 = math.random(1, 3)
 	if v6 == 1 then
 		Background.BackgroundColor3 = Color3.new(0, 0, 0)
