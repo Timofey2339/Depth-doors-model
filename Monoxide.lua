@@ -68,19 +68,6 @@ local spawn = Instance.new("Sound")
     spawn.PlaybackSpeed = 1
     spawn:Play()
 
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Monoxide: Me is here", true)
-
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 255)
-game.Lighting.MainColorCorrection.Contrast = 10
-game.Lighting.MainColorCorrection.Saturation = -0.7
-local tween = game:GetService("TweenService")
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Contrast = 0}):Play()
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Saturation = 0}):Play()
-local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255)})
-TW:Play()
-end)
-
 entity:SetCallback("OnStartMoving", function()
     print("Entity has started moving")
 end)
