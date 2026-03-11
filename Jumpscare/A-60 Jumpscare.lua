@@ -31,7 +31,7 @@ scare.Parent = Background
 scare.Name = "Jumpscare"
 scare.SoundId = "rbxassetid://6459610652"
 scare.PlaybackSpeed = 1
-scare.Volume = 3
+scare.Volume = 10
 
 local shift = Instance.new("PitchShiftSoundEffect")
 shift.Octave = 1
