@@ -59,5 +59,11 @@ wait(5)
         end
     end)
 
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/A-60%20Jumpscare.lua"))()
+	end
+	end)
+
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
     entity:Run()
