@@ -24,13 +24,13 @@
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
     Face.Size = UDim2.new(0.25, 0, 0.3, 0)
-    Face.Image = "rbxassetid://11710167107"
+    Face.Image = "rbxassetid://13403594778"
 
 local scare = Instance.new("Sound")
 scare.Parent = Background
 scare.Name = "Jumpscare"
 scare.SoundId = "rbxassetid://127039440804189"
-scare.PlaybackSpeed = 1
+scare.PlaybackSpeed = 0.75
 scare.Volume = 6
 
 local shift = Instance.new("PitchShiftSoundEffect")
@@ -72,7 +72,7 @@ for v5 = 1, 30 do
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.4, 0.6), 0);
 	Face.Size = SizeValue.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0);
 	Face.Rotation = math.random(-10, 10);
-	Face.Value = SizeValue.Value + 0.02;
+	SizeValue.Value = SizeValue.Value + 0.02;
 	wait(0);
 end;
 Face.ImageColor3 = Color3.new(1, 1, 1)
