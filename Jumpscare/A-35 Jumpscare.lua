@@ -70,7 +70,7 @@ for v5 = 1, 30 do
 		Face.ImageColor3 = Color3.new(0, 0.666667, 0);
 	end;
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.4, 0.6), 0);
-	Face.Size = SizeValue.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0);
+	Face.Size = Face.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0);
 	Face.Rotation = math.random(-10, 10);
 	SizeValue.Value = SizeValue.Value + 0.02;
 	wait(0);
