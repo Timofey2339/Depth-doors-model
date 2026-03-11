@@ -64,11 +64,11 @@ for v5 = 1, 30 do
 		Face.ImageColor3 = Color3.new(0.647059, 0.647059, 0.647059)
 	end
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0,v2:NextNumber(0.4, 0.6), 0)
-	Face.Size = ImageLabel.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0)
+	Face.Size = Face.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0)
 	Face.Rotation = math.random(-50, 50)
 	SizeValue.Value = SizeValue.Value + 0.02
 	wait(0)
 end
-ImageLabel.ImageColor3 = Color3.new(1, 1, 1)
+Face.ImageColor3 = Color3.new(1, 1, 1)
 Background.BackgroundColor3 = Color3.new(0, 0, 0)
 JumpscareGui.Enabled = false
