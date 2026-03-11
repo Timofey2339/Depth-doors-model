@@ -49,7 +49,7 @@ local v2 = Random.new()
 SizeValue.Value = -0.15
 scare:Play()
 local v4 = math.random(1, 2)
-for _ = 1, 20 do
+for v5 = 1, 20 do
 	local randint = math.random(1, 3)
 	if randint == 1 then
 		Background.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
@@ -64,7 +64,7 @@ for _ = 1, 20 do
 		Background.BorderColor3 = Color3.fromRGB(81, 0, 0)
 		Face.ImageColor3 = Color3.new(0.67451, 0.376471, 0.376471)
 	end
-	Face.Position = UDim2.new(random_state:NextNumber(0.4, 0.6), 0, random_state:NextNumber(0.4, 0.6), 0)
+	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.4, 0.6), 0)
 	Face.Size += UDim2.new(0, SizeValue.Value, 0, SizeValue.Value)
 	Face.Rotation = math.random(-45, 45)
 	SizeValue.Value += 2
