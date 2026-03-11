@@ -67,6 +67,7 @@ local spawn = Instance.new("Sound")
     spawn.Volume = 45
     spawn.PlaybackSpeed = 1
     spawn:Play()
+	end)
 
 entity:SetCallback("OnStartMoving", function()
     print("Entity has started moving")
