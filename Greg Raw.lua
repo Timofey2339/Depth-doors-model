@@ -85,7 +85,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
     Face.Size = UDim2.new(0.25, 0, 0.3, 0)
-    Face.Image = "rbxassetid://10914800940"
+    Face.Image = "rbxassetid://11360803115"
 
     Background.Parent = JumpscareGui
     Face.Parent = Background
