@@ -39,11 +39,31 @@ Main:CreateButton({
    end
 })
 
+
 Main:CreateButton({
    Name = "Spawn A-25 (Rooms But Doors)",
    Callback = function()
       loadstring(game:HttpGet(
          "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-25%20Rooms%20but%20doors.lua"
+      ))()
+   end
+})
+
+
+Modes:CreateButton({
+   Name = "Spawn Spark",
+   Callback = function()
+      loadstring(game:HttpGet(
+         "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua"
+      ))()
+   end
+})
+
+Modes:CreateButton({
+   Name = "Spawn Watcher",
+   Callback = function()
+      loadstring(game:HttpGet(
+         "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua"
       ))()
    end
 })
