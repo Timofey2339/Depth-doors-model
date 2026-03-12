@@ -58,7 +58,7 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Rebound%20Jumpscare.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Spark%20Jumpscare.lua"))()
 	end
 	end)
 
