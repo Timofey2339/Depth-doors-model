@@ -71,3 +71,4 @@ for v5 = 1, 30 do
 	SizeValue.Value = SizeValue.Value + 0.01
 	wait(0)
 end
+JumpscareGui.Enabled = false
