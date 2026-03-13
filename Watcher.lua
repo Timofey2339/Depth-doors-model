@@ -1,6 +1,6 @@
 local Watcher = Instance.new("Model")
 Watcher.Parent = workspace
-Watcher.Name = "Watcher"
+Watcher.Name = "WatcherEntity"
 local v = game.Players.LocalPlayer
 local enableDamage = true
 local no = false
