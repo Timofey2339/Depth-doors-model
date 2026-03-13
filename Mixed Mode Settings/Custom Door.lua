@@ -5,7 +5,7 @@ local function changeDoor(room)
 	if door then
 		local NewDoor = game:GetObjects("rbxassetid://12245371479")[1]
 
-		NewDoor.CFrame = door.CFrame
+		NewDoor:PivotTo(door:GetPivot()) -- ставимо нову дверь на місце старої
 		NewDoor.Parent = room
 
 		door:Destroy()
@@ -13,7 +13,7 @@ local function changeDoor(room)
 end
 
 rooms.ChildAdded:Connect(function(room)
-	task.wait() -- щоб всі об'єкти в кімнаті встигли появитись
+	task.wait(0.5)
 	changeDoor(room)
 end)
 
