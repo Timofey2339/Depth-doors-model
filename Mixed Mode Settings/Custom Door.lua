@@ -1,11 +1,22 @@
-local room = workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
-local oldDoor = room:FindFirstChild("Door")
+local rooms = workspace.CurrentRooms
 
-local NewDoor = game:GetObjects("rbxassetid://12245371479")[1]
+local function changeDoor(room)
+	local door = room:FindFirstChild("Door")
+	if door then
+		local NewDoor = game:GetObjects("rbxassetid://12245371479")[1]
 
-if oldDoor then
-	NewDoor.CFrame = oldDoor.CFrame
-	oldDoor:Destroy()
+		NewDoor.CFrame = door.CFrame
+		NewDoor.Parent = room
+
+		door:Destroy()
+	end
 end
 
-NewDoor.Parent = room
+rooms.ChildAdded:Connect(function(room)
+	task.wait() -- щоб всі об'єкти в кімнаті встигли появитись
+	changeDoor(room)
+end)
+
+for _,room in pairs(rooms:GetChildren()) do
+	changeDoor(room)
+end
