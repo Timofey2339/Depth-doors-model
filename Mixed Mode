@@ -13,10 +13,7 @@ local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
 -- MESSAGE
 -- ======================
 load("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua")
--- ======================
--- SETTINGS 
--- ======================
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20Sounds.lua"))()
+
 
 -- ======================
 -- SPRINT
@@ -45,3 +42,7 @@ spawnAfterDelay(250, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-
 spawnAfterDelay(65, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Greg%20Raw.lua")
 spawnAfterDelay(90, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua")
 spawnAfterDelay(130, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua")
+-- ======================
+-- SETTINGS 
+-- ======================
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20Sounds.lua"))()
