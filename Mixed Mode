@@ -45,4 +45,6 @@ spawnAfterDelay(130, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-
 -- ======================
 -- SETTINGS 
 -- ======================
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20Door.lua"))()
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20Sounds.lua"))()
