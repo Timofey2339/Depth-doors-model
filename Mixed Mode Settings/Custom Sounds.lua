@@ -11,7 +11,7 @@ coroutine.wrap(function()
 					local open = door2:FindFirstChild("Open")
 					if open then
 						open.SoundId = "rbxassetid://140444636093892"
-						open.Volume = 3
+						open.Volume = 0.7
 					end
 				end
 			end
