@@ -1,3 +1,16 @@
+local sound = Instance.new("Sound")
+sound.Parent = workspace
+sound.SoundId = "rbxassetid://9125712444"
+sound.Volume = 5
+sound.Looped = false
+sound.PlaybackSpeed = 1
+
+local pitch = Instance.new("PitchShiftSoundEffect")
+pitch.Parent = sound
+pitch.Octave = 1
+
+sound:Play()
+
 local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24) 
     Reboundcolor.Name = "Warn" 
     Reboundcolor.TintColor = Color3.fromRGB(255, 0, 0) Reboundcolor.Saturation = 4 Reboundcolor.Contrast = 1 
