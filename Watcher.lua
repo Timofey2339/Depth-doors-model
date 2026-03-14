@@ -1,4 +1,4 @@
-local Watcher = Instance.new("Model")
+local Watcher = game:GetObjects("rbxassetid://118562324368932")[1]
 Watcher.Parent = workspace
 Watcher.Name = "WatcherEntity"
 local v = game.Players.LocalPlayer
@@ -23,7 +23,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 	camara.CFrame = camara.CFrame * shakeCf
 end)
  
-local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+local currentLoadedRoom=workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
 local eyes=game:GetObjects("rbxassetid://118562324368932")[1]
  
 if eyes then end
