@@ -20,15 +20,7 @@ sound2:Play()
 
 local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Warneffect,24) 
     Warneffect.Name = "Warn" 
-    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = 10 Warneffect.Contrast = -1 
-
-local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
-local camara = game.Workspace.CurrentCamera
-local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
- camara.CFrame = camara.CFrame * shakeCf
-end)
-camShake:Start()
-camShake:ShakeOnce(4,2,0.1,5,2,0.5)
+    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -1 Warneffect.Contrast = 10 
 
 local assetId = "rbxassetid://15439261945"
 
