@@ -1,38 +1,57 @@
-workspace.ChildAdded:Connect(function(child)
-    if child.Name == "Eyes" then
-        
-        local core = child:WaitForChild("Core")
-        local attachment = core:WaitForChild("Attachment")
+local RunService = game:GetService("RunService")
+local assetId = "rbxassetid://81616085996734"
 
-        attachment:WaitForChild("Angry").Texture = "rbxassetid://0"
-        attachment:WaitForChild("Bite").Texture = "rbxassetid://0"
-        attachment:WaitForChild("Spark").Texture = "rbxassetid://0"
+local spawnedEyes = {}
 
-        local eyesParticle = attachment:WaitForChild("EyesParticle")
-        wait(0.03)
-        eyesParticle.Texture = "rbxassetid://94041916253312"
-        eyesParticle.Size = NumberSequence.new(10)
+RunService.RenderStepped:Connect(function()
+    for _,eye in pairs(workspace:GetChildren()) do
+        if eye.Name == "Eyes" then
+            
+            if eye:FindFirstChild("Core") then
+                local core = eye.Core
+                
+                if core:FindFirstChild("Ambience") then
+                    core.Ambience.PlaybackSpeed = 0.4
+                    core.Ambience.Volume = 3
+                end
+                
+                if core:FindFirstChild("Attack") then
+                    core.Attack.PlaybackSpeed = 0.6
+                    core.Attack.Volume = 0.7
+                end
+                
+                if core:FindFirstChild("Initiate") then
+                    core.Initiate.PlaybackSpeed = 0.6
+                    core.Initiate.Volume = 2
+                end
+                
+                if core:FindFirstChild("Repent") then
+                    core.Repent.PlaybackSpeed = 0.7
+                    core.Repent.Volume = 1
+                end
+                
+                if core:FindFirstChild("Scream") then
+                    core.Scream.PlaybackSpeed = 0.27
+                    core.Scream.Volume = 0.9
+                end
+            end
 
-        local ambience = core:WaitForChild("Ambience")
-        ambience.Volume = 4
-        ambience.PlaybackSpeed = 0.2
+            if not spawnedEyes[eye] then
+                local clone = game:GetObjects(assetId)[1]
+                clone.Parent = workspace
+                clone:PivotTo(eye:GetPivot())
+                spawnedEyes[eye] = clone
+            else
+                spawnedEyes[eye]:PivotTo(eye:GetPivot())
+            end
 
-        child.Core.Attack.Volume = 4
-        child.Core.Attack.PlaybackSpeed = 0.6
+        end
+    end
 
-        child.Core.Attack.Volume = 4
-        child.Core.Attack.PlaybackSpeed = 0.6
-
-        child.Core.Repent.Volume = 4
-        child.Core.Repent.PlaybackSpeed = 0.6
-
-        child.Core.Initiate.Volume = 4
-        child.Core.Initiate.PlaybackSpeed = 0.6
-
-        child.Core.Teleport.Volume = 4
-        child.Core.Teleport.PlaybackSpeed = 0.6
-
-        child.Core.Scream.Volume = 4
-        child.Core.Scream.PlaybackSpeed = 0.3
+    for eye,clone in pairs(spawnedEyes) do
+        if not eye.Parent then
+            clone:Destroy()
+            spawnedEyes[eye] = nil
+        end
     end
 end)
