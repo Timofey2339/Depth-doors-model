@@ -2,7 +2,6 @@ local RunService = game:GetService("RunService")
 local assetId = "rbxassetid://129880262376814"
 local spawnedEyes = {}
 
--- Функція для приховання оригінальних Eyes
 local function hide(obj)
     for _,v in pairs(obj:GetDescendants()) do
         if v:IsA("BasePart") then
@@ -11,7 +10,10 @@ local function hide(obj)
         elseif v:IsA("ParticleEmitter") or v:IsA("Beam") then
             v.Enabled = false
         elseif v:IsA("Sound") then
-            v.Volume = 3 -- тут можна змінити гучність
+            v.Volume = 3
+        elseif v:IsA("PointLight") or v:IsA("SpotLight") or v:IsA("SurfaceLight") or v:IsA("DirectionalLight") then
+            v.Enabled = false
+            v.Brightness = 0
         end
     end
 end
@@ -19,11 +21,8 @@ end
 RunService.RenderStepped:Connect(function()
     for _,eye in pairs(workspace:GetChildren()) do
         if eye.Name == "Eyes" then
-
-            -- приховуємо оригінальні Eyes
             hide(eye)
 
-            -- налаштовуємо звук, якщо є Core
             if eye:FindFirstChild("Core") then
                 local core = eye.Core
                 if core:FindFirstChild("Ambience") then
@@ -48,7 +47,6 @@ RunService.RenderStepped:Connect(function()
                 end
             end
 
-            -- спавнимо нові Eyes, якщо ще немає
             if not spawnedEyes[eye] then
                 local clone = game:GetObjects(assetId)[1]
                 clone.Parent = workspace
@@ -60,7 +58,6 @@ RunService.RenderStepped:Connect(function()
         end
     end
 
-    -- видаляємо нові Eyes, якщо оригінальні пропали
     for eye,clone in pairs(spawnedEyes) do
         if not eye.Parent then
             clone:Destroy()
