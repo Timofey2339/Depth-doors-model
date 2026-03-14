@@ -25,8 +25,19 @@ if not room then
 	return
 end
 
--- позиція
-entity:PivotTo(room:GetPivot() * CFrame.new(0,5,0))
+local room = workspace.CurrentRooms:FindFirstChild(tostring(latestRoomValue.Value))
+
+local node
+
+if room:FindFirstChild("Nodes") then
+	local nodes = room.Nodes:GetChildren()
+	node = nodes[math.floor(#nodes/2)] -- середній Node
+end
+
+if node then
+	entity:PivotTo(node.CFrame * CFrame.new(0,5,0))
+end
+
 
 -- камера
 local camera = workspace.CurrentCamera
