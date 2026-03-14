@@ -1,4 +1,4 @@
-local Watcher = game:GetObjects("rbxassetid://118562324368932")[1]
+local Watcher = instance.new("Model")
 Watcher.Parent = workspace
 Watcher.Name = "WatcherEntity"
 local v = game.Players.LocalPlayer
