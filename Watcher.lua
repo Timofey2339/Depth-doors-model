@@ -24,7 +24,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 end)
  
 local currentLoadedRoom=workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
-local eyes=game:GetObjects("rbxassetid://118562324368932")[1]
+local eyes=game:GetObjects("rbxassetid://79312363226377")[1]
  
 if eyes then end
 game.Workspace.CurrentRooms.ChildAdded:Connect(function()
