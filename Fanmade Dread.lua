@@ -18,7 +18,7 @@ pitch.Parent = sound2
 sound:Play()
 sound2:Play()
 
-local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Warneffect,24) 
+local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting)
     Warneffect.Name = "Warn" 
     Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -1 Warneffect.Contrast = 4 
 
