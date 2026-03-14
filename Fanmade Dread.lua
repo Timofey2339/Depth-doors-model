@@ -56,7 +56,16 @@ if room then
 end
 
 
-wait(45)
+wait(36)
+local sound3 = Instance.new("Sound")
+sound3.Parent = workspace
+sound3.SoundId = "rbxassetid://18858846695"
+sound3.Volume = 4
+sound3.Looped = false
+sound3.PlaybackSpeed = 1
 sound2:Destroy()
 sound:Destroy()
+sound3:Play()
 game.TweenService:Create(Warneffect,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
+wait(9)
+sound3:Destroy()
