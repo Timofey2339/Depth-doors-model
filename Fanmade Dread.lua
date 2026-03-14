@@ -20,7 +20,7 @@ sound2:Play()
 
 local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Warneffect,24) 
     Warneffect.Name = "Warn" 
-    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -1 Warneffect.Contrast = 10 
+    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -1 Warneffect.Contrast = 4 
 
 local assetId = "rbxassetid://15439261945"
 
@@ -86,7 +86,7 @@ local entity = spawner.Create({
                 Tease = {true, Min = 1, Max = 3},
             },
         },
-        Movement = { Speed = 300, Delay = 2, Reversed = false },
+        Movement = { Speed = 900, Delay = 2, Reversed = false },
         Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 999, Amount = 999 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
