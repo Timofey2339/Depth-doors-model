@@ -14,7 +14,7 @@ workspace.ChildAdded:Connect(function(child)
         task.spawn(function()
             while child.Parent do
                 eyesParticle.Texture = "rbxassetid://94041916253312"
-                task.wait(0.05)
+                task.wait(0.01)
             end
         end)
 
