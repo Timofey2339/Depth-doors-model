@@ -36,7 +36,7 @@ else
 end
 
 -- Part очей
-local eyes = game:GetObjects("rbxassetid://79312363226377")[1]
+local eyes = game:GetObjects("https://assetdelivery.roblox.com/v1/asset/?id=79312363226377")[1]
 eyes.Parent = Watcher
 eyes.CFrame = spawnPart.CFrame * CFrame.new(0,5,0)
 
