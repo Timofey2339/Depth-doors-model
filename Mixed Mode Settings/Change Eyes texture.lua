@@ -1,14 +1,20 @@
 workspace.ChildAdded:Connect(function(child)
     if child.Name == "Eyes" then
         
-        child.Core.Attachment.Angry.Texture = "rbxassetid://0"
-        child.Core.Attachment.Bite.Texture = "rbxassetid://0"
-        child.Core.Attachment.Spark.Texture = "rbxassetid://0"
-        child.Core.Attachment.EyesParticle.Texture = "rbxassetid://94041916253312"
-        child.Core.Attachment.EyesParticle.Size = NumberSequence.new(10)
+        local core = child:WaitForChild("Core")
+        local attachment = core:WaitForChild("Attachment")
 
-        child.Core.Ambience.Volume = 4
-        child.Core.Ambience.PlaybackSpeed = 0.2
+        attachment:WaitForChild("Angry").Texture = "rbxassetid://0"
+        attachment:WaitForChild("Bite").Texture = "rbxassetid://0"
+        attachment:WaitForChild("Spark").Texture = "rbxassetid://0"
+
+        local eyesParticle = attachment:WaitForChild("EyesParticle")
+        eyesParticle.Texture = "rbxassetid://94041916253312"
+        eyesParticle.Size = NumberSequence.new(10)
+
+        local ambience = core:WaitForChild("Ambience")
+        ambience.Volume = 4
+        ambience.PlaybackSpeed = 0.2
 
         child.Core.Attack.Volume = 4
         child.Core.Attack.PlaybackSpeed = 0.6
