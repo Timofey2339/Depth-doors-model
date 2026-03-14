@@ -1,24 +1,4 @@
-local function load(url)
-    local ok, err = pcall(function()
-        loadstring(game:HttpGet(url))()
-    end)
-    if not ok then
-        warn("ERROR:", err)
-    end
-end
-
 local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
-
--- ======================
--- MESSAGE
--- ======================
-load("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua")
-
-
--- ======================
--- SPRINT
--- ======================
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Sprint.lua"))()
 
 -- ======================
 -- SPAWN SYSTEM
@@ -45,8 +25,19 @@ spawnAfterDelay(130, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-
 -- ======================
 -- SETTINGS 
 -- ======================
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20BulbZap.lua"))()
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Change%20Eyes%20texture.lua"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20Door.lua"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Mixed%20Mode%20Settings/Custom%20Sounds.lua"))()
+
+-- MESSAGE
+-- ======================
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua"))()
+
+-- ======================
+-- SPRINT
+-- ======================
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Sprint.lua"))()
