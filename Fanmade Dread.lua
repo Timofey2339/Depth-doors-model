@@ -20,7 +20,7 @@ sound2:Play()
 
 local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting)
     Warneffect.Name = "Warn" 
-    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -1 Warneffect.Contrast = 4 
+    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -0.4 Warneffect.Contrast = 2 
 
 local assetId = "rbxassetid://15439261945"
 
