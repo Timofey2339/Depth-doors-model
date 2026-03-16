@@ -53,7 +53,7 @@ local entity = spawner.Create({
         Movement = { Speed = 135, Delay = 0, Reversed = true },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
-        Crucifixion = { Enabled = false, Range = 40, Resist = false, Break = true },
+        Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = true },
         Death = {
             Type = "Curious",
             Hints = {"You died by Rebound", "if you your Screen blue hide", "and now","Bye Bye"}, 
@@ -144,7 +144,7 @@ local entity = spawner.Create({
         Movement = { Speed = 135, Delay = 0, Reversed = true },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
-        Crucifixion = { Enabled = false, Range = 40, Resist = false, Break = true },
+        Crucifixion = { Enabled = false, Range = 40, Resist = true, Break = true },
         Death = {
             Type = "Curious",
             Hints = {"You died by Rebound", "if you your Screen blue hide", "and now","Bye Bye"}, 
