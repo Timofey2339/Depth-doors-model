@@ -1,18 +1,22 @@
 local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
 
--- ======================
+-- function url
+local function url(link)
+    loadstring(game:HttpGet(link))()
+end
+
 -- SPAWN SYSTEM
--- ======================
-local function spawnAfterDelay(delayTime, url)
+local function spawnAfterDelay(delayTime, urlLink)
     coroutine.wrap(function()
         while true do
             LatestRoom:GetPropertyChangedSignal("Value"):Wait()
             task.wait(0)
             task.wait(delayTime)
-            load(url)
+            url(urlLink)
         end
     end)()
 end
+
 -- ENTITIES
 spawnAfterDelay(400, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
 spawnAfterDelay(350, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua")
