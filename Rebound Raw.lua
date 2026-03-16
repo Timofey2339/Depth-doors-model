@@ -36,15 +36,15 @@ local entity = spawner.Create({
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = false, Duration = 1},
+            Flicker = { Enabled = false, Duration = 3},
             Shatter = false, Repair = false
         },
         Earthquake = { Enabled = false },
         CameraShake = { Enabled = true, Range = 100, Values = {5, 5, 0.1, 1} },
-        Movement = { Speed = 135, Delay = 0.5, Reversed = true },
+        Movement = { Speed = 135, Delay = 0, Reversed = true },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 3, Max = 12, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
-        Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = false },
+        Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = true },
         Death = {
             Type = "Curious",
             Hints = {"You died by rebound", "he can rebound 3 times", "if your screen turning blue all whats you need its hide","Bye Bye"}, 
@@ -124,15 +124,15 @@ coroutine.wrap(function()
                 HeightOffset = 0
             },
             Lights = {
-                Flicker = { Enabled = false, Duration = 1},
+                Flicker = { Enabled = false, Duration = 3},
                 Shatter = false, Repair = false
             },
             Earthquake = { Enabled = false },
             CameraShake = { Enabled = true, Range = 100, Values = {5, 5, 0.1, 1} },
-            Movement = { Speed = 135, Delay = 0.5, Reversed = true },
+            Movement = { Speed = 135, Delay = 0, Reversed = true },
             Rebounding = { Enabled = false, Type = "Ambush", Min = 3, Max = 12, Delay = 1.0 },
             Damage = { Enabled = true, Range = 40, Amount = 125 },
-            Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = false },
+            Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = true },
             Death = {
                 Type = "Curious",
                 Hints = {"You died by rebound", "he can rebound 3 times", "if your screen turning blue all whats you need its hide","Bye Bye"}, 
