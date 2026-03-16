@@ -50,7 +50,7 @@ while task.wait(0.4) do
 	
 	if not visible then
 		if hum.Health > 0 then
-			hum.Health -= 4
+			hum.Health -= 0.5
 			sound:Play()
 		end
 	end
