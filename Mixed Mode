@@ -9,13 +9,13 @@ end
 local function spawnAfterDelay(delayTime, urlLink)
     coroutine.wrap(function()
         while true do
-            LatestRoom:GetPropertyChangedSignal("Value"):Wait()
-            task.wait(0)
+            LatestRoom.Changed:Wait()
             task.wait(delayTime)
             url(urlLink)
         end
     end)()
 end
+
 
 -- ENTITIES
 spawnAfterDelay(400, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
