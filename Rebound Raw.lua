@@ -312,5 +312,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doo
 
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
     entity:Run()
-	end)
+	end
 
