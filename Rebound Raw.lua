@@ -14,7 +14,8 @@ game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.from
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camara = game.Workspace.CurrentCamera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) camara.CFrame = camara.CFrame * shakeCf end)
-camShake:Start() camShake:ShakeOnce(10,3,0.1,6,2,0.5) wait(4.96)
+camShake:Start() camShake:ShakeOnce(10,3,0.1,6,2,0.5) 
+wait(4.96)
 local sound = Instance.new("Sound")
 sound.Parent = workspace sound.SoundId = "rbxassetid://9114221327"
 sound.Volume = 5 sound.Looped = false sound.PlaybackSpeed = 1 
@@ -79,16 +80,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doo
     entity:Run()
 
 wait(2)
-local changeCount = 0  -- лічильник змін
+local changeCount = 0
 
 coroutine.wrap(function()
-    while changeCount < 3 do  -- спрацює тільки 3 рази
-        -- чекаємо на зміну LatestRoom
+    while changeCount < 3 do
         game.ReplicatedStorage.GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()
         
-        changeCount = changeCount + 1  -- збільшуємо лічильник
+        changeCount = changeCount + 1
 
-        -- Звуки
         local sound1 = Instance.new("Sound")
         sound1.Parent = workspace
         sound1.SoundId = "rbxassetid://71840455801134"
@@ -113,7 +112,6 @@ coroutine.wrap(function()
 
         wait(0.04)
 
-        -- Спавн Rebound
         local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
         local entity = spawner.Create({
             Entity = {
