@@ -14,11 +14,15 @@ game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.from
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camara = game.Workspace.CurrentCamera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) camara.CFrame = camara.CFrame * shakeCf end)
-camShake:Start() camShake:ShakeOnce(10,3,0.1,6,2,0.5) 
+camShake:Start() 
+camShake:ShakeOnce(10,3,0.1,6,2,0.5) 
 wait(4.96)
 local sound = Instance.new("Sound")
-sound.Parent = workspace sound.SoundId = "rbxassetid://9114221327"
-sound.Volume = 5 sound.Looped = false sound.PlaybackSpeed = 1 
+sound.Parent = workspace
+sound.SoundId = "rbxassetid://9114221327"
+sound.Volume = 5 
+sound.Looped = false 
+sound.PlaybackSpeed = 1 
 local pitch = Instance.new("PitchShiftSoundEffect") 
 pitch.Parent = sound 
 pitch.Octave = 1
@@ -32,7 +36,7 @@ local entity = spawner.Create({
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = false, Duration = 0},
+            Flicker = { Enabled = false, Duration = 1},
             Shatter = false, Repair = false
         },
         Earthquake = { Enabled = false },
@@ -120,7 +124,7 @@ coroutine.wrap(function()
                 HeightOffset = 0
             },
             Lights = {
-                Flicker = { Enabled = false, Duration = 0},
+                Flicker = { Enabled = false, Duration = 1},
                 Shatter = false, Repair = false
             },
             Earthquake = { Enabled = false },
