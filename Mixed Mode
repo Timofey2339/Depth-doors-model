@@ -20,7 +20,7 @@ spawnAfterDelay(500, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-
 spawnAfterDelay(700, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua")
 spawnAfterDelay(250, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua")
 spawnAfterDelay(65, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Greg%20Raw.lua")
-spawnAfterDelay(90, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua")
+spawnAfterDelay(1, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua")
 spawnAfterDelay(130, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua")
 spawnAfterDelay(273, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua")
 -- ======================
