@@ -32,7 +32,7 @@ local entity = spawner.Create({
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = false, Duration = 12},
+            Flicker = { Enabled = false, Duration = 0},
             Shatter = false, Repair = false
         },
         Earthquake = { Enabled = false },
@@ -120,7 +120,7 @@ coroutine.wrap(function()
                 HeightOffset = 0
             },
             Lights = {
-                Flicker = { Enabled = false, Duration = 12},
+                Flicker = { Enabled = false, Duration = 0},
                 Shatter = false, Repair = false
             },
             Earthquake = { Enabled = false },
