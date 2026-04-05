@@ -1,4 +1,4 @@
-І у цьому скрипті local player = game.Players.LocalPlayer
+local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local hum = char:WaitForChild("Humanoid")
 
