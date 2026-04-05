@@ -19,6 +19,19 @@ if not room then
 end
 
 entity:PivotTo(room:GetPivot() * CFrame.new(0,0,-40))
+local Time = Instance.new("NumberValue")
+Time.Parent = workspace
+Time.Value = 30
+
+    local SpawnSound = Instance.new("Sound")
+	SpawnSound.Parent = workspace
+	SpawnSound = "Spawn"
+	SpawnSound.SoundId = "rbxassetid://6305809364"
+    SpawnSound.PlaybackSpeed = 0.28
+	SpawnSound.Volume = 2
+	SpawnSound:Play()
+local captiongui = Instance.new("ScreenGui")
+captiongui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local camera = workspace.CurrentCamera
 local currentRoomNumber = latestRoomValue.Value
@@ -40,7 +53,6 @@ wait(5)
 captiongui:Destroy()
 		break
 	end
-	captiongui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local TextLabelCaption = Instance.new("TextLabel")
 TextLabelCaption.Parent = captiongui
@@ -61,5 +73,13 @@ wait(0.01)
 if game.Workspace.TimerValue.Value = 0 then
 	game.Workspace.TimerValue:Destroy()
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    local KillSound = Instance.new("Sound")
+	KillSound.Parent = workspace
+	KillSound.Name = "Kill"
+	KillSound.SoundId = "rbxassetid://5867708670"
+    KillSound.PlaybackSpeed = 1.05
+	KillSound.Volume = 3
+	KillSound:Play()
+captiongui:Destroy()
 end
 end
