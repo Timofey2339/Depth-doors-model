@@ -27,5 +27,39 @@ while task.wait(0.4) do
 	
 	if latestRoomValue.Value ~= currentRoomNumber then
 		entity:Destroy()
+		game.Workspace.TimerValue:Destroy()
+local TweenService = game:GetService("TweenService")
+local tween = TweenService:Create(
+    TextLabelCaption,
+    TweenInfo.new(4.95, Enum.EasingStyle.Sine, Enum.EasingDirection.Out),
+    {TextTransparency = 1}
+)
+tween:Play()
+wait(5)
+
+captiongui:Destroy()
 		break
 	end
+	captiongui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local TextLabelCaption = Instance.new("TextLabel")
+TextLabelCaption.Parent = captiongui
+TextLabelCaption.BackgroundTransparency = 1
+TextLabelCaption.TextColor3 = Color3.fromRGB(255, 233, 182)
+TextLabelCaption.Position = UDim2.new(0.5, 0, 0.8, 0)
+TextLabelCaption.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabelCaption.Size = UDim2.new(1, 0, 1, 0)
+TextLabelCaption.TextSize = 18
+wait(0.1)
+TextLabelCaption.Text = "You have 30 seconds"
+while true do
+wait(0.99)
+game.Workspace.TimerValue.Value -= 1
+wait(0.01)
+TextLabelCaption.Text = ""game.Workspace.TimerValue.Value" seconds left"
+wait(0.01)
+if game.Workspace.TimerValue.Value = 0 then
+	game.Workspace.TimerValue:Destroy()
+	game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end
+end
