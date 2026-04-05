@@ -37,11 +37,9 @@ while task.wait(0.4) do
 	if not entity.Parent then break end
 	
 	local pos = entity:GetPivot().Position
-	
-	-- Перевірка чи на екрані
+
 	local _, visible = camera:WorldToScreenPoint(pos)
 	
-	-- Raycast (перевірка стін)
 	local origin = camera.CFrame.Position
 	local direction = pos - origin
 	
@@ -63,113 +61,10 @@ while task.wait(0.4) do
 		end
 	end
 	
-	-- Якщо НЕ бачиш → дамаг
 	if not canSee then
 		if hum.Health > 0 then
 			hum.Health -= 0.5
 			sound:Play()
-		end
-	end
-	
-end
-	if not entity.Parent then break end
-	
-	local pos = entity:GetPivot().Position
-	
-	local _, visible = camera:WorldToScreenPoint(pos)
-	
-	local origin = camera.CFrame.Position
-	local direction = pos - origin
-	
-	local rayParams = RaycastParams.new()
-	rayParams.FilterDescendantsInstances = {char, entity}
-	rayParams.FilterType = Enum.RaycastFilterType.Blacklist
-	
-	local result = workspace:Raycast(origin, direction, rayParams)
-	
-	local canSee = false
-	
-	if visible then
-		if result then
-			if result.Instance:IsDescendantOf(entity) then
-				canSee = true
-			end
-		else
-			canSee = true
-		end
-	end
-	
-	if not canSee then
-		if hum.Hea lth > 0 then
-			hum.Health -= 5
-			sound:Play()
-		end
-	end
-	
-end	break
-	end
-	
-	if not entity.Parent then break end
-	
-	local pos = entity:GetPivot().Position
-	
-	local _, visible = camera:WorldToScreenPoint(pos)
-	
-	local origin = camera.CFrame.Position
-	local direction = pos - origin
-	
-	local rayParams = RaycastParams.new()
-	rayParams.FilterDescendantsInstances = {char, entity}
-	rayParams.FilterType = Enum.RaycastFilterType.Blacklist
-	
-	local result = workspace:Raycast(origin, direction, rayParams)
-	
-	local blocked = false
-	
-	if result then
-		if not result.Instance:IsDescendantOf(entity) then
-			blocked = true
-		end
-	end
-	
-	if (not visible) and (not blocked) then
-		if hum.Health > 0 then
-			hum.Health -= 5
-			sound:Play()
-		end
-	end
-	
-end
-	if not entity.Parent then break end
-	
-	local pos = entity:GetPivot().Position
-	
-	local _, visible = camera:WorldToScreenPoint(pos)
-	
-	local origin = camera.CFrame.Position
-	local direction = pos - origin
-	
-	local rayParams = RaycastParams.new()
-	rayParams.FilterDescendantsInstances = {char, entity}
-	rayParams.FilterType = Enum.RaycastFilterType.Blacklist
-	
-	local result = workspace:Raycast(origin, direction, rayParams)
-	
-	local canSee = false
-	
-	if visible then
-		if result then
-			if result.Instance:IsDescendantOf(entity) then
-				canSee = true
-			end
-		else
-			canSee = true
-		end
-	end
-	
-	if not canSee then
-		if hum.Health > 0 then
-			hum.Health -= 0
 		end
 	end
 	
