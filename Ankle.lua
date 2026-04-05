@@ -10,7 +10,6 @@ local latestRoomValue = gameData:WaitForChild("LatestRoom")
 local entity = game:GetObjects("rbxassetid://80648035882957")[1]
 entity.Parent = workspace
 
-
 local room = rooms:FindFirstChild(tostring(latestRoomValue.Value))
 
 if not room then
@@ -19,21 +18,64 @@ if not room then
 end
 
 entity:PivotTo(room:GetPivot() * CFrame.new(0,0,-40))
-local Time = Instance.new("NumberValue")
-Time.Parent = workspace
-Time.Value = 30
 
-    local SpawnSound = Instance.new("Sound")
-	SpawnSound.Parent = workspace
-	SpawnSound = "Spawn"
-	SpawnSound.SoundId = "rbxassetid://6305809364"
-    SpawnSound.PlaybackSpeed = 0.28
-	SpawnSound.Volume = 2
-	SpawnSound:Play()
+local TimerValue = Instance.new("NumberValue")
+TimerValue.Name = "TimerValue"
+TimerValue.Parent = workspace
+TimerValue.Value = 30
+
+local SpawnSound = Instance.new("Sound")
+SpawnSound.Parent = workspace
+SpawnSound.Name = "Spawn"
+SpawnSound.SoundId = "rbxassetid://6305809364"
+SpawnSound.PlaybackSpeed = 0.28
+SpawnSound.Volume = 2
+SpawnSound:Play()
+
 local captiongui = Instance.new("ScreenGui")
-captiongui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+captiongui.Parent = player:WaitForChild("PlayerGui")
 
-local camera = workspace.CurrentCamera
+local TextLabelCaption = Instance.new("TextLabel")
+TextLabelCaption.Parent = captiongui
+TextLabelCaption.BackgroundTransparency = 1
+TextLabelCaption.TextColor3 = Color3.fromRGB(255, 233, 182)
+TextLabelCaption.Position = UDim2.new(0.5, 0, 0.8, 0)
+TextLabelCaption.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabelCaption.Size = UDim2.new(1, 0, 1, 0)
+TextLabelCaption.TextSize = 18
+
+local currentRoomNumber = latestRoomValue.Value
+
+while task.wait(1) do
+	
+	if latestRoomValue.Value ~= currentRoomNumber then
+		entity:Destroy()
+		TimerValue:Destroy()
+		captiongui:Destroy()
+		break
+	end
+	
+	TimerValue.Value -= 1
+	
+	TextLabelCaption.Text = TimerValue.Value .. " seconds left"
+	
+	if TimerValue.Value <= 0 then
+		hum.Health = 0
+		
+		local KillSound = Instance.new("Sound")
+		KillSound.Parent = workspace
+		KillSound.Name = "Kill"
+		KillSound.SoundId = "rbxassetid://5867708670"
+		KillSound.PlaybackSpeed = 1.05
+		KillSound.Volume = 3
+		KillSound:Play()
+		
+		captiongui:Destroy()
+		TimerValue:Destroy()
+		break
+	end
+	
+end
 local currentRoomNumber = latestRoomValue.Value
 
 while task.wait(0.4) do
