@@ -48,7 +48,7 @@ local entity = spawner.Create({
         Death = {
             Type = "Curious",
             Hints = {"You died by rebound", "he can rebound 3 times", "if your screen turning blue all whats you need its hide","Bye Bye"}, 
-            Cause = "Spark"
+            Cause = "Rebound"
         }
     })
 
@@ -136,7 +136,7 @@ coroutine.wrap(function()
             Death = {
                 Type = "Curious",
                 Hints = {"You died by rebound", "he can rebound 3 times", "if your screen turning blue all whats you need its hide","Bye Bye"}, 
-                Cause = "Spark"
+                Cause = "Rebound"
             }
         })
 
