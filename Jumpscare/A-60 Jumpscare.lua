@@ -31,7 +31,7 @@ scare.Parent = Background
 scare.Name = "Jumpscare"
 scare.SoundId = "rbxassetid://132942725846535"
 scare.PlaybackSpeed = 1
-scare.Volume = 6
+scare.Volume = 4
 
 local shift = Instance.new("PitchShiftSoundEffect")
 shift.Octave = 1
@@ -39,7 +39,7 @@ shift.Parent = scare
 
 local distort = Instance.new("DistortionSoundEffect")
 distort.Parent = scare
-distort.Level = 0.3
+distort.Level = 0.1
 
     Background.Parent = JumpscareGui
     Face.Parent = Background
