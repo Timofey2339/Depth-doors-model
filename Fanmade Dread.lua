@@ -20,7 +20,7 @@ sound2:Play()
 
 local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting)
     Warneffect.Name = "Warn" 
-    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -0.4 Warneffect.Contrast = 2 
+    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -0.2 Warneffect.Contrast = 1 
 
 local assetId = "rbxassetid://15439261945"
 
@@ -122,7 +122,7 @@ wait(5)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
-
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Fanmade%20Dread%20Jumpscare.lua"))()	
 	end
 	end)
 
