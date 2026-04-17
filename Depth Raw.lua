@@ -1,5 +1,4 @@
 coroutine.wrap(function()
-coroutine.wrap(function()
     while true do
         wait(0.1)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
