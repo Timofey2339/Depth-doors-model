@@ -18,14 +18,14 @@ end
 
 
 -- ENTITIES
-spawnAfterDelay(400, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
-spawnAfterDelay(350, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua")
-spawnAfterDelay(500, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Depth%20Raw.lua")
-spawnAfterDelay(700, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua")
+spawnAfterDelay(350, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
+spawnAfterDelay(550, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua")
+spawnAfterDelay(700, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Depth%20Raw.lua")
+spawnAfterDelay(800, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua")
 spawnAfterDelay(250, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua")
 spawnAfterDelay(125, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Greg%20Raw.lua")
 spawnAfterDelay(90, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua")
-spawnAfterDelay(300, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua")
+spawnAfterDelay(330, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua")
 spawnAfterDelay(280, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua")
 spawnAfterDelay(185, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua")
 -- ======================
