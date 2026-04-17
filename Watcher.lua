@@ -41,7 +41,8 @@ while task.wait(0.4) do
 	local _, visible = camera:WorldToScreenPoint(pos)
 	
 	local origin = camera.CFrame.Position
-	local direction = pos - origin
+	local direction = (pos - origin).Unit * (pos - origin).Magnitude
+
 	
 	local rayParams = RaycastParams.new()
 	rayParams.FilterDescendantsInstances = {char, entity}
@@ -57,18 +58,21 @@ if visible then
 		if result.Instance:IsDescendantOf(entity) then
 			isLooking = true
 		else
-			isBlocked = true
+			isBlocked = true -- тепер це 100% стіна
 		end
 	else
 		isLooking = true
 	end
+else
+	isLooking = false
 end
-	
+
 if not isLooking and not isBlocked then
 	if hum.Health > 0 then
-		hum.Health -= 5
+		hum.Health -= 3
 		sound:Play()
 	end
 end
+
 	
 end
