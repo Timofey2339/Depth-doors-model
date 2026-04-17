@@ -1,3 +1,12 @@
+coroutine.wrap(function()
+    while true do
+        wait(0.1)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+          if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+          return
+            end
+        end)
+	
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local hum = char:WaitForChild("Humanoid")
