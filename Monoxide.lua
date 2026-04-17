@@ -3,10 +3,11 @@ coroutine.wrap(function()
     while true do
         wait(0.1)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-          if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-          return
-            end
-        end)
+        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+            return
+        end
+    end
+end)
 	
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
