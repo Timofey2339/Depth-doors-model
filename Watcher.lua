@@ -76,4 +76,8 @@ if not isLooking and not isBlocked then
 	end
 end
 
+hum.Died:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Watcher%20Jumpscare.lua"))()
+end)
+	
 end
