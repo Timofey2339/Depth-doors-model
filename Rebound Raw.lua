@@ -16,6 +16,15 @@ local camara = game.Workspace.CurrentCamera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) camara.CFrame = camara.CFrame * shakeCf end)
 camShake:Start() 
 camShake:ShakeOnce(10,3,0.1,6,2,0.5) 
+coroutine.wrap(function()
+    while true do
+        wait(0.1)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+          if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+          return
+            end
+        end)
+	
 wait(4.96)
 local sound = Instance.new("Sound")
 sound.Parent = workspace
