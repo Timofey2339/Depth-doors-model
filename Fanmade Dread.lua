@@ -16,6 +16,15 @@ local pitch = Instance.new("ReverbSoundEffect")
 pitch.Parent = sound2
 
 sound:Play()
+coroutine.wrap(function()
+    while true do
+        wait(0.1)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+            return
+        end
+    end
+end)
 sound2:Play()
 
 local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting)
@@ -46,15 +55,6 @@ if room then
         * CFrame.Angles(0, math.rad(rotateY), 0)
     )
 end
-coroutine.wrap(function()
-    while true do
-        wait(0.1)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-          if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-          return
-            end
-        end)
-
 wait(36)
 local sound4 = Instance.new("Sound")
 sound4.Parent = workspace
