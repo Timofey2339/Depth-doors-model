@@ -49,19 +49,32 @@ end
 
 
 wait(36)
+local sound4 = Instance.new("Sound")
+sound4.Parent = workspace
+sound4.SoundId = "rbxassetid://139099793195974"
+sound4.Volume = 3.5
+sound4.Looped = false
+sound4.PlaybackSpeed = 0.85
+sound4:Play()
+sound2:Destroy()
+sound:Destroy()
+wait(2.5)
+sound4:Play()
+wait(2.5)
+sound4:Play()
+wait(2.5)
 local sound3 = Instance.new("Sound")
 sound3.Parent = workspace
 sound3.SoundId = "rbxassetid://18858846695"
 sound3.Volume = 4
 sound3.Looped = false
 sound3.PlaybackSpeed = 1
-sound2:Destroy()
-sound:Destroy()
 sound3:Play()
 game.TweenService:Create(Warneffect,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
 wait(9)
+sound4:Destroy()
 sound3:Destroy()
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()    
 local entity = spawner.Create({
         Entity = {
             Name = "Fanmade Dread",
@@ -121,10 +134,10 @@ wait(5)
     end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
-	if newHealth == 0 then
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Fanmade%20Dread%20Jumpscare.lua"))()	
-	end
-	end)
+    if newHealth == 0 then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Fanmade%20Dread%20Jumpscare.lua"))()    
+    end
+    end)
 
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
     entity:Run()
