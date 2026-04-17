@@ -29,8 +29,8 @@
 local scare = Instance.new("Sound")
 scare.Parent = Background
 scare.Name = "Jumpscare"
-scare.SoundId = "rbxassetid://137120797573299"
-scare.PlaybackSpeed = 1
+scare.SoundId = "rbxassetid://130344085927615"
+scare.PlaybackSpeed = 0.8
 scare.Volume = 10
 
 local shift = Instance.new("PitchShiftSoundEffect")
@@ -64,10 +64,10 @@ for v5 = 1, 7 do
 		Background.BorderColor3 = Color3.fromRGB(218, 133, 65)
 		Face.ImageColor3 = Color3.new(0.67451, 0.376471, 0.376471)
 	end
-	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.4, 0.6), 0)
+	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.8, 1.2), 0)
 	Face.Size += UDim2.new(0, SizeValue.Value, 0, SizeValue.Value)
 	Face.Rotation = math.random(-25, 25)
-	SizeValue.Value += 2
+	SizeValue.Value += 0.4
 	wait(0)
 end
 Face.ImageColor3 = Color3.new(1, 1, 1)
