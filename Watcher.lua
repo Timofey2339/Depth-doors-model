@@ -44,27 +44,23 @@ while task.wait(0.4) do
 	local direction = (pos - origin).Unit * (pos - origin).Magnitude
 
 	
-	local rayParams = RaycastParams.new()
-	rayParams.FilterDescendantsInstances = {char, entity}
-	rayParams.FilterType = Enum.RaycastFilterType.Blacklist
-	
 	local result = workspace:Raycast(origin, direction, rayParams)
 	
+local isLooking = false
 local isLooking = false
 local isBlocked = false
 
 if visible then
-	if result then
-		if result.Instance:IsDescendantOf(entity) then
-			isLooking = true
-		else
-			isBlocked = true -- тепер це 100% стіна
-		end
-	else
-		isLooking = true
-	end
-else
-	isLooking = false
+	isLooking = true
+end
+
+local obscuringParts = camera:GetPartsObscuringTarget(
+	{pos},
+	{char, entity}
+)
+
+if #obscuringParts > 0 then
+	isBlocked = true
 end
 
 if not isLooking and not isBlocked then
