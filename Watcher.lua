@@ -47,12 +47,18 @@ while task.wait(0.4) do
 	local result = workspace:Raycast(origin, direction, rayParams)
 	
 local isLooking = false
-local isLooking = false
 local isBlocked = false
 
 if visible then
-	isLooking = true
-end
+	local lookVector = camera.CFrame.LookVector
+	local directionToMonster = (pos - camera.CFrame.Position).Unit
+	
+	local dot = lookVector:Dot(directionToMonster)
+	
+	if dot > 0.7 then
+		isLooking = true
+	end
+	end
 
 local obscuringParts = camera:GetPartsObscuringTarget(
 	{pos},
