@@ -76,5 +76,4 @@ if not isLooking and not isBlocked then
 	end
 end
 
-	
 end
