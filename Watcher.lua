@@ -49,23 +49,26 @@ while task.wait(0.4) do
 	
 	local result = workspace:Raycast(origin, direction, rayParams)
 	
-	local canSee = false
-	
-	if visible then
-		if result then
-			if result.Instance:IsDescendantOf(entity) then
-				canSee = true
-			end
+local isLooking = false
+local isBlocked = false
+
+if visible then
+	if result then
+		if result.Instance:IsDescendantOf(entity) then
+			isLooking = true
 		else
-			canSee = true
+			isBlocked = true
 		end
+	else
+		isLooking = true
 	end
+end
 	
-	if not canSee then
-		if hum.Health > 0 then
-			hum.Health -= 0.5
-			sound:Play()
-		end
+if not isLooking and not isBlocked then
+	if hum.Health > 0 then
+		hum.Health -= 5
+		sound:Play()
 	end
+end
 	
 end
