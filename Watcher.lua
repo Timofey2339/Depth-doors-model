@@ -81,9 +81,9 @@ end
 
 if not isLooking and not isBlocked then
 	if hum.Health > 0 then
-		hum.Health -= 3
+		hum.Health -= 5
 		sound:Play()
-		end
+	end
 end
 
 
