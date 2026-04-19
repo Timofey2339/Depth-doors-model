@@ -83,7 +83,7 @@ if not isLooking and not isBlocked then
 	if hum.Health > 0 then
 		hum.Health -= 3
 		sound:Play()
-	elseif hum.Health < 0
+	elseif hum.Health < 0 then
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Watcher%20Jumpscare.lua"))()
 	end
 end
