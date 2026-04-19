@@ -60,15 +60,19 @@ local isLooking = false
 local isBlocked = false
 
 if visible then
-	local lookVector = camera.CFrame.LookVector
-	local directionToMonster = (pos - camera.CFrame.Position).Unit
-	
-	local dot = lookVector:Dot(directionToMonster)
-	
-	if dot > 0.7 then
+	if result then
+		if result.Instance:IsDescendantOf(entity) then
+			isLooking = true
+		else
+			isBlocked = true
+		end
+	else
 		isLooking = true
 	end
-	end
+else
+	isLooking = false
+end
+end
 
 local obscuringParts = camera:GetPartsObscuringTarget(
 	{pos},
