@@ -15,6 +15,11 @@ local hum = char:WaitForChild("Humanoid")
 local rooms = workspace:WaitForChild("CurrentRooms")
 local gameData = game.ReplicatedStorage:WaitForChild("GameData")
 
+local direction = pos - origin
+local distance = direction.Magnitude
+direction = direction.Unit * distance
+
+
 local latestRoomValue = gameData:WaitForChild("LatestRoom")
 
 local entity = game:GetObjects("rbxassetid://79312363226377")[1]
