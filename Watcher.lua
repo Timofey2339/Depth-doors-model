@@ -29,7 +29,7 @@ pcall(function()
 end)
 
 if not entity then
-    warn("Entity didn't load because of client limit!")
+    warn("Entity model didn't load!")
     entity = Instance.new("Part")
     entity.Parent = workspace
 end
@@ -54,9 +54,9 @@ local dead = false
 hum.Died:Connect(function()
 	if dead then return end
 	dead = true
-	warn("Player Died")
+	warn("player died")
 	pcall(function()
-						-- UI Construction
+				-- UI Construction
     local JumpscareGui = Instance.new("ScreenGui")
     local Background = Instance.new("Frame")
     local Face = Instance.new("ImageLabel")
@@ -134,6 +134,7 @@ JumpscareGui.Enabled = false
 	end)
 end)
 
+тепер
 while task.wait(0.4) do
 	if latestRoomValue.Value ~= currentRoomNumber then
 		entity:Destroy()
