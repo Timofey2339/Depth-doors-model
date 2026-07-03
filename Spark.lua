@@ -11,13 +11,14 @@ pitch.Parent = sound
 pitch.Octave = 1
 coroutine.wrap(function()
     while true do
-        wait(0.1)
+        task.wait(0.1)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
             return
         end
     end
-end)
+end)()
 sound:Play()
 
 local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24) 
