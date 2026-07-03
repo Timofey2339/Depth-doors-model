@@ -18,13 +18,14 @@ pitch.Parent = sound2
 sound:Play()
 coroutine.wrap(function()
     while true do
-        wait(0.1)
+        task.wait(0.1)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
             return
         end
     end
-end)
+end)()
 sound2:Play()
 
 local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting)
