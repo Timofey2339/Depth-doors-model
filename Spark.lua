@@ -1,5 +1,5 @@
 	
-local sound = instance.new("Sound")
+local sound = Instance.new("Sound")
 sound.Parent = workspace
 sound.SoundId = "rbxassetid://9125712444"
 sound.Volume = 5
