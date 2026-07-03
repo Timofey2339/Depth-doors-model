@@ -47,3 +47,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doo
 -- MESSAGE
 -- ======================
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua"))()
+
+-- UPDATE LOGS
+-- ======================
+loadstring(game:HttpGet(""))()
