@@ -15,6 +15,7 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+			game.Workspace:FindFirstChild("Spark"):Destroy()
             return
         end
     end
@@ -60,7 +61,7 @@ local entity = spawner.Create({
 
     entity:SetCallback("OnSpawned", function()
         SetAtmosphere(Color3.fromRGB(100, 150, 255), 0.5)
-        local model = game.Workspace:FindFirstChild("Rebound")
+        local model = game.Workspace:FindFirstChild("Spark")
         if model then
             for _, v in pairs(model:GetDescendants()) do
                 if v:IsA("Sound") then
