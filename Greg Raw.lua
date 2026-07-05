@@ -122,6 +122,7 @@ wait(2)
 local v2 = Random.new()
 SizeValue.Value = -0.15
 scare:Play()
+game.ReplicatedStorage.GameStats.Player_[game.Players.LocalPlayer.Name]["1"].DeathCause.Value = "Greg"
 local v4 = math.random(1, 2)
 for v5 = 1, 30 do
 	local v6 = math.random(1, 3)
@@ -147,36 +148,6 @@ Face.ImageColor3 = Color3.new(1, 1, 1)
 Background.BackgroundColor3 = Color3.new(0, 0, 0)
 game.Players.LocalPlayer.Character.Humanoid.Health = 0
 JumpscareGui.Enabled = false
-		local b = game.Players.LocalPlayer.PlayerGui.MainUI.AltGuide
-local roast = b.Over
-local Red = b.Pink
-b.HelpfulDialogue.Text = "You've been consumed by the Overseer Eyes."
-Red:Play()
-b.Visible = true
-game.TweenService:Create(b.Static,TweenInfo.new(1.5),{BackgroundTransparency = 0}):Play()
-game.TweenService:Create(b.Static.Static,TweenInfo.new(1.5),{ImageTransparency = 0.95}):Play()
-game.TweenService:Create(b,TweenInfo.new(1.5),{ImageTransparency = 0.4}):Play()
-wait(1)
-wait(0.8)
-game.TweenService:Create(b.HelpfulDialogue,TweenInfo.new(0.7),{TextTransparency = 0}):Play()
-wait(2.5)
-game.TweenService:Create(b.HelpfulDialogue,TweenInfo.new(0.7),{TextTransparency = 1}):Play()
-wait(0.8)
-game.TweenService:Create(b.HelpfulDialogue,TweenInfo.new(0.7),{TextTransparency = 0}):Play()
-b.HelpfulDialogue.Text = "You died by Qreg"
-wait(2.5)
-game.TweenService:Create(b.HelpfulDialogue,TweenInfo.new(0.7),{TextTransparency = 1}):Play()
-wait(0.8)
-game.TweenService:Create(b.HelpfulDialogue,TweenInfo.new(0.7),{TextTransparency = 0}):Play()
-b.HelpfulDialogue.Text = "if the light starts blinking "
-wait(2.5)
-roast:Play()
-Red.TimePosition = 0
-Red:Stop()
-game.TweenService:Create(b,TweenInfo.new(1.5),{ImageTransparency = 1}):Play()
-game.TweenService:Create(b.HelpfulDialogue,TweenInfo.new(1.5),{TextTransparency = 1}):Play()
-game.TweenService:Create(b.Static,TweenInfo.new(1.5),{BackgroundTransparency = 1}):Play()
-game.TweenService:Create(b.Static.Static,TweenInfo.new(1.5),{ImageTransparency = 1}):Play()
 end)
 
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
