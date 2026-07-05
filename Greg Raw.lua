@@ -122,7 +122,8 @@ wait(2)
 local v2 = Random.new()
 SizeValue.Value = -0.15
 scare:Play()
-game.ReplicatedStorage.GameStats.Player_[game.Players.LocalPlayer.Name]["1"].DeathCause.Value = "Greg"
+game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Greg"
+local reasons = {"You died by Greg", "If lights starts blinking hide"}
 local v4 = math.random(1, 2)
 for v5 = 1, 30 do
 	local v6 = math.random(1, 3)
@@ -143,7 +144,8 @@ for v5 = 1, 30 do
 	Face.Rotation = math.random(-50, 50)
 	SizeValue.Value = SizeValue.Value + 0.02
 	wait(0)
-end
+		end
+game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathReason.Value = reasons[1]
 Face.ImageColor3 = Color3.new(1, 1, 1)
 Background.BackgroundColor3 = Color3.new(0, 0, 0)
 game.Players.LocalPlayer.Character.Humanoid.Health = 0
