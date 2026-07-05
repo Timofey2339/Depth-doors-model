@@ -197,6 +197,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 				wait(1.5)
 				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 3
 				game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(6.5), {PlaybackSpeed = 20}):Play()
+				game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(6.5), {FieldOfView = 120}):Play()
 			end
 
 			CustomGitSound("https://github.com/eoyoustme2/-i-lost-my-account-is-eoyoustme-/blob/main/Record_2025-07-12-09-21-59.mp3?raw=true", 1, "Crashgame")
