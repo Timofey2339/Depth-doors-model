@@ -37,7 +37,7 @@ local entity = spawner.Create({
         },
         Movement = { Speed = 300, Delay = 2, Reversed = false },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
-        Damage = { Enabled = true, Range = 40, Amount = 125 },
+        Damage = { Enabled = true, Range = 40, Amount = 0 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
             Type = "Curious",
@@ -146,6 +146,7 @@ for v5 = 1, 30 do
 end
 Face.ImageColor3 = Color3.new(1, 1, 1)
 Background.BackgroundColor3 = Color3.new(0, 0, 0)
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
 JumpscareGui.Enabled = false
 	end
 	end)
