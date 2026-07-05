@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 1.6, Watcher and Spark finally got fixed, Jumpscares got fixed, added update log, rebound got changed, now entities didn't spawns when you at 50 room and when running from seek"
+TextUpdate.Text = "Version 1.7, Monoxide has been updated by little, Greg got changed, Depth has been deleted, added new entity called Rambey"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
