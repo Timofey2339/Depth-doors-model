@@ -96,8 +96,8 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     Face.BackgroundTransparency = 1
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
-    Face.Size = UDim2.new(0.25, 0, 0.3, 0)
-    Face.Image = "rbxassetid://11360803115"
+    Face.Size = UDim2.new(0.15, 0, 0.2, 0)
+    Face.Image = "rbxassetid://126618278254292"
 
 local scare = Instance.new("Sound")
 scare.Parent = Background
@@ -117,7 +117,9 @@ distort.Level = 1
     Background.Parent = JumpscareGui
     Face.Parent = Background
 	SizeValue.Parent = Background
-
+wait(2)
+Face.Size = UDim2.new(0.25, 0, 0.3, 0)
+wait(2)
 local v2 = Random.new()
 SizeValue.Value = -0.15
 scare:Play()
