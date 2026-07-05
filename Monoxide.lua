@@ -40,7 +40,7 @@ local entity = spawner.Create({
 	Movement = {
 		Speed = 380,
 		Delay = 6,
-		Reversed = true
+		Reversed = false
 	},
 	Rebounding = {
 		Enabled = true,
@@ -194,9 +194,9 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 				sound.Volume = 0
 				sound:Play()
 				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 0
-				wait(1)
+				wait(1.5)
 				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 3
-				game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(5.5), {PlaybackSpeed = 20}):Play()
+				game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(6.5), {PlaybackSpeed = 20}):Play()
 			end
 
 			CustomGitSound("https://github.com/eoyoustme2/-i-lost-my-account-is-eoyoustme-/blob/main/Record_2025-07-12-09-21-59.mp3?raw=true", 1, "Crashgame")
