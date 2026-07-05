@@ -18,7 +18,7 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = spawner.Create({
 	Entity = {
 		Name = "Monoxide",
-		Asset = "rbxassetid://91836550237811",
+		Asset = "rbxassetid://130481102433430",
 		HeightOffset = -2
 	},
 	Lights = {
@@ -71,13 +71,6 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-local spawn = Instance.new("Sound")
-    spawn.Parent = game.Workspace
-    spawn.Name = "Spawn"
-    spawn.SoundId = "rbxassetid://7053083974"
-    spawn.Volume = 45
-    spawn.PlaybackSpeed = 1
-    spawn:Play()
 	end)
 
 entity:SetCallback("OnStartMoving", function()
@@ -198,8 +191,12 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 				sound.SoundId = GitAud(soundlink, filename)
 				sound.Parent = workspace
 				sound.Name = "Crashgame"
-				sound.Volume = 20
+				sound.Volume = 0
 				sound:Play()
+				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 0
+				wait(1)
+				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 3
+				game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(5.5), {PlaybackSpeed = 20}):Play()
 			end
 
 			CustomGitSound("https://github.com/eoyoustme2/-i-lost-my-account-is-eoyoustme-/blob/main/Record_2025-07-12-09-21-59.mp3?raw=true", 1, "Crashgame")
