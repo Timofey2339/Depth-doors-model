@@ -1,0 +1,77 @@
+coroutine.wrap(function()
+    while true do
+        task.wait(0.1)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        
+        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+            game.Workspace:FindFirstChild("Wide"):Destroy()
+			return
+        end
+    end
+end)()
+	
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
+local entity = spawner.Create({
+        Entity = {
+            Name = "Wide",
+            Asset = "rbxassetid://121564428243228",
+            HeightOffset = 0
+        },
+        Lights = {
+            Flicker = { Enabled = true, Duration = 12},
+            Shatter = true, Repair = true
+        },
+        Earthquake = { Enabled = false },
+        CameraShake = { Enabled = true, Range = 100, Values = {10, 10, 3, 1} },
+                Jumpscare = {
+            false, -- Enabled
+            {
+                Image1 = "rbxassetid://10483855823", -- A-60 Jumpscare Image
+                Image2 = "rbxassetid://11360803115",
+                Shake = true,
+                Sound1 = {18459521002, 1}, -- Jumpscare sound
+                Sound2 = {18459521002, 1},
+                Flashing = {true, Color3.fromRGB(255, 0, 0)},
+                Tease = {true, Min = 1, Max = 3},
+            },
+        },
+        Movement = { Speed = 1000, Delay = 14, Reversed = false },
+        Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
+        Damage = { Enabled = true, Range = 40, Amount = 125 },
+        Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+        Death = {
+            Type = "Curious",
+            Hints = {"You died by Wide", "If the light starts to flicker very long time its means he comes", "be careful he is fast and rebounds 3 times","be careful"}, 
+            Cause = "Wide"
+        }
+    })
+
+    entity:SetCallback("OnSpawned", function()
+wait(5)
+        SetAtmosphere(Color3.fromRGB(85, 150, 255), 0.5)
+        local model = game.Workspace:FindFirstChild("Wide")
+        if model then
+            for _, v in pairs(model:GetDescendants()) do
+                if v:IsA("Sound") then
+                    v.SoundId = "rbxassetid://111930358743197"
+                    v.Volume = 2
+                    v.PlaybackSpeed = 1
+                elseif v:IsA("BasePart") then
+                    v.Color = Color3.fromRGB(0, 0, 80)
+                    v.Material = Enum.Material.Neon
+                    local light = Instance.new("PointLight", v)
+                    light.Color = Color3.fromRGB(0, 255, 255)
+                    light.Range = 60; light.Brightness = 6; light.Shadows = true
+                elseif v:IsA("Decal") then
+                    v.Texture = "rbxassetid://11118765532"
+                end
+            end
+        end
+    end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+    
+end)
+
+    entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
+    entity:Run()
