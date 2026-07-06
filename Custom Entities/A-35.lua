@@ -6,7 +6,7 @@ local entity = spawner.Create({
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = true, Duration = 6},
+            Flicker = { Enabled = true, Duration = 0},
             Shatter = false, Repair = false
         },
         Earthquake = { Enabled = false },
