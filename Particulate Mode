@@ -13,7 +13,7 @@ local function spawnAfterDelay(delayTime, urlLink)
         end
     end)()
 end
-
+local awardsgiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 -- ENTITIES
 spawnAfterDelay(600, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
 spawnAfterDelay(750, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua")
