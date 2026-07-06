@@ -1,6 +1,6 @@
 local soundLight = Instance.new("Sound")
 soundLight.Parent = game.Workspace
-soundLight.SoundId = "rbxasset://136848722764245
+soundLight.SoundId = "rbxassetid://136848722764245
 soundLight.Volume = 3
 soundLight:Play()
 wait(0.01)
