@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 1.7, Monoxide has been updated by little, Greg got changed, Depth has been deleted, added new entity called Rambey, Mixed mode changed to Particulate Mode"
+TextUpdate.Text = "Version 1.8, 2 new entities added! (Wide) and (Glacher)"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
