@@ -1,11 +1,9 @@
 local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
 
--- function url
 local function url(link)
     loadstring(game:HttpGet(link))()
 end
 
--- SPAWN SYSTEM
 local function spawnAfterDelay(delayTime, urlLink)
     coroutine.wrap(function()
         while true do
@@ -15,7 +13,6 @@ local function spawnAfterDelay(delayTime, urlLink)
         end
     end)()
 end
-
 
 -- ENTITIES
 spawnAfterDelay(600, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
@@ -28,6 +25,8 @@ spawnAfterDelay(90, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-m
 spawnAfterDelay(690, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua")
 spawnAfterDelay(435, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua")
 spawnAfterDelay(185, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua")
+spawnAfterDelay(500, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua")
+spawnAfterDelay(350, "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua")
 -- ======================
 -- SETTINGS 
 -- ======================
@@ -40,11 +39,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doo
 -- SPRINT
 -- ======================
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Sprint.lua"))()
-
 -- MESSAGE
 -- ======================
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua"))()
-
 -- UPDATE LOGS
 -- ======================
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Update%20log.lua"))()
