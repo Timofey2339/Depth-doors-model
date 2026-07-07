@@ -1,3 +1,22 @@
+local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
+    local Url = GithubSoundPath
+
+    if not isfile(AssetName..".mp3") then 
+        writefile(AssetName..".mp3", game:HttpGet(Url)) 
+    end
+
+    local Sound = Instance.new("Sound")
+    Sound.SoundId = getcustomasset(AssetName..".mp3", true)
+    return Sound 
+end
+
+local CustomMusic = getGitSoundId("", "NightmareModeAmbient")
+CustomMusic.Parent = game.Workspace
+CustomMusic.Looped = true
+CustomMusic.Volume = 2
+CustomMusic:Play()
+	
+
 coroutine.wrap(function()
 	while true do
 		task.wait()
