@@ -1,5 +1,4 @@
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music.Yellow:Destroy()
-wait(0.01)
+
 local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
    locall Url = GithubSoundPath
 
@@ -7,7 +6,7 @@ local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
         writefile(AssetName..".mp3", game:HttpGet(Url)) 
     end
 
-    local Sound = Instance.new("Sound")
+    local Sound = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music.Yellow
     Sound.SoundId = getcustomasset(AssetName..".mp3", true)
     return Sound 
 end
