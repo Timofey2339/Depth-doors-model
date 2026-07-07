@@ -1,3 +1,1 @@
-if game.ReplicatedStorage.GameData.LatestRoom.Value == 1 scriptpt
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Particulate%20Mode%20Main"))()
---This is only loader didn't mind about i steal script
+scriptoadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Particulate%20Mode%20Main"))pt
