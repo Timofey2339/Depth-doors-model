@@ -1,4 +1,3 @@
-
 local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
    local Url = GithubSoundPath
 
@@ -16,7 +15,6 @@ CustomMusic.Parent = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Ga
 CustomMusic.Looped = true
 CustomMusic.Volume = 2
 	
-
 coroutine.wrap(function()
 	while true do
 		task.wait()
