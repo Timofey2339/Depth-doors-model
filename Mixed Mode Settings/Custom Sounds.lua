@@ -1,4 +1,4 @@
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music.Yellow:Destroy()
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music.Yellow:Destroy()
 wait(0.01)
 local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
    locall Url = GithubSoundPath
@@ -13,7 +13,7 @@ local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
 end
 
 local CustomMusic = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CustomDedMusic.mp3", "Yellow")
-CustomMusic.Parent = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music
+CustomMusic.Parent = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music
 CustomMusic.Looped = true
 CustomMusic.Volume = 2
 	
