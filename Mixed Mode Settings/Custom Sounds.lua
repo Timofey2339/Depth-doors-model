@@ -1,5 +1,7 @@
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music.Yellow:Destroy()
+wait(0.01)
 local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
-    local Url = GithubSoundPath
+   locall Url = GithubSoundPath
 
     if not isfile(AssetName..".mp3") then 
         writefile(AssetName..".mp3", game:HttpGet(Url)) 
@@ -14,7 +16,6 @@ local CustomMusic = getGitSoundId("https://github.com/Timofey2339/Depth-doors-mo
 CustomMusic.Parent = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music
 CustomMusic.Looped = true
 CustomMusic.Volume = 2
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music.Yellow:Destroy()
 	
 
 coroutine.wrap(function()
