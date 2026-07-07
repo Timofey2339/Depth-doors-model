@@ -100,6 +100,17 @@ local changeCount = 0
 coroutine.wrap(function()
     while changeCount < 3 do
         game.ReplicatedStorage.GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()
+		coroutine.wrap(function()
+    while true do
+        task.wait(0.1)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        
+        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+			game.Workspace:FindFirstChild("Rebound"):Destroy()
+            return
+        end
+    end
+end)()
         
         changeCount = changeCount + 1
 
