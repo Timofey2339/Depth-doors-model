@@ -1,6 +1,6 @@
 
 local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
-   locall Url = GithubSoundPath
+   local Url = GithubSoundPath
 
     if not isfile(AssetName..".mp3") then 
         writefile(AssetName..".mp3", game:HttpGet(Url)) 
