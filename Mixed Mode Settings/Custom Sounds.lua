@@ -10,11 +10,11 @@ local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
     return Sound 
 end
 
-local CustomMusic = getGitSoundId("", "NightmareModeAmbient")
-CustomMusic.Parent = game.Workspace
+local CustomMusic = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CustomDedMusic.mp3", "Yellow")
+CustomMusic.Parent = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music
 CustomMusic.Looped = true
 CustomMusic.Volume = 2
-CustomMusic:Play()
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Health.Music.Yellow:Destroy()
 	
 
 coroutine.wrap(function()
