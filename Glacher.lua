@@ -41,7 +41,7 @@ local entity = spawner.Create({
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = false },
         Death = {
             Type = "Curious",
-            Hints = {"You died by Glacher", "If you hear Glitch sound he is coming", "he is slow so its easy to hide from him","be careful"}, 
+            Hints = {"You died by Glacher", "If you hear loud wind isming", "he is slow so its easy to hide from him","be careful"}, 
             Cause = "Glacher"
         }
     })
