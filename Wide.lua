@@ -21,7 +21,7 @@ local entity = spawner.Create({
             Flicker = { Enabled = true, Duration = 12},
             Shatter = true, Repair = true
         },
-        Earthquake = { Enabled = false },
+        Earthquake = { Enabled = true },
         CameraShake = { Enabled = true, Range = 100, Values = {10, 10, 3, 1} },
                 Jumpscare = {
             false, -- Enabled
@@ -35,7 +35,7 @@ local entity = spawner.Create({
                 Tease = {true, Min = 1, Max = 3},
             },
         },
-        Movement = { Speed = 1000, Delay = 14, Reversed = false },
+        Movement = { Speed = 400, Delay = 14, Reversed = false },
         Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
