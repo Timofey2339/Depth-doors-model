@@ -41,7 +41,7 @@ local entity = spawner.Create({
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = false },
         Death = {
             Type = "Curious",
-            Hints = {"You died by Glacher", "If you hear loud wind isming", "he is slow so its easy to hide from him","be careful"}, 
+            Hints = {"You died by Glacher", "If you hear loud wind sound he is coming", "he is slow so its easy to hide from him","be careful"}, 
             Cause = "Glacher"
         }
     })
@@ -49,7 +49,7 @@ local entity = spawner.Create({
     entity:SetCallback("OnSpawned", function()
 wait(5)
         SetAtmosphere(Color3.fromRGB(85, 150, 255), 0.5)
-        local model = game.Workspace:FindFirstChild("Greg")
+        local model = game.Workspace:FindFirstChild("Glacher")
         if model then
             for _, v in pairs(model:GetDescendants()) do
                 if v:IsA("Sound") then
