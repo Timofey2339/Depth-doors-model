@@ -1,3 +1,4 @@
+
 coroutine.wrap(function()
     while true do
         task.wait(0.1)
@@ -50,6 +51,13 @@ entity:SetCallback("OnSpawned", function()
     local model = game.Workspace:WaitForChild("A-179", 5)
     
     if model then
+        -- Вимикаємо колізію всім деталям монстра, щоб уникнути штовхання персонажа
+        for _, part in ipairs(model:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+            end
+        end
+
         task.spawn(function()
             local rushMoving = model:FindFirstChild("RushMoving")
             local attachment = rushMoving and rushMoving:FindFirstChild("Attachment")
@@ -76,19 +84,32 @@ entity:SetCallback("OnSpawned", function()
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
-   local DamageBlur = Instance.new("BlurEffect")
-DamageBlur.Parent = game.Lighting
-DamageBlur.Enabled = true
-DamageBlur.Size = 56
-wait(0.01)
-game:GetService("TweenService"):Create(DamageBlur, TweenInfo.new(20), {Size = 0}):Play()
-local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
-local camara = game.Workspace.CurrentCamera
-local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) camara.CFrame = camara.CFrame * shakeCf end)
-camShake:Start() 
-camShake:ShakeOnce(5, 5, 5, 5, 5, 5)
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character
+    local humRoot = char and char:FindFirstChild("HumanoidRootPart")
+    
+    -- Фіксуємо гравця на місці, щоб фізика не відкинула його за карту
+    if humRoot then
+        humRoot.Anchored = true
+    end
+
+    local DamageBlur = Instance.new("BlurEffect")
+    DamageBlur.Parent = game.Lighting
+    DamageBlur.Enabled = true
+    DamageBlur.Size = 56
+    
+    task.wait(0.01)
+    game:GetService("TweenService"):Create(DamageBlur, TweenInfo.new(20), {Size = 0}):Play()
+    
+    local camara = game.Workspace.CurrentCamera
+    local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) 
+        camara.CFrame = camara.CFrame * shakeCf 
+    end)
+    camShake:Start() 
+    camShake:ShakeOnce(5, 5, 5, 5, 5, 5)
+
     if newHealth == 0 then
-        -- UI Construction
+        -- Будуємо Jumpscare UI
         local JumpscareGui = Instance.new("ScreenGui")
         local Background = Instance.new("Frame")
         local Face = Instance.new("ImageLabel")
@@ -100,7 +121,7 @@ camShake:ShakeOnce(5, 5, 5, 5, 5, 5)
         JumpscareGui.Name = "Jumpscare"
         JumpscareGui.IgnoreGuiInset = true
         JumpscareGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-        JumpscareGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+        JumpscareGui.Parent = plr:WaitForChild("PlayerGui")
 
         Background.Name = "Frame"
         Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -161,15 +182,28 @@ camShake:ShakeOnce(5, 5, 5, 5, 5, 5)
         for v5 = 1, 30 do
             v3()
             SizeValue.Value = SizeValue.Value + 0.01
-            task.wait(0)
+            task.wait(0.01) -- Використовуємо стабільний такт
         end
         Background.Visible = false
+    else
+        -- Якщо гравець вижив, відпускаємо його з анкеру через секунду
+        task.delay(1, function()
+            if humRoot then
+                humRoot.Anchored = false
+            end
+        end)
     end
 end)
 
 entity:SetCallback("OnDespawned", function() 
     if typeof(ClearAtmosphere) == "function" then
         ClearAtmosphere() 
+    end
+    -- Про всяк випадок розблоковуємо гравця після зникнення монстра
+    local char = game.Players.LocalPlayer.Character
+    local humRoot = char and char:FindFirstChild("HumanoidRootPart")
+    if humRoot then
+        humRoot.Anchored = false
     end
 end)
 
