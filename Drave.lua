@@ -127,7 +127,7 @@ else
     end
     
     
-    local targetCFrame = humRoot.CFrame * CFrame.new(0, 0, 3) 
+    local targetCFrame = humRoot.CFrame * CFrame.new(0, 0, -3) 
     local flightTweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
     local flightTween = TweenService:Create(shockerPart, flightTweenInfo, {CFrame = targetCFrame})
     
