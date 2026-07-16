@@ -2,7 +2,7 @@ local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
 
 coroutine.wrap(function()
     while true do
-        wait(350)
+        wait(450)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua"))()
@@ -118,6 +118,17 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua'))()
+
+end
+
+end)()
+
+coroutine.wrap(function()
+    while true do
+        wait(35)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua'))()
 
 end
 
