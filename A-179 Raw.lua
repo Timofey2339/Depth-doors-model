@@ -1,17 +1,15 @@
-
 coroutine.wrap(function()
     while true do
         task.wait(0.1)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-            local monster = game.Workspace:FindFirstChild("A-179")
-            if monster then monster:Destroy() end
-            return
+            game.Workspace:FindFirstChild("A-179"):Destroy()
+			return
         end
     end
 end)()
-
+	
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camara = game.Workspace.CurrentCamera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) camara.CFrame = camara.CFrame * shakeCf end)
@@ -19,31 +17,44 @@ camShake:Start()
 camShake:ShakeOnce(10, 4, 5, 8, 30, 30) 
 task.wait(13)
 
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()    
-local entity = spawner.Create({
-    Entity = {
-        Name = "A-179",
-        Asset = "rbxassetid://91658521013777",
-        HeightOffset = 0
-    },
-    Lights = {
-        Flicker = { Enabled = false, Duration = 12},
-        Shatter = false, Repair = false
-    },
-    Earthquake = { Enabled = false },
-    CameraShake = { Enabled = true, Range = 100, Values = {0, 0, 0, 0} },
-    Movement = { Speed = 100, Delay = 2, Reversed = true },
-    Rebounding = { Enabled = false, Type = "Ambush", Min = 3, Max = 12, Delay = 0 },
-    Damage = { Enabled = true, Range = 40, Amount = 50 },
-    Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = false },
-    Death = {
-        Type = "Curious",
-        Hints = {"You died by A-179", "He spawns quit", "if your, camera starts shaking hide","be careful"}, 
-        Cause = "A-179"
-    }
-})
 
-entity:SetCallback("OnSpawned", function()
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
+local entity = spawner.Create({
+        Entity = {
+            Name = "A-179",
+            Asset = "rbxassetid://91658521013777",
+            HeightOffset = 0
+        },
+        Lights = {
+            Flicker = { Enabled = false, Duration = 12},
+            Shatter = true, Repair = true
+        },
+        Earthquake = { Enabled = false },
+        CameraShake = { Enabled = true, Range = 100, Values = {0.1, 0.1, 0.1, 0.1} },
+                Jumpscare = {
+            false, -- Enabled
+            {
+                Image1 = "rbxassetid://10483855823", -- A-60 Jumpscare Image
+                Image2 = "rbxassetid://11360803115",
+                Shake = true,
+                Sound1 = {18459521002, 1}, -- Jumpscare sound
+                Sound2 = {18459521002, 1},
+                Flashing = {true, Color3.fromRGB(255, 0, 0)},
+                Tease = {true, Min = 1, Max = 3},
+            },
+        },
+        Movement = { Speed = 50, Delay = 2, Reversed = true },
+        Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
+        Damage = { Enabled = true, Range = 40, Amount = 50 },
+        Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+        Death = {
+            Type = "Curious",
+            Hints = {"You died by A-179", "If camera starts to shake long time its means he comes", "when this happens hide","be careful"}, 
+            Cause = "A-179"
+        }
+    })
+
+    entity:SetCallback("OnSpawned", function()
     if typeof(SetAtmosphere) == "function" then
         SetAtmosphere(Color3.fromRGB(100, 150, 255), 0.5)
     end
@@ -51,7 +62,6 @@ entity:SetCallback("OnSpawned", function()
     local model = game.Workspace:WaitForChild("A-179", 5)
     
     if model then
-        -- Вимикаємо колізію всім деталям монстра, щоб уникнути штовхання персонажа
         for _, part in ipairs(model:GetDescendants()) do
             if part:IsA("BasePart") then
                 part.CanCollide = false
@@ -88,9 +98,8 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     local char = plr.Character
     local humRoot = char and char:FindFirstChild("HumanoidRootPart")
     
-    -- Фіксуємо гравця на місці, щоб фізика не відкинула його за карту
     if humRoot then
-        humRoot.Anchored = true
+        humRoot.Anchored = false
     end
 
     local DamageBlur = Instance.new("BlurEffect")
@@ -109,7 +118,6 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     camShake:ShakeOnce(5, 5, 5, 5, 5, 5)
 
     if newHealth == 0 then
-        -- Будуємо Jumpscare UI
         local JumpscareGui = Instance.new("ScreenGui")
         local Background = Instance.new("Frame")
         local Face = Instance.new("ImageLabel")
@@ -182,11 +190,10 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
         for v5 = 1, 30 do
             v3()
             SizeValue.Value = SizeValue.Value + 0.01
-            task.wait(0.01) -- Використовуємо стабільний такт
+            task.wait(0.01)
         end
         Background.Visible = false
     else
-        -- Якщо гравець вижив, відпускаємо його з анкеру через секунду
         task.delay(1, function()
             if humRoot then
                 humRoot.Anchored = false
@@ -194,17 +201,5 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
         end)
     end
 end)
-
-entity:SetCallback("OnDespawned", function() 
-    if typeof(ClearAtmosphere) == "function" then
-        ClearAtmosphere() 
-    end
-    -- Про всяк випадок розблоковуємо гравця після зникнення монстра
-    local char = game.Players.LocalPlayer.Character
-    local humRoot = char and char:FindFirstChild("HumanoidRootPart")
-    if humRoot then
-        humRoot.Anchored = false
-    end
-end)
-
-entity:Run()
+    entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
+    entity:Run()
