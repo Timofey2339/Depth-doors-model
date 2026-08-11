@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 1.8, 2 new entities added! (Wide) and (Glacher)"
+TextUpdate.Text = "Version 1.9, new entitiy added! (Nightmare Apex)"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
