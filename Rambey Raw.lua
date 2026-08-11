@@ -90,11 +90,11 @@ local scare = Instance.new("Sound")
 scare.Parent = Background
 scare.Name = "Jumpscare"
 scare.SoundId = "rbxassetid://103078219556352"
-scare.PlaybackSpeed = 10
+scare.PlaybackSpeed = 5
 scare.Volume = 10
 
 local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.6
+shift.Octave = 1
 shift.Parent = scare
 
 local distort = Instance.new("DistortionSoundEffect")
@@ -109,7 +109,7 @@ local v2 = Random.new()
 SizeValue.Value = 0.1
 scare:Play()
 local v4 = math.random(1, 2)
-for v4 = 1, 20 do
+for v4 = 1, 50 do
 	local v5 = math.random(1, 3)
 	if v5 == 1 then
 		Background.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -125,8 +125,8 @@ for v4 = 1, 20 do
 	end
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0)
 	Face.Size = Face.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0)
-	Face.Rotation = math.random(-10, 10)
-	SizeValue.Value = SizeValue.Value - 0.01
+	Face.Rotation = math.random(-20, 20)
+	SizeValue.Value = SizeValue.Value - 0.006
 	wait(0)
 end
 Face.ImageColor3 = Color3.new(1, 1, 1)
