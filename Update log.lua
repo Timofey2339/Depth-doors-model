@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 1.9, new entitiy added! (Nightmare Apex) and Rambey's Jumpscare Updated"
+TextUpdate.Text = "Version 1.9, 2 new entities added! (Nightmare Apex), and (Anxiety) and Rambey's Jumpscare Updated"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
