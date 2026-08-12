@@ -2,7 +2,7 @@ local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
 
 coroutine.wrap(function()
     while true do
-        wait(450)
+        wait(550)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua"))()
@@ -13,7 +13,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(165)
+        wait(365)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
@@ -25,7 +25,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(185)
+        wait(285)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua"))()
@@ -37,7 +37,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(400)
+        wait(450)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua"))()
@@ -59,7 +59,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(999)
+        wait(1200)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua"))()
@@ -70,7 +70,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(500)
+        wait(750)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua"))()
@@ -82,7 +82,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(750)
+        wait(950)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)       
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua"))()
@@ -93,7 +93,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(600)
+        wait(800)
          game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua"))()
 
@@ -103,7 +103,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(440)
+        wait(840)
          game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua"))()
@@ -114,7 +114,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(350)
+        wait(650)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua'))()
@@ -125,7 +125,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(35)
+        wait(55)
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua'))()
 
@@ -135,7 +135,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(220)
+        wait(320)
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex'))()
@@ -157,7 +157,7 @@ end)()
 
 coroutine.wrap(function()
     while true do
-        wait(650)
+        wait(1050)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua'))()
