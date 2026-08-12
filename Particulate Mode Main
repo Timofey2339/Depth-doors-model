@@ -136,6 +136,7 @@ end)()
 coroutine.wrap(function()
     while true do
         wait(220)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex'))()
 
@@ -143,6 +144,16 @@ end
 
 end)()
 
+coroutine.wrap(function()
+    while true do
+        wait(700)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Anxiety.lua'))()
+
+end
+
+end)()
 
 coroutine.wrap(function()
     while true do
