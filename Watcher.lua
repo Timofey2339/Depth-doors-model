@@ -57,7 +57,6 @@ hum.Died:Connect(function()
 	dead = true
 	warn("player died")
 	pcall(function()
-	game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Watcher"
 	end)
 end)
 
@@ -102,6 +101,7 @@ while task.wait(0.4) do
 	if not isLooking and not isBlocked then
 		if hum.Health > 0 then
 			hum.Health -= 2
+			game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Watcher"
 			sound:Play()
 		end
 	end
