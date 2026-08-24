@@ -4,7 +4,7 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-            game.Workspace:FindFirstChild("Anxiety"):Destroy()
+            game.Workspace:FindFirstChild("Anxiety", 5):Destroy()
 			return
         end
     end
