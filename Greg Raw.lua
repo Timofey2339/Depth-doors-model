@@ -116,6 +116,11 @@ distort.Level = 1
     Background.Parent = JumpscareGui
     Face.Parent = Background
 	SizeValue.Parent = Background
+local ModelEntity = game.Workspace:FindFirstChild("Greg")
+if ModelEntity then
+    ModelEntity.RushNew.Footsteps.Volume = 0
+    ModelEntity.RushNew.PlaySound.Volume = 0
+end
 wait(2)
 Face.Size = UDim2.new(0.25, 0, 0.3, 0)
 wait(2)
