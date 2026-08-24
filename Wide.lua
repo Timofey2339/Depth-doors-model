@@ -70,7 +70,7 @@ wait(5)
     end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
-    if newHealth = 0 then
+    if newHealth == 0 then
 		    local JumpscareGui = Instance.new("ScreenGui")
     local Background = Instance.new("Frame")
     local Face = Instance.new("ImageLabel")
