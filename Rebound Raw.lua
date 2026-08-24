@@ -22,7 +22,7 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-			game.Workspace:FindFirstChild("Rebound"):Destroy()
+			game.Workspace:FindFirstChild("Rebound", 5):Destroy()
             return
         end
     end
@@ -106,7 +106,7 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         
         if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-			game.Workspace:FindFirstChild("Rebound"):Destroy()
+			game.Workspace:FindFirstChild("Rebound", 5):Destroy()
             return
         end
     end
