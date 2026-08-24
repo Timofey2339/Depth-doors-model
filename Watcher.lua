@@ -16,6 +16,7 @@ task.spawn(function()
         task.wait(0.1)
         latestRoomValue.Changed:Wait()
         if workspace:FindFirstChild("SeekMovingNewClone") or rooms:FindFirstChild("50") then
+			game.Workspace:FindFirstChild("Watcher", 5):Destroy()
             return
         end
     end
@@ -25,6 +26,7 @@ local entity
 pcall(function()
     entity = game:GetObjects("rbxassetid://79312363226377")[1]
     entity.Parent = workspace
+	entity.Name = "Watcher"
 end)
 
 if not entity then
