@@ -131,6 +131,11 @@ distort.Level = 0.75
 wait(0.1)
 local v2 = Random.new()
 SizeValue.Value = -0.025
+local ModelEntity = game.Workspace:FindFirstChild("Anixiety")
+if ModelEntity then
+    ModelEntity.RushMoving.Footsteps.Volume = 0
+    ModelEntity.RushMoving.PlaySound.Volume = 0
+end
 scare:Play()
 game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Anxiety"
 local reasons = {"You died by Anxiety", "If lights starts blinking hide"}
