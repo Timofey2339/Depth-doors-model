@@ -70,7 +70,7 @@ wait(5)
     end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
-    if newhealth = 0 then
+    if newHealth = 0 then
 		    local JumpscareGui = Instance.new("ScreenGui")
     local Background = Instance.new("Frame")
     local Face = Instance.new("ImageLabel")
@@ -95,7 +95,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     Face.BackgroundTransparency = 1
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
-    Face.Size = UDim2.new(0.35, 0, 0.4, 0)
+    Face.Size = UDim2.new(0.15, 0, 0.4, 0)
     Face.Image = "http://www.roblox.com/asset/?id=11226296371"
 
 local scare = Instance.new("Sound")
@@ -124,8 +124,8 @@ local v2 = Random.new()
 SizeValue.Value = 0
 local ModelEntity = game.Workspace:FindFirstChild("Wide")
 if ModelEntity then
-    ModelEntity.RushNew.Footsteps.Volume = 0
-    ModelEntity.RushNew.PlaySound.Volume = 0
+    ModelEntity.RushMoving.Footsteps.Volume = 0
+    ModelEntity.RushMoving.PlaySound.Volume = 0
 end
 scare:Play()
 local v4 = math.random(1, 2)
@@ -145,7 +145,7 @@ for v5 = 1, 35 do
 	end
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0)
 	Face.Size = Face.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0)
-	Face.Rotation = math.random(-10, 10)
+	Face.Rotation = math.random(-25, 25)
 	SizeValue.Value = SizeValue.Value + 0.004
 	wait(0)
 		end
