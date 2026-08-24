@@ -23,7 +23,6 @@ coroutine.wrap(function()
     end
 end)()
 	
-wait(23)
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
@@ -104,9 +103,10 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 local scare = Instance.new("Sound")
 scare.Parent = Background
 scare.Name = "Jumpscare"
-scare.SoundId = "rbxassetid://132942725846535"
+scare.SoundId = "rbxassetid://113366757765870"
 scare.PlaybackSpeed = 1
-scare.Volume = 0.5
+scare.TimePosition = 0
+scare.Volume = 5
 
 local shift = Instance.new("PitchShiftSoundEffect")
 shift.Octave = 1
@@ -114,17 +114,21 @@ shift.Parent = scare
 
 local distort = Instance.new("DistortionSoundEffect")
 distort.Parent = scare
-distort.Level = 0.1
+distort.Level = 0.3
 
     Background.Parent = JumpscareGui
     Face.Parent = Background
 	SizeValue.Parent = Background
-
 local v2 = Random.new()
 SizeValue.Value = -0.15
+local ModelEntity = game.Workspace:FindFirstChild("Rage A-60")
+if ModelEntity then
+    ModelEntity.RushNew.Footsteps.Volume = 0
+    ModelEntity.RushNew.PlaySound.Volume = 0
+end
 scare:Play()
 local v4 = math.random(1, 2)
-for v5 = 1, 20 do
+for v5 = 1, 30 do
 	local randint = math.random(1, 3)
 	if randint == 1 then
 		Background.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
