@@ -25,7 +25,7 @@ local entity = spawner.Create({
                 Jumpscare = {
             false, -- Enabled
             {
-                Image1 = "rbxassetid://10483855823", -- A-60 Jumpscare Image
+                Image1 = "rbxassetid://10483855823",
                 Image2 = "rbxassetid://11360803115",
                 Shake = true,
                 Sound1 = {18459521002, 1}, -- Jumpscare sound
