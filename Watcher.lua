@@ -55,7 +55,7 @@ hum.Died:Connect(function()
 	dead = true
 	warn("player died")
 	pcall(function()
-	
+	game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Watcher"
 	end)
 end)
 
