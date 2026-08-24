@@ -74,6 +74,7 @@ while timer > 0 do
 end
 
 if timer <= 0 then
+	game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Ankle"
 	hum.Health = 0
 
 	local killSound = Instance.new("Sound")
