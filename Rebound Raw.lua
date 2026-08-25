@@ -64,27 +64,26 @@ local entity = spawner.Create({
     })
 
 entity:SetCallback("OnSpawned", function()
-	wait(0.1)
-	local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
-   local Url = GithubSoundPath
+    task.wait(0.1)
+
+    local Url = "https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/ReboundIdleAmbience.mp3.mpeg"
+    local AssetName = "Footsteps_Rebound"
 
     if not isfile(AssetName..".mp3") then 
         writefile(AssetName..".mp3", game:HttpGet(Url)) 
     end
 
-    local Sound = game.Workspace.Rebound.RushNew:FindFirstChild(AssetName)
-    if Sound then
+    local reboundModel = workspace:FindFirstChild("Rebound")
+    if reboundModel then
+        local Sound = reboundModel:FindFirstChild(AssetName) or Instance.new("Sound")
+        Sound.Name = AssetName
+        Sound.Parent = reboundModel:FindFirstChild("PrimaryPart") or reboundModel
         Sound.SoundId = getcustomasset(AssetName..".mp3", true)
+        Sound.Looped = true
+        Sound.Volume = 5
+		Sound.TimePosition = 0.8
+        Sound:Play()
     end
-    return Sound 
-end
-
-local CustomSound = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/blob/main/ReboundIdleAmbience.mp3.mpeg", "Footsteps")
-if CustomSound then
-    CustomSound.Looped = true
-    CustomSound.Volume = 5
-	CustomSound:Play()
-end
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
@@ -167,27 +166,26 @@ end)()
         })
 
 entity:SetCallback("OnSpawned", function()
-	wait(0.1)
-	local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
-   local Url = GithubSoundPath
+    task.wait(0.1)
+
+    local Url = "https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/ReboundIdleAmbience.mp3.mpeg"
+    local AssetName = "Footsteps_Rebound"
 
     if not isfile(AssetName..".mp3") then 
         writefile(AssetName..".mp3", game:HttpGet(Url)) 
     end
 
-    local Sound = game.Workspace.Rebound.RushNew:FindFirstChild(AssetName)
-    if Sound then
+    local reboundModel = workspace:FindFirstChild("Rebound")
+    if reboundModel then
+        local Sound = reboundModel:FindFirstChild(AssetName) or Instance.new("Sound")
+        Sound.Name = AssetName
+        Sound.Parent = reboundModel:FindFirstChild("PrimaryPart") or reboundModel
         Sound.SoundId = getcustomasset(AssetName..".mp3", true)
+        Sound.Looped = true
+        Sound.Volume = 5
+		Sound.TimePosition = 0.8
+        Sound:Play()
     end
-    return Sound 
-end
-
-local CustomSound = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/blob/main/ReboundIdleAmbience.mp3.mpeg", "Footsteps")
-if CustomSound then
-    CustomSound.Looped = true
-    CustomSound.Volume = 5
-	CustomSound:Play()
-end
 end)
 
         entity:SetCallback("OnDamagePlayer", function(newHealth)
