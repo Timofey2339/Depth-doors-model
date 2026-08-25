@@ -63,27 +63,29 @@ local entity = spawner.Create({
         }
     })
 
-    entity:SetCallback("OnSpawned", function()
-        SetAtmosphere(Color3.fromRGB(100, 150, 255), 0.5)
-        local model = game.Workspace:FindFirstChild("Rebound")
-        if model then
-            for _, v in pairs(model:GetDescendants()) do
-                if v:IsA("Sound") then
-                    v.SoundId = "rbxassetid://111930358743197"
-                    v.Volume = 2
-                    v.PlaybackSpeed = 1
-                elseif v:IsA("BasePart") then
-                    v.Color = Color3.fromRGB(0, 0, 80)
-                    v.Material = Enum.Material.Neon
-                    local light = Instance.new("PointLight", v)
-                    light.Color = Color3.fromRGB(0, 255, 255)
-                    light.Range = 60; light.Brightness = 6; light.Shadows = true
-                elseif v:IsA("Decal") then
-                    v.Texture = "rbxassetid://11118765532"
-                end
-            end
-        end
-    end)
+entity:SetCallback("OnSpawned", function()
+	wait(0.1)
+	local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
+   local Url = GithubSoundPath
+
+    if not isfile(AssetName..".mp3") then 
+        writefile(AssetName..".mp3", game:HttpGet(Url)) 
+    end
+
+    local Sound = game.Workspace.Rebound.RushNew:FindFirstChild(AssetName)
+    if Sound then
+        Sound.SoundId = getcustomasset(AssetName..".mp3", true)
+    end
+    return Sound 
+end
+
+local CustomSound = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/blob/main/ReboundIdleAmbience.mp3.mpeg", "Footsteps")
+if CustomSound then
+    CustomSound.Looped = true
+    CustomSound.Volume = 5
+	CustomSound:Play()
+end
+end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
@@ -91,7 +93,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doo
 	end
 	end)
 
-    entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
+    entity:SetCallback("OnDespawned", function()
+		
+	end)
     entity:Run()
 
 wait(2)
@@ -162,29 +166,29 @@ end)()
             }
         })
 
-        entity:SetCallback("OnSpawned", function()
-            SetAtmosphere(Color3.fromRGB(100, 150, 255), 0.5)
-            local model = workspace:FindFirstChild("Rebound")
-            if model then
-                for _, v in pairs(model:GetDescendants()) do
-                    if v:IsA("Sound") then
-                        v.SoundId = "rbxassetid://111930358743197"
-                        v.Volume = 2
-                        v.PlaybackSpeed = 1
-                    elseif v:IsA("BasePart") then
-                        v.Color = Color3.fromRGB(0, 0, 80)
-                        v.Material = Enum.Material.Neon
-                        local light = Instance.new("PointLight", v)
-                        light.Color = Color3.fromRGB(0, 255, 255)
-                        light.Range = 60
-                        light.Brightness = 6
-                        light.Shadows = true
-                    elseif v:IsA("Decal") then
-                        v.Texture = "rbxassetid://11118765532"
-                    end
-                end
-            end
-        end)
+entity:SetCallback("OnSpawned", function()
+	wait(0.1)
+	local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
+   local Url = GithubSoundPath
+
+    if not isfile(AssetName..".mp3") then 
+        writefile(AssetName..".mp3", game:HttpGet(Url)) 
+    end
+
+    local Sound = game.Workspace.Rebound.RushNew:FindFirstChild(AssetName)
+    if Sound then
+        Sound.SoundId = getcustomasset(AssetName..".mp3", true)
+    end
+    return Sound 
+end
+
+local CustomSound = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/blob/main/ReboundIdleAmbience.mp3.mpeg", "Footsteps")
+if CustomSound then
+    CustomSound.Looped = true
+    CustomSound.Volume = 5
+	CustomSound:Play()
+end
+end)
 
         entity:SetCallback("OnDamagePlayer", function(newHealth)
             if newHealth == 0 then
@@ -193,7 +197,7 @@ end)()
         end)
 
         entity:SetCallback("OnDespawned", function()
-            ClearAtmosphere()
+
         end)
 
         entity:Run()
