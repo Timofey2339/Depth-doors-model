@@ -6,7 +6,7 @@ button.BackgroundTransparency = 0.5
 button.TextColor3 = Color3.fromRGB(150, 150, 150)
 button.Position = UDim2.new(0.2, 0, 0.8, 0)
 button.AnchorPoint = Vector2.new(0.5, 0.5)
-button.Size = UDim2.new(0.3, 0, 0.3, 0)
+button.Size = UDim2.new(0.15, 0, 0.15, 0)
 button.TextSize = 18
 button.Text = "Update Log"
 button.Parent = gui
@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 1.9, 2 new entities added! (Nightmare Apex), and (Anxiety) and Rambey's Jumpscare Updated"
+TextUpdate.Text = "Version 2, 1 new entitiy added! (Anxiety), Seek Model has been changed to Old, Rebound Sound now accurate, added Jumpscare to wide entity"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
