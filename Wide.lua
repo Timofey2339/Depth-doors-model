@@ -149,6 +149,7 @@ for v5 = 1, 35 do
 	SizeValue.Value = SizeValue.Value + 0.004
 	wait(0)
 		end
+	Jumpscare.Enabled = false
 	end
 end)
 
