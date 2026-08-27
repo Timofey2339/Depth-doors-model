@@ -12,7 +12,7 @@ end
 local function spawnApex()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex"))()
 end
-local function spawnMonoxide() -- Виправлено назву з spawnMoxoxide на spawnMonoxide
+local function spawnMonoxide()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Monoxide.lua"))()
 end
 local function spawnRambey()
@@ -63,39 +63,39 @@ TextChatService.OnIncomingMessage = function(message)
             
             local text = string.lower(message.Text)
             
-            -- Усі команди переведено в нижній регістр
+            -- Запускаємо спавнер в окремому потоці, щоб wait(2) не блокував чат
             if text == "/greg" then
-                spawnGreg()
+                task.spawn(spawnGreg)
             elseif text == "/drave" then
-                spawnDrave()
+                task.spawn(spawnDrave)
             elseif text == "/rebound" then
-                spawnRebound()
+                task.spawn(spawnRebound)
             elseif text == "/spark" then
-                spawnSpark()
+                task.spawn(spawnSpark)
             elseif text == "/nightmareapex" then
-                spawnApex()
+                task.spawn(spawnApex)
             elseif text == "/monoxide" then
-                spawnMonoxide()
+                task.spawn(spawnMonoxide)
             elseif text == "/dread" then
-                spawnDread()
+                task.spawn(spawnDread)
             elseif text == "/ankle" then
-                spawnAnkle()
+                task.spawn(spawnAnkle)
             elseif text == "/watcher" then
-                spawnWatcher()
+                task.spawn(spawnWatcher)
             elseif text == "/a179" then
-                spawnA179()
+                task.spawn(spawnA179)
             elseif text == "/a60" then
-                spawnA60()
+                task.spawn(spawnA60)
             elseif text == "/anxiety" then
-                spawnAnxiety()
+                task.spawn(spawnAnxiety)
             elseif text == "/a35admin" then
-                spawnA35()
+                task.spawn(spawnA35)
             elseif text == "/rambey" then
-                spawnRambey()
+                task.spawn(spawnRambey)
             elseif text == "/glacher" then
-                spawnGlacher()
+                task.spawn(spawnGlacher)
             elseif text == "/wide" then
-                spawnWide()
+                task.spawn(spawnWide)
             end
         end
     end
