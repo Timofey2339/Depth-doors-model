@@ -1,3 +1,15 @@
+coroutine.wrap(function()
+    while true do
+        task.wait(0.1)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        
+        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
+            game.Workspace:FindFirstChild("Rage A-60", 5):Destroy()
+			return
+        end
+    end
+end)()
+
 local sound = Instance.new("Sound")
 sound.Parent = workspace
 sound.SoundId = "rbxassetid://933230732"
@@ -10,19 +22,7 @@ pitch.Parent = sound
 pitch.Octave = 0.935
 
 sound:Play()
-
-coroutine.wrap(function()
-    while true do
-        task.wait(0.1)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        
-        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-            game.Workspace:FindFirstChild("Rage A-60", 5):Destroy()
-			return
-        end
-    end
-end)()
-	
+wait(24)
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
@@ -36,7 +36,7 @@ local entity = spawner.Create({
         },
         Earthquake = { Enabled = false },
         CameraShake = { Enabled = true, Range = 100, Values = {20, 20, 0.1, 1} },
-        Movement = { Speed = 300, Delay = 2.5, Reversed = false },
+        Movement = { Speed = 300, Delay = 0.2, Reversed = false },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
