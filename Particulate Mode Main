@@ -38,8 +38,8 @@ wait(4)
     if not GregbadgeGiven then
         GregbadgeGiven = true
 
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GregBadge.png"
-        local fileName = "GregBadge.png"
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/QregBadgeNew.png"
+        local fileName = "GregBadgeNew.png"
 
         if not isfile(fileName) then
             writefile(fileName, game:HttpGet(imageUrl))
