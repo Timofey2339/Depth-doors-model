@@ -3,6 +3,9 @@ local Players = game:GetService("Players")
 
 local ownerUserId = 840771269
 
+local function spawnA35()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua"))()
+end
 local function spawnGreg()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
 end
@@ -85,6 +88,8 @@ TextChatService.OnIncomingMessage = function(message)
                 spawnAnxiety()
             elseif text == "/Anxiety" then
                 spawnAnxiety()
+            elseif text == "/A35Admin" then
+                spawnA35()
             end
         end
     end
