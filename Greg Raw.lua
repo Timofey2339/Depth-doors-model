@@ -95,8 +95,8 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     Face.BackgroundTransparency = 1
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
-    Face.Size = UDim2.new(0.15, 0, 0.2, 0)
-    Face.Image = "rbxassetid://126618278254292"
+    Face.Size = UDim2.new(0.1, 0, 0.13, 0)
+    Face.Image = "rbxassetid://11773569837"
 
 local scare = Instance.new("Sound")
 scare.Parent = Background
@@ -122,7 +122,7 @@ if ModelEntity then
     ModelEntity.RushNew.PlaySound.Volume = 0
 end
 wait(2)
-Face.Size = UDim2.new(0.25, 0, 0.3, 0)
+Face.Size = UDim2.new(0.25, 0, 0.5, 0)
 wait(2)
 local v2 = Random.new()
 SizeValue.Value = -0.15
