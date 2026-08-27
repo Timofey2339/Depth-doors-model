@@ -3,6 +3,7 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 local GregbadgeGiven = false
 local A179badgeGiven = false
+local SparkbadgeGiven = false
 local AnklebadgeGiven = false
 local WatcherbadgeGiven = false
 local ReboundbadgeGiven = false
@@ -65,6 +66,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua"))()
+wait(1)
+    if not AnklebadgeGiven then
+        AnklebadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
+        local fileName = "AnkleBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "its your time",
+            Desc = "time didnt wait",
+            Reason = "Meet the Ankle",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -77,6 +97,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua"))()
+wait(20)
+    if not GlacherbadgeGiven then
+        GlacherbadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GlacherBadge.png"
+        local fileName = "GlacherBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Boring",
+            Desc = "Why so slow?",
+            Reason = "Survive a Glacher Entity",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -88,6 +127,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua"))()
+wait(1)
+    if not WatcherbadgeGiven then
+        WatcherbadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WatcherBadge.png"
+        local fileName = "WathcerBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Look at me!",
+            Desc = "I looking at you",
+            Reason = "Meet the Watcher",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -99,6 +157,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua"))()
+wait(26.2)
+    if not A60badgeGiven then
+        A60badgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/A_60_...yes.png"
+        local fileName = "A60Badge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "WOAH",
+            Desc = "What is this scream?",
+            Reason = "Survive the A-60",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -122,6 +199,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)       
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua"))()
+wait(26.2)
+    if not SparkbadgeGiven then
+        SparkbadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SparkBadge.png"
+        local fileName = "SparkBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Sparker",
+            Desc = "FASTER FASTER FASTER",
+            Reason = "Survive the Spark",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -132,6 +228,25 @@ coroutine.wrap(function()
         wait(800)
          game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua"))()
+wait(13.2)
+    if not MonoxidebadgeGiven then
+        MonoxidebadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/Monoxide.png"
+        local fileName = "MonoxideBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Crash Out",
+            Desc = "i gonna crash your game",
+            Reason = "Survive the Monoxide",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -143,6 +258,26 @@ coroutine.wrap(function()
          game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua"))()
+wait(26.2)
+    if not RambeybadgeGiven then
+        RambeybadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RambeyBadge.png"
+        local fileName = "RambeyBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "What",
+            Desc = "Stop rebounding like ambush",
+            Reason = "Survive the Rambey",
+            Image = getcustomasset(fileName)
+        })
+    end
+
 
 end
 
@@ -154,6 +289,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua'))()
+wait(26.2)
+    if not ReboundbadgeGiven then
+        ReboundbadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/ReboundBadge.png"
+        local fileName = "ReboundBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Rebounder",
+            Desc = "Bruh you going back every door",
+            Reason = "Survive the Rebound",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -164,6 +318,25 @@ coroutine.wrap(function()
         wait(55)
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua'))()
+wait(1.5)
+    if not DravebadgeGiven then
+        DravebadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/blob/main/Badges/DraveBadge.png"
+        local fileName = "DraveBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Stop locking at me",
+            Desc = "Ouch",
+            Reason = "Meet the Drave",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -175,6 +348,25 @@ coroutine.wrap(function()
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex'))()
+wait(10)
+    if not NightmareApexbadgeGiven then
+        NightmareApexbadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/NightmareApexBadge.png"
+        local fileName = "DraveBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Im coming",
+            Desc = "WHY YOU CAME FROM FRONT",
+            Reason = "Meet the Nightmare Apex",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -186,6 +378,25 @@ coroutine.wrap(function()
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Anxiety.lua'))()
+wait(36.2)
+    if not AnxietybadgeGiven then
+        AnxietybadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/AnxietyBadge.png"
+        local fileName = "AnxietyBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Earthguicker",
+            Desc = "WOAH EARTHGUICK STARTED",
+            Reason = "Meet the Anxiety",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
@@ -197,6 +408,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua'))()
+wait(16.2)
+    if not WidebadgeGiven then
+        WidebadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WideBadge.png"
+        local fileName = "WideBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "What was that?",
+            Desc = "That was so fast",
+            Reason = "Survive the Wide",
+            Image = getcustomasset(fileName)
+        })
+    end
 
         end
 
