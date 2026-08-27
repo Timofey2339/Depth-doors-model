@@ -163,10 +163,10 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 ---====== Display achievement ======---
 achievementGiver({
-    Title = "Title",
-    Desc = "Description",
-    Reason = "Reason",
-    Image = "rbxassetid://12309073114"
+    Title = "Greg Apart",
+    Desc = "Why  light blinking so long?",
+    Reason = "Survive a Greg Entity",
+    Image = "https://github.com/Timofey2339/Depth-doors-model/blob/main/Badges/GregBadge.png"
 })
 	end)
     entity:Run()
