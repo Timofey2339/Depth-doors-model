@@ -158,15 +158,5 @@ JumpscareGui.Enabled = false
 end)
 
     entity:SetCallback("OnDespawned", function()
-		---====== Load achievement giver ======---
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "Greg Apart",
-    Desc = "Why  light blinking so long?",
-    Reason = "Survive a Greg Entity",
-    Image = "https://github.com/Timofey2339/Depth-doors-model/blob/main/Badges/GregBadge.png"
-})
 	end)
     entity:Run()
