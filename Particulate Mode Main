@@ -1,4 +1,21 @@
 local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+local GregbadgeGiven = false
+local A179badgeGiven = false
+local AnklebadgeGiven = false
+local WatcherbadgeGiven = false
+local ReboundbadgeGiven = false
+local RambeybadgeGiven = false
+local A60badgeGiven = false
+local GlacherbadgeGiven = false
+local SparkbadgeGiven = false
+local DreadbadgeGiven = false
+local DravebadgeGiven = false
+local NightmareApexbadgeGiven = false
+local WidebadgeGiven = false
+local AnxietybadgeGiven = false
+local MonoxidebadgeGiven = false
 
 coroutine.wrap(function()
     while true do
@@ -17,6 +34,25 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
+wait(4)
+    if not GregbadgeGiven then
+        GregbadgeGiven = true
+
+        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GregBadge.png"
+        local fileName = "GregBadge.png"
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "Greg Apart",
+            Desc = "Why light blinking so long?",
+            Reason = "Survive a Greg Entity",
+            Image = getcustomasset(fileName)
+        })
+    end
 
 end
 
