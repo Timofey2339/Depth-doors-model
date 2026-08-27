@@ -1,6 +1,6 @@
 coroutine.wrap(function()
     while true do
-        wait(5)
+        wait(2)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         
         local seekClone = workspace:FindFirstChild("SeekMovingNewClone")
