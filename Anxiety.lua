@@ -31,7 +31,7 @@ local entity = spawner.Create({
                 Sound1 = {18459521002, 1}, -- Jumpscare sound
                 Sound2 = {18459521002, 1},
                 Flashing = {true, Color3.fromRGB(255, 0, 0)},
-                Tease = {true, Min = 1, Max = 3},
+                Tease = {true, Min = 3, Max = 3},
             },
         },
         Movement = { Speed = 300, Delay = 6, Reversed = false },
