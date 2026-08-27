@@ -59,7 +59,7 @@ TextChatService.OnIncomingMessage = function(message)
         local sender = Players:GetPlayerByUserId(message.TextSource.UserId)
         
         if sender and sender.UserId == ownerUserId then
-            properties.PrefixText = "<font color='#FF0000'>[OWNER]</font> " .. message.PrefixText
+            properties.PrefixText = "<font color='#FF0000'>[OWNER Of the mode]</font> " .. message.PrefixText
             
             local text = string.lower(message.Text)
             if text == "/Greg" then
