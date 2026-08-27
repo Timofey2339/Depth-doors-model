@@ -11,7 +11,6 @@ local RambeybadgeGiven = false
 local A60badgeGiven = false
 local GlacherbadgeGiven = false
 local SparkbadgeGiven = false
-local DreadbadgeGiven = false
 local DravebadgeGiven = false
 local NightmareApexbadgeGiven = false
 local WidebadgeGiven = false
