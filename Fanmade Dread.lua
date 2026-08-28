@@ -110,7 +110,7 @@ local entity = spawner.Create({
         },
         Movement = { Speed = 900, Delay = 2, Reversed = false },
         Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
-        Damage = { Enabled = true, Range = 999, Amount = 999 },
+        Damage = { Enabled = true, Range = 999, Amount = 0.01 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
             Type = "Curious",
@@ -143,7 +143,6 @@ wait(5)
     end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
-    if newHealth == 0 then
                     -- UI Construction
     local JumpscareGui = Instance.new("ScreenGui")
     local Background = Instance.new("Frame")
@@ -225,10 +224,11 @@ for v4 = 1, 20 do
     SizeValue.Value = SizeValue.Value - 0.1
     wait(0)
 end
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Fanmade Dread"
 Face.ImageColor3 = Color3.new(1, 1, 1)
 Background.BackgroundColor3 = Color3.new(0, 0, 0)
 JumpscareGui.Enabled = false
-        end
     end)
 
     entity:SetCallback("OnDespawned", function() ClearAtmosphere() end)
