@@ -119,12 +119,12 @@ end)()
 
         local sound1 = Instance.new("Sound")
         sound1.Parent = workspace
-        sound1.SoundId = "rbxassetid://71840455801134"
+        sound1.SoundId = "rbxassetid://5246103002"
         sound1.Volume = 5
         sound1.Looped = false
         local pitch1 = Instance.new("PitchShiftSoundEffect")
         pitch1.Parent = sound1
-        pitch1.Octave = 1
+        pitch1.Octave = 0.5
         sound1:Play()
 
         wait(4)
@@ -154,7 +154,7 @@ end)()
             },
             Earthquake = { Enabled = false },
             CameraShake = { Enabled = true, Range = 100, Values = {5, 5, 0.1, 1} },
-            Movement = { Speed = 135, Delay = 0, Reversed = true },
+            Movement = { Speed = 135, Delay = 1, Reversed = true },
             Rebounding = { Enabled = false, Type = "Ambush", Min = 3, Max = 12, Delay = 1.0 },
             Damage = { Enabled = true, Range = 40, Amount = 125 },
             Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = true },
