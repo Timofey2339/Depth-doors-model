@@ -13,276 +13,177 @@ end)()
 	
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
----====== Create entity ======---
+local function setCharacterInvisible(invisible)
+    local char = game.Players.LocalPlayer.Character
+    if not char then return end
+
+    for _, part in ipairs(char:GetDescendants()) do
+        if part:IsA("BasePart") or part:IsA("Decal") then
+            if invisible then
+                if not part:GetAttribute("SavedTransparency") then
+                    part:SetAttribute("SavedTransparency", part.Transparency)
+                end
+                part.Transparency = 1
+            else
+                local saved = part:GetAttribute("SavedTransparency")
+                if saved then
+                    part.Transparency = saved
+                else
+                    part.Transparency = 0
+                end
+            end
+        end
+    end
+end
 
 local entity = spawner.Create({
-	Entity = {
-		Name = "Monoxide",
-		Asset = "rbxassetid://130481102433430",
-		HeightOffset = -2
-	},
-	Lights = {
-		Flicker = {
-			Enabled = true,
-			Duration = 1
-		},
-		Shatter = true,
-		Repair = false
-	},
-	Earthquake = {
-		Enabled = false
-	},
-	CameraShake = {
-		Enabled = true,
-		Range = 100,
-		Values = {60, 80, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
-	},
-	Movement = {
-		Speed = 380,
-		Delay = 6,
-		Reversed = false
-	},
-	Rebounding = {
-		Enabled = true,
-		Type = "Blitz", -- "Blitz"
-		Min = 8,
-		Max = 8,
-		Delay = 0.0001
-	},
-	Damage = {
-		Enabled = true,
-		Range = 40,
-		Amount = 0.125
-	},
-	Crucifixion = {
-		Enabled = false,
-		Range = 40,
-		Resist = false,
-		Break = true
-	},
-	Death = {
-		Type = "Guiding", -- "Curious"
-		Hints = {"Death", "Hints", "Go", "Here"},
-		Cause = ""
-	}
+    Entity = {
+        Name = "Monoxide",
+        Asset = "rbxassetid://130481102433430",
+        HeightOffset = -2
+    },
+    Lights = {
+        Flicker = { Enabled = false },
+        Shatter = false,
+        Repair = false
+    },
+    Earthquake = { Enabled = false },
+    CameraShake = { Enabled = false },
+    Movement = {
+        Speed = 100,
+        Delay = 1,
+        Reversed = false
+    },
+    Rebounding = {
+        Enabled = false
+    },
+    Damage = {
+        Enabled = true,
+        Range = 40,
+        Amount = 0.1
+    },
+    Crucifixion = { Enabled = false },
+    Death = { Type = "None" }
 })
 
----====== Debug entity ======---
+entity:SetCallback("OnDamagePlayer", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+local camera = game.Workspace.CurrentCamera
 
-entity:SetCallback("OnSpawned", function()
-    print("Entity has spawned")
-	end)
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew, TweenInfo.new(999999999), {CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame}):Play()
 
-entity:SetCallback("OnStartMoving", function()
-    print("Entity has started moving")
-end)
+local TweenService = game:GetService("TweenService")
+local monsterPart = workspace:FindFirstChild("Monoxide") and workspace.Monoxide:FindFirstChild("Monoxidenew")
 
-entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("Entity has entered room: ".. room.Name.. " for the first time")
+
+if monsterPart then
+
+    local targetCFrame = CFrame.lookAt(camera.CFrame.Position, monsterPart.Position)
+    local tween = TweenService:Create(camera, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {CFrame = targetCFrame})
+    tween:Play()
+    
+    tween.Completed:Wait()
+end
+local camera = workspace.CurrentCamera
+local fixedCamPos = camera.CFrame.Position
+local startTime = tick()
+
+local cameraConnection
+cameraConnection = game:GetService("RunService").RenderStepped:Connect(function()
+    if tick() - startTime < 1.5 then
+        if monsterPart and monsterPart.Parent then
+            camera.CameraType = Enum.CameraType.Scriptable
+            camera.CFrame = CFrame.lookAt(fixedCamPos, monsterPart.Position)
+        end
     else
-        print("Entity has entered room: ".. room.Name.. " again")
+        cameraConnection:Disconnect()
     end
 end)
-
-entity:SetCallback("OnLookAt", function(lineOfSight)
-	if lineOfSight == true then
-		print("Player is looking at entity")
-	else
-		print("Player view is obstructed by something")
-	end
-end)
-
-entity:SetCallback("OnRebounding", function(startOfRebound)
-    if startOfRebound == true then
-        print("Entity has started rebounding")
-	else
-        print("Entity has finished rebounding")
-	end
-end)
-
-entity:SetCallback("OnDespawning", function()
-    print("Entity is despawning")
-end)
-
-entity:SetCallback("OnDespawned", function()
-    print("Entity has despawned")
-end)
-
--- Define services
-local TweenService = game:GetService("TweenService")
-local Players = game:GetService("Players")
-local workspace = game:GetService("Workspace")
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(0.5), {PlaybackSpeed = 0}):Play()
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Attachment.ParticleEmitter, TweenInfo.new(0.5), {TimeScale = 0}):Play()
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Attachment.Spark, TweenInfo.new(0.5), {TimeScale = 0}):Play()
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Attachment.BlackTrail, TweenInfo.new(0.5), {TimeScale = 0}):Play()
+game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 0
+wait(0.7)
+local ElecSound = Instance.new("Sound")
+ElecSound.SoundId = "rbxassetid://120363749915904"
+ElecSound.Volume = 10
+ElecSound.Looped = false
+ElecSound.Parent = game.Workspace
+ElecSound:Play()
+wait(0.8)
+ElecSound:Stop()
+setCharacterInvisible(true)
 local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
+local camera = workspace.CurrentCamera
+local random = Random.new()
 
-entity:SetCallback("OnDamagePlayer", function(newHealth)
-	if newHealth == 0 then
-		print("Entity has killed the player")
-	else
-		print("Entity has damaged the player")
+local X, Y, Z = 0.03, 0.03, 0.03
+local startTime = tick()
+local fixedCamPos = camera.CFrame.Position
 
-		task.spawn(function()
-			local player = Players.LocalPlayer
-			local character = player.Character or player.CharacterAdded:Wait()
-			local humanoid = character:WaitForChild("Humanoid", 5)
-			local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-			local camera = workspace.CurrentCamera
+camera.CameraType = Enum.CameraType.Scriptable
 
-			local entityModel = workspace:WaitForChild("Monoxide")
-			local primaryPart = entityModel:FindFirstChild("Monoxidenew")
-
-			if not (entityModel and humanoid and humanoidRootPart and primaryPart and camera) then return end
-
-			-- 🔒 Khóa di chuyển
-			local originalWalkSpeed = humanoid.WalkSpeed
-			local originalJumpPower = humanoid.JumpPower
-			humanoid.WalkSpeed = 0
-			humanoid.JumpPower = 0
-
-			-- 🔒 Khóa điều khiển chuột (camera)
-			local controlsModule = require(player:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule")):GetControls()
-			controlsModule:Disable()
-
-			local to = true
-			task.spawn(function()
-				while to and primaryPart.Parent and humanoidRootPart.Parent do
-					local targetCFrame = humanoidRootPart.CFrame
-					local tween = TweenService:Create(primaryPart, TweenInfo.new(200000000000000000000, Enum.EasingStyle.Quad), {CFrame = targetCFrame})
-					tween:Play()
-					tween.Completed:Wait()
-				end
-			end)
-
-			camera.CameraType = Enum.CameraType.Scriptable
-
-			-- 🎇 Điều chỉnh TimeScale của ParticleEmitters
-			local function updateParticleTimeScale(model, newTimeScale)
-				for _, descendant in pairs(model:GetDescendants()) do
-					if descendant:IsA("ParticleEmitter") then
-						descendant.TimeScale = newTimeScale
-					end
-				end
-			end
-
-			updateParticleTimeScale(entityModel, 1) -- Bật particle
-			task.delay(1, function()
-				updateParticleTimeScale(entityModel, 0) -- Đóng băng particle sau 1 giây
-			end)
-
-			local lockConnection
-			lockConnection = RunService.RenderStepped:Connect(function()
-				if not primaryPart or not primaryPart.Parent then
-					if lockConnection then lockConnection:Disconnect() end
-					return
-				end
-				camera.CFrame = CFrame.lookAt(camera.CFrame.Position, primaryPart.Position)
-			end)
-
-			-- 🔊 Âm thanh Jumpscare
-			function GitAud(soundgit, filename)
-				local FileName = filename
-				writefile(FileName..".mp3", game:HttpGet(soundgit))
-				return (getcustomasset or getsynasset)(FileName..".mp3")
-			end
-
-			function CustomGitSound(soundlink, vol, filename)
-				local sound = Instance.new("Sound")
-				sound.SoundId = GitAud(soundlink, filename)
-				sound.Parent = workspace
-				sound.Name = "Crashgame"
-				sound.Volume = 0
-				sound:Play()
-				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 0
-				wait(1.5)
-				game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 3
-				game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(6.5), {PlaybackSpeed = 20}):Play()
-				game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(6.5), {FieldOfView = 120}):Play()
-			end
-
-			CustomGitSound("https://github.com/eoyoustme2/-i-lost-my-account-is-eoyoustme-/blob/main/Record_2025-07-12-09-21-59.mp3?raw=true", 1, "Crashgame")
-			task.wait(0.01)
-
-			-- 👁‍🗨 UI Jumpscare
-			local screenGui = Instance.new("ScreenGui")
-			screenGui.Name = "JumpscareOverlay"
-			screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-			screenGui.ResetOnSpawn = false
-			screenGui.IgnoreGuiInset = true
-			screenGui.DisplayOrder = 999999
-			screenGui.Parent = player:WaitForChild("PlayerGui")
-
-			local imageLabel = Instance.new("ImageLabel")
-			imageLabel.Name = "JumpscareImage"
-			imageLabel.BackgroundTransparency = 1
-			imageLabel.BorderSizePixel = 0
-			imageLabel.Position = UDim2.new(0, 0, 0, 0)
-			imageLabel.Size = UDim2.new(1, 0, 1, 0)
-			imageLabel.AnchorPoint = Vector2.new(0, 0)
-			imageLabel.ScaleType = Enum.ScaleType.Stretch
-			imageLabel.Image = ""
-			imageLabel.Visible = true
-			imageLabel.Parent = screenGui
-
-			local jumpscareImage1 = "rbxassetid://0"
-			local jumpscareImage2 = "rbxassetid://0"
-
-			local flashDuration = 8
-			local flashStartTime = tick()
-
-			task.spawn(function()
-				while tick() - flashStartTime < flashDuration do
-					imageLabel.Image = jumpscareImage1
-					task.wait(0)
-					imageLabel.Image = jumpscareImage2
-					task.wait(0)
-				end
-				imageLabel.Visible = false
-			end)
-
-			task.wait(4.8)
-
-			to = false
-
-			-- 💀 Giết người chơi
-			game:Shutdown()
-
-			-- 🧹 Cleanup
-			if entityModel and entityModel.Parent then
-				entityModel:Destroy()
-			end
-
-			if lockConnection then
-				lockConnection:Disconnect()
-			end
-
-			camera.CameraType = Enum.CameraType.Custom
-
-			if screenGui and screenGui.Parent then
-				screenGui:Destroy()
-			end
-
-			-- 🔓 Khôi phục điều khiển (chỉ nếu nhân vật chưa chết sớm)
-			if humanoid and humanoid.Health > 0 then
-				humanoid.WalkSpeed = originalWalkSpeed
-				humanoid.JumpPower = originalJumpPower
-				controlsModule:Enable()
-			end
-		end)
-	end
+local shakeConnection
+shakeConnection = RunService.RenderStepped:Connect(function()
+    if monsterPart and monsterPart.Parent and (tick() - startTime < 6) then
+        camera.CameraType = Enum.CameraType.Scriptable
+        local baseLook = CFrame.lookAt(fixedCamPos, monsterPart.Position)
+        local shakeOffset = CFrame.new(random:NextNumber(-X, X), random:NextNumber(-Y, Y), random:NextNumber(-Z, Z)) 
+                          * CFrame.Angles(random:NextNumber(-X, X), random:NextNumber(-Y, Y), random:NextNumber(-Z, Z))
+        
+        camera.CFrame = baseLook * shakeOffset
+    else
+        shakeConnection:Disconnect()
+    end
+    wait(6)
+    local lockStartTime = tick()
+local lockConnection
+lockConnection = RunService.RenderStepped:Connect(function()
+    if monsterPart and monsterPart.Parent and (tick() - lockStartTime < 3.2) then
+        camera.CameraType = Enum.CameraType.Scriptable
+        camera.CFrame = CFrame.lookAt(fixedCamPos, monsterPart.Position)
+        game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(0), {FieldOfView = 120}):Play()
+    else
+        lockConnection:Disconnect()
+    end
 end)
-
---[[
-
-DEVELOPER NOTE:
-By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
-
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
 end)
-
-]]--
-
----====== Run entity ======---
+camera.CameraType = Enum.CameraType.Custom
+game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(6.5), {FieldOfView = 120}):Play()
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(0.01), {PlaybackSpeed = 6}):Play()
+game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 3
+wait(0.01)
+game:GetService("TweenService"):Create(game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound, TweenInfo.new(6.5), {PlaybackSpeed = 20}):Play()
+wait(6)
+local camera = workspace.CurrentCamera
+local fixedCamPos = camera.CFrame.Position
+local startTime = tick()
+game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Playsound.Volume = 0
+local blur = Instance.new("BlurEffect")
+blur.Size = 24
+blur.Parent = game.Lighting
+local JumpSound = Instance.new("Sound")
+JumpSound.SoundId = "rbxassetid://109901368934060"
+JumpSound.Volume = 5
+JumpSound.Looped = true
+JumpSound.Parent = game.Workspace
+JumpSound:Play()
+wait(0.3)
+camera.CameraType = Enum.CameraType.Scriptable
+camera.CFrame = CFrame.lookAt(camera.CFrame.Position, monsterPart.Position)
+game.Workspace.CurrentCamera.FieldOfView = 120
+wait(2.9)
+setCharacterInvisible(false)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(0.01), {FieldOfView = 70}):Play()
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+camera.CameraType = Enum.CameraType.Custom
+game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Monoxide"
+wait(0.8)
+blur:Destroy()
+JumpSound:Destroy()
+game.Workspace.Monoxide:Destroy()
+end)
 
 entity:Run()
