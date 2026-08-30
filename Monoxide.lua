@@ -51,7 +51,7 @@ local entity = spawner.Create({
     CameraShake = { Enabled = false },
     Movement = {
         Speed = 100,
-        Delay = 1,
+        Delay = 3,
         Reversed = false
     },
     Rebounding = {
