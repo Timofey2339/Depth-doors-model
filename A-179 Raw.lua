@@ -16,7 +16,22 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camShake:Start() 
 camShake:ShakeOnce(10, 4, 5, 8, 30, 30) 
 task.wait(13)
-
+   local SpawnSound = Instance.new("Sound")
+  local Effect1 = Instance.new("FlangeSoundEffect")
+  local Effect2 = Instance.new("PitchShiftSoundEffect")
+    SpawnSound.PlaybackSpeed = 2
+    SpawnSound.SoundId = "rbxassetid://2306939610"
+    SpawnSound.Volume = 10
+    SpawnSound.Parent = workspace
+    Effect1.Depth = 1
+    Effect1.Mix = 1
+    Effect1.Priority = 0
+    Effect1.Rate = 20
+    Effect1.Parent = SpawnSound
+    Effect2.Priority = 0
+    Effect2.Octave = 0.5
+    Effect2.Parent = SpawnSound
+    SpawnSound:Play()
 
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
