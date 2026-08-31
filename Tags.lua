@@ -6,6 +6,11 @@ local ownerUserId = 840771269
 local function spawnA35()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua"))()
 end
+
+local function spawnFeast()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Feast.lua"))()
+end
+
 local function spawnGreg()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
 end
@@ -94,6 +99,8 @@ TextChatService.OnIncomingMessage = function(message)
                 task.spawn(spawnRambey)
             elseif text == "/glacher" then
                 task.spawn(spawnGlacher)
+             elseif text == "/feast" then
+                task.spawn(spawnFeast)
             elseif text == "/wide" then
                 task.spawn(spawnWide)
             end
