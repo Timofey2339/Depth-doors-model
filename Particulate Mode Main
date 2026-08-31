@@ -2,6 +2,7 @@ local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
 local GregbadgeGiven = false
+local FeastbadgeGiven = false
 local A179badgeGiven = false
 local SparkbadgeGiven = false
 local AnklebadgeGiven = false
@@ -23,6 +24,34 @@ coroutine.wrap(function()
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(0)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua"))()
+
+end
+
+end)()
+
+coroutine.wrap(function()
+    while true do
+        wait(840)
+         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua"))()
+wait(10.2)
+    if not FeastbadgeGiven then
+        FeastbadgeGiven = true
+
+        if not isfile(fileName) then
+            writefile(fileName, game:HttpGet(imageUrl))
+        end
+
+
+        achievementGiver({
+            Title = "What",
+            Desc = "Stop rebounding like ambush",
+            Reason = "Survive the Feast",
+            Image = "http://www.roblox.com/asset/?id=11703907069"
+        })
+    end
+
 
 end
 
