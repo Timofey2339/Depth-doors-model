@@ -16,6 +16,9 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camShake:Start() 
 camShake:ShakeOnce(10, 4, 5, 8, 30, 30) 
 task.wait(13)
+local Warneffect = Instance.new("ColorCorrectionEffect",game.Lighting)
+    Warneffect.Name = "Warn" 
+    Warneffect.TintColor = Color3.fromRGB(72, 72, 72) Warneffect.Saturation = -0.05 Warneffect.Contrast = 0.3 
    local SpawnSound = Instance.new("Sound")
   local Effect1 = Instance.new("FlangeSoundEffect")
   local Effect2 = Instance.new("PitchShiftSoundEffect")
