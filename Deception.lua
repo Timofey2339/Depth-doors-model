@@ -1,17 +1,4 @@
-   local Spawn = Instance.new("Sound")
-  local Effect1 = Instance.new("FlangeSoundEffect")
-  local Effect2 = Instance.new("PitchShiftSoundEffect")
-    Spawn.PlaybackSpeed = 2
-    Spawn.Parent = workspace
-    Effect1.Depth = 1
-    Effect1.Mix = 1
-    Effect1.Priority = 0
-    Effect1.Rate = 1.3
-    Effect1.Parent = Spawn
-    Effect2.Priority = 0
-    Effect2.Octave = 0.5
-    Effect.Parent = Spawn
-    Spawn:Play()
+
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
@@ -37,26 +24,23 @@ local entity = spawner.Create({
     })
 
     entity:SetCallback("OnSpawned", function()
-wait(5)
-        SetAtmosphere(Color3.fromRGB(85, 150, 255), 0.5)
-        local model = game.Workspace:FindFirstChild("A-35")
-        if model then
-            for _, v in pairs(model:GetDescendants()) do
-                if v:IsA("Sound") then
-                    v.SoundId = "rbxassetid://111930358743197"
-                    v.Volume = 2
-                    v.PlaybackSpeed = 1
-                elseif v:IsA("BasePart") then
-                    v.Color = Color3.fromRGB(0, 0, 80)
-                    v.Material = Enum.Material.Neon
-                    local light = Instance.new("PointLight", v)
-                    light.Color = Color3.fromRGB(0, 255, 255)
-                    light.Range = 60; light.Brightness = 6; light.Shadows = true
-                elseif v:IsA("Decal") then
-                    v.Texture = "rbxassetid://11118765532"
-                end
-            end
-        end
+      wait(2)
+         local SpawnSound = Instance.new("Sound")
+  local Effect1 = Instance.new("FlangeSoundEffect")
+  local Effect2 = Instance.new("PitchShiftSoundEffect")
+    SpawnSound.PlaybackSpeed = 2
+    SpawnSound.SoundId = "rbxassetid://2306939610"
+    SpawnSound.Volume = 5
+    SpawnSound.Parent = workspace
+    Effect1.Depth = 1
+    Effect1.Mix = 1
+    Effect1.Priority = 0
+    Effect1.Rate = 1.3
+    Effect1.Parent = SpawnSound
+    Effect2.Priority = 0
+    Effect2.Octave = 0.5
+    Effect2.Parent = SpawnSound
+    SpawnSound:Play()
     end)
 
 entity:SetCallback("OnDamagePlayer", function()
