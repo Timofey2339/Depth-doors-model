@@ -1,465 +1,319 @@
-local LatestRoom = game.ReplicatedStorage.GameData.LatestRoom
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
- 
-local GregbadgeGiven = false
-local FeastbadgeGiven = false
-local A179badgeGiven = false
-local SparkbadgeGiven = false
-local AnklebadgeGiven = false
-local WatcherbadgeGiven = false
-local ReboundbadgeGiven = false
-local RambeybadgeGiven = false
-local A60badgeGiven = false
-local GlacherbadgeGiven = false
-local SparkbadgeGiven = false
-local DravebadgeGiven = false
-local NightmareApexbadgeGiven = false
-local WidebadgeGiven = false
-local AnxietybadgeGiven = false
-local MonoxidebadgeGiven = false
+if not game:IsLoaded() then game.Loaded:Wait() end
 
-coroutine.wrap(function()
-    while true do
-        wait(550)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua"))()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GameData = ReplicatedStorage:WaitForChild("GameData", 15)
+if not GameData then return end
 
+local LatestRoom = GameData:WaitForChild("LatestRoom", 15)
+if not LatestRoom then return end
+
+local achievementGiver = nil
+pcall(function()
+    achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+end)
+
+local function safeLoad(url)
+    task.spawn(function()
+        pcall(function()
+            loadstring(game:HttpGet(url))()
+        end)
+    end)
 end
 
-end)()
-
-coroutine.wrap(function()
+task.spawn(function()
     while true do
-        wait(425)
-         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Feast.lua"))()
-wait(10.2)
-    if not FeastbadgeGiven then
-        FeastbadgeGiven = true
+        task.wait(55)
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Drave.lua")
+        task.delay(1.5, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Stop locking at me",
+                        Desc = "Ouch",
+                        Reason = "Meet the Drave",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
+                    })
+                end)
+            end
+        end)
+    end
+end)
 
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
+local startTime = tick()
+local lastSpawnTimes = {
+    Watcher = startTime,
+    Ankle = startTime,
+    NightmareApex = startTime,
+    Greg = startTime,
+    Feast = startTime,
+    Glacher = startTime,
+    A179 = startTime,
+    Rebound = startTime,
+    Anxiety = startTime,
+    Dread = startTime,
+    Monoxide = startTime,
+    Rambey = startTime,
+    Spark = startTime,
+    Wide = startTime,
+    A60 = startTime
+}
 
+local isSpawning = false
 
-        achievementGiver({
-            Title = "Already Full",
-            Desc = "fed up with this",
-            Reason = "Survive the Feast",
-            Image = "http://www.roblox.com/asset/?id=11703907069"
-        })
+LatestRoom.Changed:Connect(function(roomValue)
+    if isSpawning then return end
+    isSpawning = true
+
+    local currentTime = tick()
+
+    if currentTime - lastSpawnTimes.Watcher >= 100 then
+        lastSpawnTimes.Watcher = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Watcher.lua")
+        task.delay(1, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Look at me!",
+                        Desc = "I looking at you",
+                        Reason = "Meet the Watcher",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WatcherBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
+    end
+
+    if currentTime - lastSpawnTimes.Ankle >= 285 then
+        lastSpawnTimes.Ankle = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Ankle.lua")
+        task.delay(1, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "its your time",
+                        Desc = "time didnt wait",
+                        Reason = "Meet the Ankle",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(365)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
-wait(4)
-    if not GregbadgeGiven then
-        GregbadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/QregBadgeNew.png"
-        local fileName = "GregBadgeNew.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Greg Apart",
-            Desc = "Why light blinking so long?",
-            Reason = "Survive a Greg Entity",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.NightmareApex >= 320 then
+        lastSpawnTimes.NightmareApex = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Nightmare%20Apex")
+        task.delay(10, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Im coming",
+                        Desc = "WHY YOU CAME FROM FRONT",
+                        Reason = "Meet the Nightmare Apex",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/NightmareApexBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-
-coroutine.wrap(function()
-    while true do
-        wait(285)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua"))()
-wait(1)
-    if not AnklebadgeGiven then
-        AnklebadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
-        local fileName = "AnkleBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "its your time",
-            Desc = "time didnt wait",
-            Reason = "Meet the Ankle",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Greg >= 365 then
+        lastSpawnTimes.Greg = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Greg%20Raw.lua")
+        task.delay(4, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Greg Apart",
+                        Desc = "Why light blinking so long?",
+                        Reason = "Survive a Greg Entity",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/QregBadgeNew.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-
-coroutine.wrap(function()
-    while true do
-        wait(450)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua"))()
-wait(20)
-    if not GlacherbadgeGiven then
-        GlacherbadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GlacherBadge.png"
-        local fileName = "GlacherBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Boring",
-            Desc = "Why so slow?",
-            Reason = "Survive a Glacher Entity",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Feast >= 425 then
+        lastSpawnTimes.Feast = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Feast.lua")
+        task.delay(10.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Already Full",
+                        Desc = "fed up with this",
+                        Reason = "Survive the Feast",
+                        Image = "http://www.roblox.com/asset/?id=11703907069"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(100)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua"))()
-wait(1)
-    if not WatcherbadgeGiven then
-        WatcherbadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WatcherBadge.png"
-        local fileName = "WathcerBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Look at me!",
-            Desc = "I looking at you",
-            Reason = "Meet the Watcher",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Glacher >= 450 then
+        lastSpawnTimes.Glacher = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Glacher.lua")
+        task.delay(20, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Boring",
+                        Desc = "Why so slow?",
+                        Reason = "Survive a Glacher Entity",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GlacherBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(1200)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua"))()
-wait(26.2)
-    if not A60badgeGiven then
-        A60badgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/A_60_...yes.png"
-        local fileName = "A60Badge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "WOAH",
-            Desc = "What is this scream?",
-            Reason = "Survive the A-60",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.A179 >= 550 then
+        lastSpawnTimes.A179 = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-179%20Raw.lua")
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(750)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua"))()
-
-end
-
-end)()
-
-
-coroutine.wrap(function()
-    while true do
-        wait(950)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)       
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua"))()
-wait(26.2)
-    if not SparkbadgeGiven then
-        SparkbadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SparkBadge.png"
-        local fileName = "SparkBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Sparker",
-            Desc = "FASTER FASTER FASTER",
-            Reason = "Survive the Spark",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Rebound >= 650 then
+        lastSpawnTimes.Rebound = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua")
+        task.delay(26.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Rebounder",
+                        Desc = "Bruh you going back every door",
+                        Reason = "Survive the Rebound",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/ReboundBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(800)
-         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua"))()
-wait(13.2)
-    if not MonoxidebadgeGiven then
-        MonoxidebadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/Monoxide.png"
-        local fileName = "MonoxideBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Crash Out",
-            Desc = "i gonna crash your game",
-            Reason = "Survive the Monoxide",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Anxiety >= 700 then
+        lastSpawnTimes.Anxiety = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Anxiety.lua")
+        task.delay(36.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Earthguicker",
+                        Desc = "WOAH EARTHGUICK STARTED",
+                        Reason = "Meet the Anxiety",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/AnxietyBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(840)
-         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua"))()
-wait(26.2)
-    if not RambeybadgeGiven then
-        RambeybadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RambeyBadge.png"
-        local fileName = "RambeyBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "What",
-            Desc = "Stop rebounding like ambush",
-            Reason = "Survive the Rambey",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Dread >= 750 then
+        lastSpawnTimes.Dread = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Fanmade%20Dread.lua")
+        task.wait(5)
     end
 
-
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(650)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua'))()
-wait(26.2)
-    if not ReboundbadgeGiven then
-        ReboundbadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/ReboundBadge.png"
-        local fileName = "ReboundBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Rebounder",
-            Desc = "Bruh you going back every door",
-            Reason = "Survive the Rebound",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Monoxide >= 800 then
+        lastSpawnTimes.Monoxide = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
+        task.delay(13.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Crash Out",
+                        Desc = "i gonna crash your game",
+                        Reason = "Survive the Monoxide",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/Monoxide.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(55)
-        wait(0)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua'))()
-wait(1.5)
-    if not DravebadgeGiven then
-        DravebadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/blob/main/Badges/DraveBadge.png"
-        local fileName = "DraveBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Stop locking at me",
-            Desc = "Ouch",
-            Reason = "Meet the Drave",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Rambey >= 840 then
+        lastSpawnTimes.Rambey = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rambey%20Raw.lua")
+        task.delay(26.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "What",
+                        Desc = "Stop rebounding like ambush",
+                        Reason = "Survive the Rambey",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RambeyBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(320)
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex'))()
-wait(10)
-    if not NightmareApexbadgeGiven then
-        NightmareApexbadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/NightmareApexBadge.png"
-        local fileName = "DraveBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Im coming",
-            Desc = "WHY YOU CAME FROM FRONT",
-            Reason = "Meet the Nightmare Apex",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Spark >= 950 then
+        lastSpawnTimes.Spark = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Spark.lua")
+        task.delay(26.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Sparker",
+                        Desc = "FASTER FASTER FASTER",
+                        Reason = "Survive the Spark",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SparkBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(700)
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Anxiety.lua'))()
-wait(36.2)
-    if not AnxietybadgeGiven then
-        AnxietybadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/AnxietyBadge.png"
-        local fileName = "AnxietyBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "Earthguicker",
-            Desc = "WOAH EARTHGUICK STARTED",
-            Reason = "Meet the Anxiety",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.Wide >= 1050 then
+        lastSpawnTimes.Wide = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Wide.lua")
+        task.delay(16.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "What was that?",
+                        Desc = "That was so fast",
+                        Reason = "Survive the Wide",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WideBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-end
-
-end)()
-
-coroutine.wrap(function()
-    while true do
-        wait(1050)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(0)
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua'))()
-wait(16.2)
-    if not WidebadgeGiven then
-        WidebadgeGiven = true
-
-        local imageUrl = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WideBadge.png"
-        local fileName = "WideBadge.png"
-
-        if not isfile(fileName) then
-            writefile(fileName, game:HttpGet(imageUrl))
-        end
-
-
-        achievementGiver({
-            Title = "What was that?",
-            Desc = "That was so fast",
-            Reason = "Survive the Wide",
-            Image = getcustomasset(fileName)
-        })
+    if currentTime - lastSpawnTimes.A60 >= 1200 then
+        lastSpawnTimes.A60 = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua")
+        task.delay(26.2, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "WOAH",
+                        Desc = "What is this scream?",
+                        Reason = "Survive the A-60",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/A_60_...yes.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
     end
 
-        end
+    isSpawning = false
+end)
 
-        end)()
-
--- MESSAGE
--- ======================
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua"))()
+safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Massage%20Raw.lua")
