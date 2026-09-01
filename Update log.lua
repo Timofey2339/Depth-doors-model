@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 2, 1 new entitiy added! (Anxiety), Seek Model has been changed to Old, Rebound Sound now accurate, added Jumpscare to wide entity"
+TextUpdate.Text = "Version 2.1, 1 new entitiy added! (Spread), Rebound Reworked"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
