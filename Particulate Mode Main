@@ -130,7 +130,7 @@ LatestRoom.Changed:Connect(function(roomValue)
                 pcall(function()
                     achievementGiver({
                         Title = "Charge",
-                        Desc = "So much electric!,
+                        Desc = "So much electric!",
                         Reason = "Meet the Spread",
                         Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SpreadBadge.png"
                     })
