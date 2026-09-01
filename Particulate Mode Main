@@ -42,6 +42,7 @@ end)
 local startTime = tick()
 local lastSpawnTimes = {
     Watcher = startTime,
+    Spread = startTime,
     Ankle = startTime,
     NightmareApex = startTime,
     Greg = startTime,
@@ -114,6 +115,24 @@ LatestRoom.Changed:Connect(function(roomValue)
                         Desc = "WHY YOU CAME FROM FRONT",
                         Reason = "Meet the Nightmare Apex",
                         Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/NightmareApexBadge.png"
+                    })
+                end)
+            end
+        end)
+        task.wait(5)
+    end
+
+    if currentTime - lastSpawnTimes.Spread >= 550 then
+        lastSpawnTimes.Spread = currentTime
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spread.lua")
+        task.delay(10, function()
+            if achievementGiver then
+                pcall(function()
+                    achievementGiver({
+                        Title = "Charge",
+                        Desc = "So much electric!,
+                        Reason = "Meet the Spread",
+                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SpreadBadge.png"
                     })
                 end)
             end
