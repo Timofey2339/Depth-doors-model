@@ -3,109 +3,60 @@ local Players = game:GetService("Players")
 
 local ownerUserId = 840771269
 
-local function spawnA35()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua"))()
-end
-
-local function spawnFeast()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Feast.lua"))()
-end
-
-local function spawnGreg()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua"))()
-end
-local function spawnApex()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex"))()
-end
-local function spawnMonoxide()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Monoxide.lua"))()
-end
-local function spawnRambey()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua"))()
-end
-local function spawnGlacher()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua"))()
-end
-local function spawnDread()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua"))()
-end
-local function spawnDrave()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua"))()
-end
-local function spawnAnxiety()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Anxiety.lua"))()
-end
-local function spawnAnkle()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua"))()
-end
-local function spawnWatcher()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua"))()
-end
-local function spawnA60()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-60%20Raw.lua"))()
-end
-local function spawnA179()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua"))()
-end
-local function spawnRebound()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rebound%20Raw.lua"))()
-end
-local function spawnSpark()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua"))()
-end
-local function spawnWide()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua"))()
-end
+local entityUrls = {
+	["/greg"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua",
+	["/drave"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua",
+	["/rebound"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rebound%20Raw.lua",
+	["/spark"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua",
+	["/nightmareapex"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Nightmare%20Apex",
+	["/monoxide"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Monoxide.lua",
+	["/dread"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Fanmade%20Dread.lua",
+	["/ankle"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Ankle.lua",
+	["/watcher"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Watcher.lua",
+	["/a179"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-179%20Raw.lua",
+	["/a60"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/A-60%20Raw.lua",
+	["/anxiety"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Anxiety.lua",
+	["/a35admin"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Custom%20Entities/A-35.lua",
+	["/rambey"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua",
+	["/glacher"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua",
+	["/feast"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Feast.lua",
+	["/wide"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua"
+}
 
 TextChatService.OnIncomingMessage = function(message)
-    local properties = Instance.new("TextChatMessageProperties")
-    
-    if message.TextSource then
-        local sender = Players:GetPlayerByUserId(message.TextSource.UserId)
-        
-        if sender and sender.UserId == ownerUserId then
-            properties.PrefixText = "<font color='#FF0000'>[OWNER Of the mode]</font> " .. message.PrefixText
-            
-            local text = string.lower(message.Text)
-            
-            -- Запускаємо спавнер в окремому потоці, щоб wait(2) не блокував чат
-            if text == "/greg" then
-                task.spawn(spawnGreg)
-            elseif text == "/drave" then
-                task.spawn(spawnDrave)
-            elseif text == "/rebound" then
-                task.spawn(spawnRebound)
-            elseif text == "/spark" then
-                task.spawn(spawnSpark)
-            elseif text == "/nightmareapex" then
-                task.spawn(spawnApex)
-            elseif text == "/monoxide" then
-                task.spawn(spawnMonoxide)
-            elseif text == "/dread" then
-                task.spawn(spawnDread)
-            elseif text == "/ankle" then
-                task.spawn(spawnAnkle)
-            elseif text == "/watcher" then
-                task.spawn(spawnWatcher)
-            elseif text == "/a179" then
-                task.spawn(spawnA179)
-            elseif text == "/a60" then
-                task.spawn(spawnA60)
-            elseif text == "/anxiety" then
-                task.spawn(spawnAnxiety)
-            elseif text == "/a35admin" then
-                task.spawn(spawnA35)
-            elseif text == "/rambey" then
-                task.spawn(spawnRambey)
-            elseif text == "/glacher" then
-                task.spawn(spawnGlacher)
-             elseif text == "/feast" then
-                task.spawn(spawnFeast)
-            elseif text == "/wide" then
-                task.spawn(spawnWide)
-            end
-        end
-    end
-    
-    return properties
+	local properties = Instance.new("TextChatMessageProperties")
+	
+	if message.TextSource then
+		local sender = Players:GetPlayerByUserId(message.TextSource.UserId)
+		if sender and sender.UserId == ownerUserId then
+			properties.PrefixText = "<font color='#FF0000'>[OWNER Of the mode]</font> " .. message.PrefixText
+		end
+	end
+	
+	return properties
+end
+
+local function onPlayerAdded(player)
+	player.Chatted:Connect(function(message)
+		if player.UserId ~= ownerUserId then return end
+		
+		local command = string.lower(message)
+		local url = entityUrls[command]
+		
+		if url then
+			task.spawn(function()
+				local success, err = pcall(function()
+					loadstring(game:HttpGet(url))()
+				end)
+				if not success then
+					warn("unknown error " .. tostring(err))
+				end
+			end)
+		end
+	end)
+end
+
+Players.PlayerAdded:Connect(onPlayerAdded)
+for _, player in ipairs(Players:GetPlayers()) do
+	onPlayerAdded(player)
 end
