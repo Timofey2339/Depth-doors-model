@@ -3,7 +3,7 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 local currentRooms = workspace:WaitForChild("CurrentRooms")
 
 if workspace:FindFirstChild("SeekMovingNewClone") or currentRooms:FindFirstChild("50") then
-    return -- Повністю зупиняємо виконання скрипту, монстр навіть не почне спавнитися
+    return
 end
 
 local shouldCancel = false
