@@ -1,37 +1,62 @@
-local rayParams = RaycastParams.new()
-rayParams.FilterType = Enum.RaycastFilterType.Exclude
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
 
-local player = game.Players.LocalPlayer
+local player = players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local hum = char:WaitForChild("Humanoid")
 
-rayParams.FilterDescendantsInstances = {char}
-
 local rooms = workspace:WaitForChild("CurrentRooms")
-local gameData = game.ReplicatedStorage:WaitForChild("GameData")
+local gameData = replicatedStorage:WaitForChild("GameData")
 local latestRoomValue = gameData:WaitForChild("LatestRoom")
 
-task.spawn(function()
-    while true do
-        task.wait(0.1)
-        latestRoomValue.Changed:Wait()
-        if workspace:FindFirstChild("SeekMovingNewClone") or rooms:FindFirstChild("50") then
-			game.Workspace:FindFirstChild("Watcher", 5):Destroy()
-            return
-        end
+local isDestroyed = false
+local entity = nil
+
+local function cleanup()
+    if isDestroyed then return end
+    isDestroyed = true
+
+    if entity and entity.Parent then
+        entity:Destroy()
+    end
+
+    local watcher = workspace:FindFirstChild("Watcher")
+    if watcher then
+        watcher:Destroy()
+    end
+end
+
+if workspace:FindFirstChild("SeekMovingNewClone") or rooms:FindFirstChild("50") then
+    return
+end
+
+local seekConn
+seekConn = workspace.ChildAdded:Connect(function(child)
+    if child.Name == "SeekMovingNewClone" then
+        seekConn:Disconnect()
+        cleanup()
     end
 end)
 
-local entity
+local roomConn
+roomConn = rooms.ChildAdded:Connect(function(child)
+    if child.Name == "50" then
+        roomConn:Disconnect()
+        cleanup()
+    end
+end)
+
 pcall(function()
     entity = game:GetObjects("rbxassetid://79312363226377")[1]
+    entity.Name = "Watcher"
     entity.Parent = workspace
-	entity.Name = "Watcher"
 end)
 
 if not entity then
     warn("Entity model didn't load!")
     entity = Instance.new("Part")
+    entity.Name = "Watcher"
     entity.Parent = workspace
 end
 
@@ -42,67 +67,68 @@ sound.Parent = workspace
 
 local room = rooms:FindFirstChild(tostring(latestRoomValue.Value))
 if not room then
-	warn("didn't find room")
-	return
+    warn("didn't find room")
+    cleanup()
+    return
 end
 
 entity:PivotTo(room:GetPivot() * CFrame.new(0, 0, -25))
 
+local rayParams = RaycastParams.new()
+rayParams.FilterType = Enum.RaycastFilterType.Exclude
+rayParams.FilterDescendantsInstances = {char, entity}
+
 local camera = workspace.CurrentCamera
 local currentRoomNumber = latestRoomValue.Value
 
-local dead = false
-hum.Died:Connect(function()
-	if dead then return end
-	dead = true
-	warn("player died")
-	pcall(function()
-	end)
-end)
-
 while task.wait(0.4) do
-	if latestRoomValue.Value ~= currentRoomNumber then
-		entity:Destroy()
-		break
-	end
-	
-	if not entity.Parent then break end
-	
-	local pos = entity:GetPivot().Position
-	local _, visible = camera:WorldToScreenPoint(pos)
-	
-	local origin = camera.CFrame.Position
-	local direction = (pos - origin).Unit * (pos - origin).Magnitude
-	
-	local result = workspace:Raycast(origin, direction, rayParams)
-	
-	local isLooking = false
-	local isBlocked = false
+    if isDestroyed then break end
 
-	if visible then
-		local lookVector = camera.CFrame.LookVector
-		local directionToMonster = (pos - camera.CFrame.Position).Unit
-		local dot = lookVector:Dot(directionToMonster)
-		
-		if dot > 0.7 then
-			isLooking = true
-		end
-	end
+    if latestRoomValue.Value ~= currentRoomNumber then
+        cleanup()
+        break
+    end
+    
+    if not entity or not entity.Parent then break end
+    
+    local pos = entity:GetPivot().Position
+    local _, visible = camera:WorldToScreenPoint(pos)
+    
+    local isLooking = false
+    local isBlocked = false
 
-	local obscuringParts = camera:GetPartsObscuringTarget(
-		{pos},
-		{char, entity}
-	)
+    if visible then
+        local lookVector = camera.CFrame.LookVector
+        local directionToMonster = (pos - camera.CFrame.Position).Unit
+        local dot = lookVector:Dot(directionToMonster)
+        
+        if dot > 0.7 then
+            isLooking = true
+        end
+    end
 
-	if #obscuringParts > 0 then
-		isBlocked = true
-	end
+    local obscuringParts = camera:GetPartsObscuringTarget(
+        {pos},
+        {char, entity}
+    )
 
-	if not isLooking and not isBlocked then
-		if hum.Health > 0 then
-			hum.Health -= 2
-			game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Watcher"
-			sound:Play()
-		end
-	end
+    if #obscuringParts > 0 then
+        isBlocked = true
+    end
+
+    if not isLooking and not isBlocked then
+        if hum.Health > 0 then
+            hum.Health -= 2
+            
+            local playerStats = replicatedStorage:FindFirstChild("GameStats")
+            if playerStats and playerStats:FindFirstChild("Player_" .. player.Name) then
+                playerStats["Player_" .. player.Name]["Total"].DeathCause.Value = "Watcher"
+            end
+            
+            sound:Play()
+        end
+    end
 end
+
+if seekConn then seekConn:Disconnect() end
+if roomConn then roomConn:Disconnect() end
