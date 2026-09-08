@@ -1,14 +1,28 @@
-coroutine.wrap(function()
-    while true do
-        task.wait(0.1)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        
-        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-            game.Workspace:FindFirstChild("Anxiety", 5):Destroy()
-			return
-        end
+local workspace = game:GetService("Workspace")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local currentRooms = workspace:WaitForChild("CurrentRooms")
+
+if workspace:FindFirstChild("SeekMovingNewClone") or currentRooms:FindFirstChild("50") then
+    return -- Повністю зупиняємо виконання скрипту, монстр навіть не почне спавнитися
+end
+
+local shouldCancel = false
+
+local seekConn = workspace.ChildAdded:Connect(function(child)
+    if child.Name == "SeekMovingNewClone" then
+        shouldCancel = true
+        local model = workspace:FindFirstChild("Anxiety")
+        if model then model:Destroy() end
     end
-end)()
+end)
+
+local roomConn = currentRooms.ChildAdded:Connect(function(child)
+    if child.Name == "50" then
+        shouldCancel = true
+        local model = workspace:FindFirstChild("Anxiety")
+        if model then model:Destroy() end
+    end
+end)
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
