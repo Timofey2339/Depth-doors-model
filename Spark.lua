@@ -9,17 +9,31 @@ local pitch = Instance.new("PitchShiftSoundEffect")
 pitch.Parent = sound
 pitch.Octave = 1
 sound:Play()
-coroutine.wrap(function()
-    while true do
-        task.wait(0.1)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        
-        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-			game.Workspace:FindFirstChild("Spark", 5):Destroy()
-            return
-        end
+local workspace = game:GetService("Workspace")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local currentRooms = workspace:WaitForChild("CurrentRooms")
+
+if workspace:FindFirstChild("SeekMovingNewClone") or currentRooms:FindFirstChild("50") then
+    return
+end
+
+local shouldCancel = false
+
+local seekConn = workspace.ChildAdded:Connect(function(child)
+    if child.Name == "SeekMovingNewClone" then
+        shouldCancel = true
+        local model = workspace:FindFirstChild("Spark")
+        if model then model:Destroy() end
     end
-end)()
+end)
+
+local roomConn = currentRooms.ChildAdded:Connect(function(child)
+    if child.Name == "50" then
+        shouldCancel = true
+        local model = workspace:FindFirstChild("Spark")
+        if model then model:Destroy() end
+    end
+end)
 
 
 local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24) 
