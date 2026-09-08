@@ -134,8 +134,8 @@ local v2 = Random.new()
 SizeValue.Value = -0.15
 local ModelEntity = game.Workspace:FindFirstChild("Glacher")
 if ModelEntity then
-    ModelEntity.RushNew.Footsteps.Volume = 0
-    ModelEntity.RushNew.PlaySound.Volume = 0
+    ModelEntity.RushMoving.Footsteps.Volume = 0
+    ModelEntity.RushMoving.PlaySound.Volume = 0
 end
 scare:Play()
 game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Glacher"
