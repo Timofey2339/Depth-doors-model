@@ -21,6 +21,7 @@ local latestRoomValue = gameData:WaitForChild("LatestRoom")
 local entity = game:GetObjects("rbxassetid://80648035882957")[1]
 if entity then
 	entity.Parent = workspace
+	entity.Name = "Ankle"
 else
 	warn("Entity not loaded!")
 end
