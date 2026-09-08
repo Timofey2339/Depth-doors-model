@@ -1,15 +1,3 @@
-coroutine.wrap(function()
-    while true do
-        task.wait(0.1)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        
-        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-			game.Workspace:FindFirstChild("Ankle", 5):Destroy()
-            return
-        end
-    end
-end)()
-	
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local hum = char:WaitForChild("Humanoid")
@@ -18,23 +6,68 @@ local rooms = workspace:WaitForChild("CurrentRooms")
 local gameData = game.ReplicatedStorage:WaitForChild("GameData")
 local latestRoomValue = gameData:WaitForChild("LatestRoom")
 
-local entity = game:GetObjects("rbxassetid://80648035882957")[1]
+local isDestroyed = false
+local entity = nil
+local gui = nil
+
+local function cleanup()
+    if isDestroyed then return end
+    isDestroyed = true
+
+    if entity and entity.Parent then
+        entity:Destroy()
+    end
+    
+    local foundAnkle = workspace:FindFirstChild("Ankle")
+    if foundAnkle then
+        foundAnkle:Destroy()
+    end
+
+    if gui and gui.Parent then
+        gui:Destroy()
+    end
+end
+coroutine.wrap(function()
+    if workspace:FindFirstChild("SeekMovingNewClone") or rooms:FindFirstChild("50") then
+        cleanup()
+        return
+    end
+
+    local seekConn
+    seekConn = workspace.ChildAdded:Connect(function(child)
+        if child.Name == "SeekMovingNewClone" then
+            seekConn:Disconnect()
+            cleanup()
+        end
+    end)
+
+    local roomConn
+    roomConn = rooms.ChildAdded:Connect(function(child)
+        if child.Name == "3" then
+            roomConn:Disconnect()
+            cleanup()
+        end
+    end)
+end)()
+
+if isDestroyed then return end
+entity = game:GetObjects("rbxassetid://80648035882957")[1]
 if entity then
-	entity.Parent = workspace
-	entity.Name = "Ankle"
+    entity.Parent = workspace
+    entity.Name = "Ankle"
 else
-	warn("Entity not loaded!")
+    warn("Entity not loaded!")
+    return
 end
 
 local room = rooms:FindFirstChild(tostring(latestRoomValue.Value))
 if not room then
-	warn("Room not found")
-	return
+    warn("Room not found")
+    cleanup()
+    return
 end
 
-if entity then
-	entity:PivotTo(room:GetPivot() * CFrame.new(0,0,-40))
-end
+entity:PivotTo(room:GetPivot() * CFrame.new(0, 0, -40))
 
 local timer = 30
 
@@ -44,7 +77,8 @@ spawnSound.SoundId = "rbxassetid://6305809364"
 spawnSound.PlaybackSpeed = 0.28
 spawnSound.Volume = 2
 spawnSound:Play()
-local gui = Instance.new("ScreenGui")
+
+gui = Instance.new("ScreenGui")
 gui.Parent = player:WaitForChild("PlayerGui")
 
 local label = Instance.new("TextLabel")
@@ -59,32 +93,40 @@ label.TextScaled = true
 local currentRoomNumber = latestRoomValue.Value
 
 while timer > 0 do
-	task.wait(1)
+    task.wait(1)
 
-	if latestRoomValue.Value ~= currentRoomNumber then
-		if entity then entity:Destroy() end
-		gui:Destroy()
-		break
-	end
+    if isDestroyed then
+        break
+    end
 
-	timer -= 1
-	label.Text = timer .. " seconds left"
-	if timer <= 10 then
-		label.TextColor3 = Color3.fromRGB(255, 0, 0)
-	end
+    if latestRoomValue.Value ~= currentRoomNumber then
+        cleanup()
+        break
+    end
+
+    timer -= 1
+    label.Text = timer .. " seconds left"
+    
+    if timer <= 10 then
+        label.TextColor3 = Color3.fromRGB(255, 0, 0)
+    end
 end
 
-if timer <= 0 then
-	game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Ankle"
-	hum.Health = 0
+if timer <= 0 and not isDestroyed then
+    local playerStats = game.ReplicatedStorage:FindFirstChild("GameStats")
+    if playerStats and playerStats:FindFirstChild("Player_" .. player.Name) then
+        playerStats["Player_" .. player.Name]["Total"].DeathCause.Value = "Ankle"
+    end
+    
+    hum.Health = 0
 
-	local killSound = Instance.new("Sound")
-	killSound.Parent = workspace
-	killSound.SoundId = "rbxassetid://5867708670"
-	killSound.Volume = 3
-	killSound:Play()
+    local killSound = Instance.new("Sound")
+    killSound.Parent = workspace
+    killSound.SoundId = "rbxassetid://5867708670"
+    killSound.Volume = 3
+    killSound:Play()
 
-	label.Text = "YOU DIED"
-	task.wait(2)
-	gui:Destroy()
+    label.Text = "YOU DIED"
+    task.wait(2)
+    cleanup()
 end
