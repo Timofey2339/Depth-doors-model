@@ -4,21 +4,40 @@ local Lighting = game:GetService("Lighting")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local assetId = "rbxassetid://71675269899560"
+local rooms = workspace:WaitForChild("CurrentRooms")
+local latestValue = ReplicatedStorage:WaitForChild("GameData"):WaitForChild("LatestRoom")
 
+if workspace:FindFirstChild("SeekMovingNewClone") or rooms:FindFirstChild("50") then
+    return
+end
+
+local isDestroyed = false
+
+local seekConn = workspace.ChildAdded:Connect(function(child)
+    if child.Name == "SeekMovingNewClone" then
+        isDestroyed = true
+    end
+end)
+
+local roomConn = rooms.ChildAdded:Connect(function(child)
+    if child.Name == "50" then
+        isDestroyed = true
+    end
+end)
+
+local assetId = "rbxassetid://71675269899560"
 local clock
+
 pcall(function()
     clock = game:GetObjects(assetId)[1]
     clock.Parent = workspace
     clock.Name = "Ω"
 end)
 
-if not clock then
+if not clock or isDestroyed then
+    if clock then clock:Destroy() end
     return
 end
-
-local rooms = workspace:WaitForChild("CurrentRooms")
-local latestValue = ReplicatedStorage.GameData.LatestRoom
 
 local room = rooms:FindFirstChild(tostring(latestValue.Value))
 
@@ -74,11 +93,21 @@ if clock:FindFirstChild("Static") then clock.Static:Play() end
 
 task.wait(3.8)
 
+if isDestroyed then
+    if clock then clock:Destroy() end
+    return
+end
+
 if clock:FindFirstChild("Static") then
     TweenService:Create(clock.Static, TweenInfo.new(2), {PlaybackSpeed = 0}):Play()
 end
 
 task.wait(3)
+
+if isDestroyed then
+    if clock then clock:Destroy() end
+    return
+end
 
 if attachment then
     if attachment:FindFirstChild("face") then attachment.face.Enabled = true end
@@ -96,7 +125,7 @@ if clock:FindFirstChild("Static") then clock.Static:Stop() end
 local isDamaging = true
 
 task.spawn(function()
-    while isDamaging do
+    while isDamaging and not isDestroyed do
         task.wait(1)
         local char = Players.LocalPlayer.Character
         local hum = char and char:FindFirstChildOfClass("Humanoid")
@@ -106,11 +135,20 @@ task.spawn(function()
         if hum and hum.Health < 0.1 then
             hum.Health -= 3
         end
-        game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Ω"
+        
+        local stats = ReplicatedStorage:FindFirstChild("GameStats")
+        if stats and stats:FindFirstChild("Player_" .. Players.LocalPlayer.Name) then
+            stats["Player_" .. Players.LocalPlayer.Name]["Total"].DeathCause.Value = "Ω"
+        end
     end
 end)
 
-latestValue:GetPropertyChangedSignal("Value"):Wait()
+repeat
+    task.wait(0.1)
+until isDestroyed or latestValue.Value ~= tonumber(room and room.Name)
+
+seekConn:Disconnect()
+roomConn:Disconnect()
 
 isDamaging = false
 
