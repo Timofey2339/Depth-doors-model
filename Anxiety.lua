@@ -49,7 +49,7 @@ local entity = spawner.Create({
             },
         },
         Movement = { Speed = 300, Delay = 6, Reversed = false },
-        Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 3, Delay = 3.0 },
+        Rebounding = { Enabled = true, Type = "Ambush", Min = 3, Max = 3, Delay = 3.0 },
         Damage = { Enabled = true, Range = 40, Amount = 1 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
