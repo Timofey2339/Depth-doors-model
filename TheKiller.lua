@@ -109,7 +109,6 @@ local function checkAndSpawn()
 
         while clock and clock.Parent do
             local currentPos = clock:GetPivot().Position
-            
             local nearby = getNearbyNodes(currentPos, nodeList, lastNode)
 
             local nextNode = nil
