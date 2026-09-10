@@ -5,6 +5,9 @@ local ownerUserId = 840771269
 
 local entityUrls = {
 	["/greg"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Greg%20Raw.lua",
+	["/spread"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spread.lua",
+	["/RipperPrime"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/RipperPrime.lua",
+	["/CEA"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/%CE%A9.lua",
 	["/drave"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Drave.lua",
 	["/rebound"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rebound%20Raw.lua",
 	["/spark"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spark.lua",
