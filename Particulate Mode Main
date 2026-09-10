@@ -58,6 +58,7 @@ local lastSpawnTimes = {
     Wide = startTime,
     A60 = startTime
     RipperPrime = startTime
+    idk = startTime
 }
 
 local isSpawning = false
@@ -69,8 +70,6 @@ LatestRoom.Changed:Connect(function(roomValue)
     local currentTime = tick()
 
     if currentTime - lastSpawnTimes.Watcher >= 100 then
-        local random = math.random(1, 2)
-       if random == 1 then
         lastSpawnTimes.Watcher = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Watcher.lua")
         task.delay(1, function()
@@ -86,10 +85,11 @@ LatestRoom.Changed:Connect(function(roomValue)
             end
         end)
         task.wait(5)
-        end
-       if random == 2 then
+    end
+
+    if currentTime - lastSpawnTimes.idk >= 150 then
+        lastSpawnTimes.idk = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/%CE%A9.lua")
-        end
     end
 
     if currentTime - lastSpawnTimes.Ankle >= 285 then
@@ -148,8 +148,6 @@ LatestRoom.Changed:Connect(function(roomValue)
     end
 
     if currentTime - lastSpawnTimes.Greg >= 365 then
-        local random = amth.random(1,2)
-        if random == 1 then
         lastSpawnTimes.Greg = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Greg%20Raw.lua")
         task.delay(4, function()
@@ -165,9 +163,10 @@ LatestRoom.Changed:Connect(function(roomValue)
             end
         end)
         task.wait(5)
-        end
-        if random == 2 then
-                lastSpawnTimes.RipperPrime = currentTime
+    end
+
+        if currentTime - lastSpawnTimes.RipperPrime >= 500 then
+        lastSpawnTimes.RipperPrime = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/RipperPrime.lua")
         task.delay(4, function()
             if achievementGiver then
@@ -182,7 +181,6 @@ LatestRoom.Changed:Connect(function(roomValue)
             end
         end)
         task.wait(5)
-        end
     end
 
     if currentTime - lastSpawnTimes.Feast >= 425 then
