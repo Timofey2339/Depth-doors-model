@@ -12,6 +12,19 @@ pcall(function()
     achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Guestly-Alt/Scripts/refs/heads/main/AchievementHolder.lua"))()
 end)
 
+local unlockedAchievements = {}
+
+local function giveAchievement(id, data)
+    if unlockedAchievements[id] then return end
+    unlockedAchievements[id] = true
+    
+    if achievementGiver then
+        pcall(function()
+            achievementGiver(data)
+        end)
+    end
+end
+
 local function safeLoad(url)
     task.spawn(function()
         pcall(function()
@@ -25,16 +38,12 @@ task.spawn(function()
         task.wait(55)
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Drave.lua")
         task.delay(1.5, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Stop locking at me",
-                        Description = "Ouch",
-                        Reason = "Meet the Drave",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Drave", {
+                Title = "Stop locking at me",
+                Description = "Ouch",
+                Reason = "Meet the Drave",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
+            })
         end)
     end
 end)
@@ -73,16 +82,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Watcher = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Watcher.lua")
         task.delay(1, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Look at me!",
-                        Description = "I looking at you",
-                        Reason = "Meet the Watcher",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WatcherBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Watcher", {
+                Title = "Look at me!",
+                Description = "I looking at you",
+                Reason = "Meet the Watcher",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WatcherBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -96,35 +101,26 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Ankle = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Ankle.lua")
         task.delay(1, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "its your time",
-                        Description = "time didnt wait",
-                        Reason = "Meet the Ankle",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Ankle", {
+                Title = "its your time",
+                Description = "time didnt wait",
+                Reason = "Meet the Ankle",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/DraveBadge.png"
+            })
         end)
         task.wait(5)
     end
-
 
     if currentTime - lastSpawnTimes.NightmareApex >= 320 then
         lastSpawnTimes.NightmareApex = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Nightmare%20Apex")
         task.delay(10, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Im coming",
-                        Description = "WHY YOU CAME FROM FRONT",
-                        Reason = "Meet the Nightmare Apex",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/NightmareApexBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("NightmareApex", {
+                Title = "Im coming",
+                Description = "WHY YOU CAME FROM FRONT",
+                Reason = "Meet the Nightmare Apex",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/NightmareApexBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -133,16 +129,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Spread = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Spread.lua")
         task.delay(10, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Charge",
-                        Description = "So much electric!",
-                        Reason = "Meet the Spread",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SpreadBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Spread", {
+                Title = "Charge",
+                Description = "So much electric!",
+                Reason = "Meet the Spread",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SpreadBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -151,34 +143,26 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Greg = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Greg%20Raw.lua")
         task.delay(4, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Greg Apart",
-                        Description = "Why light blinking so long?",
-                        Reason = "Survive a Greg Entity",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/QregBadgeNew.png"
-                    })
-                end)
-            end
+            giveAchievement("Greg", {
+                Title = "Greg Apart",
+                Description = "Why light blinking so long?",
+                Reason = "Survive a Greg Entity",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/QregBadgeNew.png"
+            })
         end)
         task.wait(5)
     end
 
-        if currentTime - lastSpawnTimes.RipperPrime >= 500 then
+    if currentTime - lastSpawnTimes.RipperPrime >= 500 then
         lastSpawnTimes.RipperPrime = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/RipperPrime.lua")
         task.delay(4, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Torn Apart",
-                        Description = "Why everything is Green?",
-                        Reason = "Survive a Ripper Prime Entity",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RipperPrimeBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("RipperPrime", {
+                Title = "Torn Apart",
+                Description = "Why everything is Green?",
+                Reason = "Survive a Ripper Prime Entity",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RipperPrimeBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -187,16 +171,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Feast = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Feast.lua")
         task.delay(10.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Already Full",
-                        Description = "fed up with this",
-                        Reason = "Survive the Feast",
-                        Image = "http://www.roblox.com/asset/?id=11703907069"
-                    })
-                end)
-            end
+            giveAchievement("Feast", {
+                Title = "Already Full",
+                Description = "fed up with this",
+                Reason = "Survive the Feast",
+                Image = "http://www.roblox.com/asset/?id=11703907069"
+            })
         end)
         task.wait(5)
     end
@@ -205,16 +185,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Glacher = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Glacher.lua")
         task.delay(20, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Boring",
-                        Description = "Why so slow?",
-                        Reason = "Survive a Glacher Entity",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GlacherBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Glacher", {
+                Title = "Boring",
+                Description = "Why so slow?",
+                Reason = "Survive a Glacher Entity",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/GlacherBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -229,16 +205,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Rebound = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rebound%20Raw.lua")
         task.delay(26.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Rebounder",
-                        Description = "Bruh you going back every door",
-                        Reason = "Survive the Rebound",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/ReboundBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Rebound", {
+                Title = "Rebounder",
+                Description = "Bruh you going back every door",
+                Reason = "Survive the Rebound",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/ReboundBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -247,16 +219,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Anxiety = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Anxiety.lua")
         task.delay(36.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Earthguicker",
-                        Description = "WOAH EARTHGUICK STARTED",
-                        Reason = "Meet the Anxiety",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/AnxietyBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Anxiety", {
+                Title = "Earthguicker",
+                Description = "WOAH EARTHGUICK STARTED",
+                Reason = "Meet the Anxiety",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/AnxietyBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -271,16 +239,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Monoxide = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Monoxide.lua")
         task.delay(13.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Crash Out",
-                        Description = "i gonna crash your game",
-                        Reason = "Survive the Monoxide",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/Monoxide.png"
-                    })
-                end)
-            end
+            giveAchievement("Monoxide", {
+                Title = "Crash Out",
+                Description = "i gonna crash your game",
+                Reason = "Survive the Monoxide",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/Monoxide.png"
+            })
         end)
         task.wait(5)
     end
@@ -289,16 +253,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Rambey = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Rambey%20Raw.lua")
         task.delay(26.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "What",
-                        Description = "Stop rebounding like ambush",
-                        Reason = "Survive the Rambey",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RambeyBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Rambey", {
+                Title = "What",
+                Description = "Stop rebounding like ambush",
+                Reason = "Survive the Rambey",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/RambeyBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -307,16 +267,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Spark = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Spark.lua")
         task.delay(26.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "Sparker",
-                        Description = "FASTER FASTER FASTER",
-                        Reason = "Survive the Spark",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SparkBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Spark", {
+                Title = "Sparker",
+                Description = "FASTER FASTER FASTER",
+                Reason = "Survive the Spark",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/SparkBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -325,16 +281,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.Wide = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Wide.lua")
         task.delay(16.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "What was that?",
-                        Description = "That was so fast",
-                        Reason = "Survive the Wide",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WideBadge.png"
-                    })
-                end)
-            end
+            giveAchievement("Wide", {
+                Title = "What was that?",
+                Description = "That was so fast",
+                Reason = "Survive the Wide",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/WideBadge.png"
+            })
         end)
         task.wait(5)
     end
@@ -343,16 +295,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         lastSpawnTimes.A60 = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua")
         task.delay(26.2, function()
-            if achievementGiver then
-                pcall(function()
-                    achievementGiver({
-                        Title = "WOAH",
-                        Description = "What is this scream?",
-                        Reason = "Survive the A-60",
-                        Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/A_60_...yes.png"
-                    })
-                end)
-            end
+            giveAchievement("A60", {
+                Title = "WOAH",
+                Description = "What is this scream?",
+                Reason = "Survive the A-60",
+                Image = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/Badges/A_60_...yes.png"
+            })
         end)
         task.wait(5)
     end
