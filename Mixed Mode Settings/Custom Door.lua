@@ -1,12 +1,19 @@
 local rooms = workspace.CurrentRooms
 
 local function changeDoor(room)
-	if room.Name == "50" then
+	if room.Name == "50" or room.Name == "49" then
 		return
 	end
 
 	local door = room:FindFirstChild("Door")
 	if door then
+		local doorNum = door:FindFirstChild("Sign") or door:FindFirstChild("DoorNumber")
+		if doorNum and doorNum:FindFirstChild("TextLabel") then
+			if doorNum.TextLabel.Text == "0050" or doorNum.TextLabel.Text == "50" then
+				return
+			end
+		end
+
 		local NewDoor = game:GetObjects("rbxassetid://81616085996734")[1]
 		NewDoor.Parent = room
 		
@@ -20,6 +27,9 @@ local function changeDoor(room)
 			while door and door.Parent do
 				NewDoor:PivotTo(door:GetPivot())
 				task.wait()
+			end
+			if NewDoor then
+				NewDoor:Destroy()
 			end
 		end)
 	end
