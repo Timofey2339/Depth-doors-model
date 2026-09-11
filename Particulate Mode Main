@@ -291,6 +291,12 @@ LatestRoom.Changed:Connect(function(roomValue)
         task.wait(5)
     end
 
+    LatestRoom.Changed:Connect(function(roomValue)
+    if tostring(roomValue) == "50" then
+        safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/TheKiller.lua")
+    end
+end)
+
     if currentTime - lastSpawnTimes.A60 >= 1200 then
         lastSpawnTimes.A60 = currentTime
         safeLoad("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/main/A-60%20Raw.lua")
