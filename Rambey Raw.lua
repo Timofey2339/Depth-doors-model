@@ -11,7 +11,7 @@ local shouldCancel = false
 local seekConn = workspace.ChildAdded:Connect(function(child)
     if child.Name == "SeekMovingNewClone" then
         shouldCancel = true
-        local model = workspace:FindFirstChild("Rambey")
+        local model = workspace:FindFirstChild("Barrage")
         if model then model:Destroy() end
     end
 end)
@@ -19,7 +19,7 @@ end)
 local roomConn = currentRooms.ChildAdded:Connect(function(child)
     if child.Name == "50" then
         shouldCancel = true
-        local model = workspace:FindFirstChild("Rambey")
+        local model = workspace:FindFirstChild("Barrage")
         if model then model:Destroy() end
     end
 end)
@@ -27,7 +27,7 @@ end)
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
-            Name = "Rambey",
+            Name = "Barrage",
             Asset = "rbxassetid://97966471106711",
             HeightOffset = 0
         },
@@ -43,8 +43,8 @@ local entity = spawner.Create({
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
             Type = "Curious",
-            Hints = {"You died by Rambey", "Rambey like Ambush but faster", "he can rebound 2 times","be careful next time"}, 
-            Cause = "Depth"
+            Hints = {"You died by Barrage", "Barrage like Ambush but faster", "he can rebound 2 times","be careful next time"}, 
+            Cause = "Barrage"
         }
     })
 
