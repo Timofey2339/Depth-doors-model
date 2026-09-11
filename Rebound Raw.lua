@@ -16,17 +16,31 @@ local camara = game.Workspace.CurrentCamera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf) camara.CFrame = camara.CFrame * shakeCf end)
 camShake:Start() 
 camShake:ShakeOnce(10,3,0.1,6,2,0.5) 
-coroutine.wrap(function()
-    while true do
-        task.wait(0.1)
-        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        
-        if workspace:FindFirstChild("SeekMovingNewClone") or workspace.CurrentRooms:FindFirstChild("50") then
-			game.Workspace:FindFirstChild("Rebound", 5):Destroy()
-            return
-        end
+local workspace = game:GetService("Workspace")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local currentRooms = workspace:WaitForChild("CurrentRooms")
+
+if workspace:FindFirstChild("SeekMovingNewClone") or currentRooms:FindFirstChild("50") then
+    return
+end
+
+local shouldCancel = false
+
+local seekConn = workspace.ChildAdded:Connect(function(child)
+    if child.Name == "SeekMovingNewClone" then
+        shouldCancel = true
+        local model = workspace:FindFirstChild("Rebound")
+        if model then model:Destroy() end
     end
-end)()
+end)
+
+local roomConn = currentRooms.ChildAdded:Connect(function(child)
+    if child.Name == "50" then
+        shouldCancel = true
+        local model = workspace:FindFirstChild("Rebound")
+        if model then model:Destroy() end
+    end
+end)
 wait(4.96)
 local sound = Instance.new("Sound")
 sound.Parent = workspace
