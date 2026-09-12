@@ -108,6 +108,12 @@ local function spawnRebound()
     })
 
     entity:SetCallback("OnSpawned", function()
+        if shouldCancel then
+            local model = workspace:FindFirstChild("Rebound")
+            if model then model:Destroy() end
+            return
+        end
+
         task.wait(0.1)
         local Url = "https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/ReboundIdleAmbience.mp3.mpeg"
         local AssetName = "Footsteps_Rebound"
@@ -180,6 +186,8 @@ task.spawn(function()
 
         task.wait(0.04)
 
-        spawnRebound()
+        if not shouldCancel then
+            spawnRebound()
+        end
     end
 end)
