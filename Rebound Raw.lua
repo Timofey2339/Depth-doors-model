@@ -79,7 +79,7 @@ local function spawnRebound()
             HeightOffset = 0
         },
         Lights = {
-            Flicker = { Enabled = true, Duration = 6 },
+            Flicker = { Enabled = false, Duration = 6 },
             Shatter = true, Repair = true
         },
         Earthquake = { Enabled = false },
