@@ -68,7 +68,7 @@ local entity = spawner.Create({
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
             Type = "Curious",
-            Hints = {"You died by Spark", "he can rebound from 3 to 12 times", "if you hear scream all whats you need its hide","Bye Bye"}, 
+            Hints = {"You died by Spark", "he can rebound 7 times", "if you hear scream all whats you need its hide","Bye Bye"}, 
             Cause = "Spark"
         }
     })
