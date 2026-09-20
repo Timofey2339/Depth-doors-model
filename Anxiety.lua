@@ -117,7 +117,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
     Face.Size = UDim2.new(0.35, 0, 0.4, 0)
-    Face.Image = "rbxassetid://11453657080"
+    Face.Image = "rbxassetid://11309822486"
 
 local scare = Instance.new("Sound")
 scare.Parent = Background
