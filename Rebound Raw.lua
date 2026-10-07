@@ -1,13 +1,48 @@
 local sound = Instance.new("Sound") 
 sound.Parent = workspace 
-sound.SoundId = "rbxassetid://136836151370178"
-sound.Volume = 5
+sound.SoundId = "rbxassetid://9114397505"
+sound.Volume = 1
 sound.Looped = false
 sound.PlaybackSpeed = 1
 
+local Cue = Instance.new("Sound") 
+Cue.Parent = workspace 
+Cue.SoundId = "rbxassetid://9114221034"
+Cue.Volume = 5
+Cue.Looped = false
+Cue.TimePosition = 0
+Cue.PlaybackSpeed = 0.7
+
+local Spawn2 = Instance.new("Sound") 
+Spawn2.Parent = workspace 
+Spawn2.SoundId = "rbxassetid://130457325001606"
+Spawn2.Volume = 5
+Spawn2.Looped = false
+Spawn2.TimePosition = 0
+Spawn2.PlaybackSpeed = 1
+
+local Distortion = Instance.new("DistortionSoundEffect")
+Distortion.Parent = sound 
+Distortion.Level = 1
+
+local pitch2 = Instance.new("PitchShiftSoundEffect")
+pitch2.Parent = Cue 
+pitch2.Octave = 1
+
 local pitch = Instance.new("PitchShiftSoundEffect")
 pitch.Parent = sound 
-pitch.Octave = 1
+pitch.Octave = 0.5
+
+local pitch4 = Instance.new("PitchShiftSoundEffect")
+pitch2.Parent = sound 
+pitch2.Octave = 0.5
+
+local pitch3 = Instance.new("PitchShiftSoundEffect")
+pitch3.Parent = sound 
+pitch3.Octave = 0.5
+
+Cue:Play()
+Spawn2:Play()
 sound:Play()
 
 local Reboundcolor = Instance.new("ColorCorrectionEffect", game.Lighting) 
@@ -25,19 +60,8 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camShake:Start() 
 camShake:ShakeOnce(10, 3, 0.1, 6, 2, 0.5) 
 
-task.wait(4.9)
-
-local sound2 = Instance.new("Sound")
-sound2.Parent = workspace
-sound2.SoundId = "rbxassetid://9114221327"
-sound2.Volume = 5 
-sound2.Looped = false 
-sound2.PlaybackSpeed = 1 
-
-local pitch2 = Instance.new("PitchShiftSoundEffect") 
-pitch2.Parent = sound2 
-pitch2.Octave = 1
-sound2:Play()
+task.wait(4.5)
+Cue:Play()
 
 task.wait(0.04) 
 
@@ -116,7 +140,7 @@ local function spawnRebound()
 
         task.wait(0.1)
         local Url = "https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/ReboundIdleAmbience.mp3.mpeg"
-        local AssetName = "Footsteps_Rebound"
+        local AssetName = "Footsteps"
 
         if not isfile(AssetName..".mp3") then 
             writefile(AssetName..".mp3", game:HttpGet(Url)) 
@@ -156,6 +180,7 @@ task.spawn(function()
         if shouldCancel then break end
 
         changeCount = changeCount + 1
+        Cue:Play()
 
         local sound1 = Instance.new("Sound")
         sound1.Parent = workspace
