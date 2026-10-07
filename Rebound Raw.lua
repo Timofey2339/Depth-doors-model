@@ -5,6 +5,13 @@ sound.Volume = 1
 sound.Looped = false
 sound.PlaybackSpeed = 1
 
+local sound3 = Instance.new("Sound") 
+sound3.Parent = workspace 
+sound3.SoundId = "rbxassetid://9043335396"
+sound3.Volume = 1
+sound3.Looped = false
+sound3.PlaybackSpeed = 1
+
 local Cue = Instance.new("Sound") 
 Cue.Parent = workspace 
 Cue.SoundId = "rbxassetid://9114221034"
@@ -43,6 +50,7 @@ pitch3.Octave = 0.5
 
 Cue:Play()
 Spawn2:Play()
+sound3:Play()
 sound:Play()
 
 local Reboundcolor = Instance.new("ColorCorrectionEffect", game.Lighting) 
@@ -180,7 +188,7 @@ task.spawn(function()
         if shouldCancel then break end
 
         changeCount = changeCount + 1
-        Cue:Play()
+        sound3:Play()
 
         local sound1 = Instance.new("Sound")
         sound1.Parent = workspace
