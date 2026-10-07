@@ -126,7 +126,7 @@ local function spawnRebound()
         if reboundModel then
             local Sound = reboundModel:FindFirstChild(AssetName) or Instance.new("Sound")
             Sound.Name = AssetName
-            Sound.Parent = reboundModel:FindFirstChild("PrimaryPart") or reboundModel
+            Sound.Parent = reboundModel.RushNew
             Sound.SoundId = getcustomasset(AssetName..".mp3", true)
             Sound.Looped = true
             Sound.Volume = 5
