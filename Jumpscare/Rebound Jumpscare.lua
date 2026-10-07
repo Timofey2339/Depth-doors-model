@@ -53,4 +53,4 @@ distort.Level = 0.98
     game.TweenService:Create(Face, TweenInfo.new(0.6), {Size = UDim2.new(0, 1850, 0, 1050), ImageTransparency = 0}):Play()
     scare:Play()
     task.wait(0.8)
-    JumpscareGui.Enabled = false
+    JumpscareGui:Destroy()
