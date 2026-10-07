@@ -28,18 +28,18 @@
 local scare = Instance.new("Sound")
 scare.Parent = JumpscareGui
 scare.Name = "MyEarsBurn"
-scare.SoundId = "rbxassetid://109582246349306"
+scare.SoundId = "rbxassetid://74885373257467"
 scare.PlaybackSpeed = 1
-scare.Volume = 10
+scare.Volume = 7
 scare.TimePosition = 0
 
 local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 1
+shift.Octave = 0.8
 shift.Parent = scare
 
 local distort = Instance.new("DistortionSoundEffect")
 distort.Parent = scare
-distort.Level = 0.55
+distort.Level = 0.98
     
         task.spawn(function()
             while JumpscareGui.Parent do
