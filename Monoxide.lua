@@ -156,6 +156,7 @@ lockConnection = RunService.RenderStepped:Connect(function()
     if monsterPart and monsterPart.Parent and (tick() - lockStartTime < 3.2) then
         camera.CameraType = Enum.CameraType.Scriptable
         camera.CFrame = CFrame.lookAt(fixedCamPos, monsterPart.Position)
+		game.Workspace:FindFirstChild("Monoxide").Monoxidenew.Attachment.ParticleEmitter.Texture = "rbxassetid://98129001734251"
         game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(0), {FieldOfView = 120}):Play()
     else
         lockConnection:Disconnect()
