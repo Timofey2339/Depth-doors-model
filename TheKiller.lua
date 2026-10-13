@@ -1,4 +1,4 @@
-canceled so bye
+--canceled so bye
 local TweenService = game:GetService("TweenService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -74,7 +74,7 @@ local function getNearbyNodes(currentPos, nodeList, lastNode)
 end
 
 local function checkAndSpawn()
-    local room50 = currentRooms:FindFirstChild("50")
+    local room50 = currentRooms:FindFirstChild("-1")
     if not room50 or workspace:FindFirstChild("The Killer") then return end
 
     local clock
