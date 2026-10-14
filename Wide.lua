@@ -131,8 +131,8 @@ distort.Parent = scare
 distort.Level = 1
 
 local pitch = Instance.new("PitchShiftSoundEffect")
-distort.Parent = scare
-distort.Octave = 0.8
+pitch.Parent = scare
+pitch.Octave = 0.8
 
     Background.Parent = JumpscareGui
     Face.Parent = Background
