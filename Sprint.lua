@@ -121,7 +121,7 @@ local Hum = Char:WaitForChild("Humanoid")
 -- SETTINGS
 --------------------------------------------------
 local NORMAL_SPEED = 15
-local SPRINT_SPEED = 25
+local SPRINT_SPEED = 22
 local EXHAUST_SPEED = 10
 
 local stamina = 100
