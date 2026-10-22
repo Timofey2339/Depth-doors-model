@@ -52,7 +52,7 @@ local entity = spawner.Create({
         Movement = { Speed = 100, Delay = 6, Reversed = true },
         Rebounding = { Enabled = false, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 1 },
-        Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+        Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = false },
         Death = {
             Type = "Curious",
             Hints = {"You died by Nightmare Apex", "If the light starts to flicker", "hide","Bye Bye"}, 
