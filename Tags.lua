@@ -23,6 +23,7 @@ local entityUrls = {
 	["/rambey"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Rambey%20Raw.lua",
 	["/glacher"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Glacher.lua",
 	["/feast"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Feast.lua",
+	["/quick"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Quick.lua",
 	["/wide"] = "https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Wide.lua"
 }
 
