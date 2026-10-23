@@ -23,6 +23,13 @@ local roomConn = currentRooms.ChildAdded:Connect(function(child)
         if model then model:Destroy() end
     end
 end)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(212, 255, 0)
+game.Lighting.MainColorCorrection.Contrast = 0.3
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(0.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(0.5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
 
 local sound = Instance.new("Sound")
 sound.Parent = workspace
@@ -41,7 +48,7 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = spawner.Create({
         Entity = {
             Name = "Quick",
-            Asset = "rbxassetid://132439862574228",
+            Asset = "rbxassetid://112664477678148",
             HeightOffset = 0
         },
         Lights = {
@@ -50,7 +57,7 @@ local entity = spawner.Create({
         },
         Earthquake = { Enabled = false },
         CameraShake = { Enabled = true, Range = 100, Values = {20, 20, 0.1, 1} },
-        Movement = { Speed = 150, Delay = 0.2, Reversed = false },
+        Movement = { Speed = 150, Delay = 0.2, Reversed = true },
         Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = true, Range = 40, Resist = true, Break = false },
