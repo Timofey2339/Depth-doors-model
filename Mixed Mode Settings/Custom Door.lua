@@ -1,17 +1,16 @@
 local rooms = workspace.CurrentRooms
 
-local function hasArchivesWallPlant()
+local hasFoundEver = false
+
+local function changeDoor(room)
 	local room0 = rooms:FindFirstChild("0")
 	if room0 then
 		local parts = room0:FindFirstChild("Parts")
 		if parts and parts:FindFirstChild("ArchivesWallPlant") then
-			return true
+			hasFoundEver = true
 		end
 	end
-	return false
-end
 
-local function changeDoor(room)
 	if room.Name == "50" or room.Name == "49" then
 		return
 	end
@@ -25,7 +24,7 @@ local function changeDoor(room)
 			end
 		end
 
-		if hasArchivesWallPlant() then
+		if hasFoundEver then
 			for _, v in pairs(door:GetDescendants()) do
 				if v:IsA("BasePart") then
 					v.Color = Color3.fromRGB(218, 133, 65)
