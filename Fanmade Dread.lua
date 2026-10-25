@@ -125,7 +125,7 @@ local entity = spawner.Create({
         Movement = { Speed = 900, Delay = 2, Reversed = false },
         Rebounding = { Enabled = true, Type = "Ambush", Min = 1, Max = 1, Delay = 1.0 },
         Damage = { Enabled = true, Range = 999, Amount = 0.01 },
-        Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+        Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = false },
         Death = {
             Type = "Curious",
             Hints = {"You died by Fanmade Dread", "If clock stop ticking", "all what you needs its hide","Bye Bye"}, 
