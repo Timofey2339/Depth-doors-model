@@ -227,7 +227,7 @@ local function playJumpscare()
 image.ImageTransparency = 0.5
     local jumpscaresound = Instance.new("Sound")
     jumpscaresound.Volume = 5
-    jumpscaresound.TimePosition = 0
+    jumpscaresound.TimePosition = 0.3
     jumpscaresound.Parent = background
     jumpscaresound.SoundId = "rbxassetid://133651202885353"
     jumpscaresound:Play()
