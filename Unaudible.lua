@@ -261,6 +261,8 @@ image.ImageTransparency = 0.5
             background.BackgroundColor3 = Color3.fromRGB(redAmount, 0, 0)
         else
             connection:Disconnect()
+			screenGui.Enabled = false
+			wait(5)
             screenGui:Destroy()
         end
     end)
