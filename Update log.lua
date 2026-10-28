@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 2.2, added 3 new entities (The killer), (Ripper Prime) and (Ω)"
+TextUpdate.Text = "Version 2.4, added 1 new entitiy (Unaudible), Removed (The Killer)"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
