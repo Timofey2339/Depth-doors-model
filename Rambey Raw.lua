@@ -11,7 +11,7 @@ local shouldCancel = false
 local seekConn = workspace.ChildAdded:Connect(function(child)
     if child.Name == "SeekMovingNewClone" then
         shouldCancel = true
-        local model = workspace:FindFirstChild("Barrage")
+        local model = workspace:FindFirstChild("Rambey")
         if model then model:Destroy() end
     end
 end)
@@ -19,7 +19,7 @@ end)
 local roomConn = currentRooms.ChildAdded:Connect(function(child)
     if child.Name == "50" then
         shouldCancel = true
-        local model = workspace:FindFirstChild("Barrage")
+        local model = workspace:FindFirstChild("Rambey")
         if model then model:Destroy() end
     end
 end)
@@ -27,7 +27,7 @@ end)
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
-            Name = "Barrage",
+            Name = "Rambey",
             Asset = "rbxassetid://97966471106711",
             HeightOffset = 0
         },
@@ -38,12 +38,12 @@ local entity = spawner.Create({
         Earthquake = { Enabled = true },
         CameraShake = { Enabled = true, Range = 100, Values = {20, 20, 0.1, 1} },
         Movement = { Speed = 150, Delay = 2, Reversed = false },
-        Rebounding = { Enabled = true, Type = "Ambush", Min = 2, Max = 2, Delay = 1.0 },
+        Rebounding = { Enabled = true, Type = "Ambush", Min = 3, Max = 3, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
             Type = "Curious",
-            Hints = {"You died by Barrage", "Barrage like Ambush but faster", "he can rebound 2 times","be careful next time"}, 
+            Hints = {"You died by Rambey", "Rambey like Ambush but faster", "he can rebound 3 times","be careful next time"}, 
             Cause = "Barrage"
         }
     })
@@ -98,7 +98,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
     Face.Size = UDim2.new(0.25, 0, 0.3, 0)
-    Face.Image = "rbxassetid://110353527935335"
+    Face.Image = "rbxassetid://131055877854078"
 
 local scare = Instance.new("Sound")
 scare.Parent = Background
@@ -126,16 +126,16 @@ local v4 = math.random(1, 2)
 for v4 = 1, 50 do
 	local v5 = math.random(1, 3)
 	if v5 == 1 then
-		Background.BackgroundColor3 = Color3.new(1, 1, 1)
-		Face.ImageColor3 = Color3.new(1, 1, 1)
-	end
-	if v5 == 2 then
-		Background.BackgroundColor3 = Color3.new(0, 1, 1)
+		Background.BackgroundColor3 = Color3.new(1, 1, 0)
 		Face.ImageColor3 = Color3.new(0, 0, 0)
 	end
+	if v5 == 2 then
+		Background.BackgroundColor3 = Color3.new(0.65098, 0.65098, 0)
+		Face.ImageColor3 = Color3.new(1, 1, 1)
+	end
 	if v5 == 3 then
-		Background.BackgroundColor3 = Color3.new(0, 0.431373, 1)
-		Face.ImageColor3 = Color3.new(0, 1, 1)
+		Background.BackgroundColor3 = Color3.new(0, 0, 0)
+		Face.ImageColor3 = Color3.new(1, 1, 0)
 	end
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.45, 0.55), 0)
 	Face.Size = Face.Size + UDim2.new(SizeValue.Value, 0, SizeValue.Value, 0)
