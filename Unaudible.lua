@@ -160,7 +160,18 @@ image.Size = UDim2.new(0.2, 0, 0.4, 0)
 image.BackgroundTransparency = 1
 image.Image = "http://www.roblox.com/asset/?id=11762983246"
 
+local jumpscaresound = Instance.new("Sound")
+jumpscaresound.SoundId = "rbxassetid://133651202885353"
+jumpscaresound.Volume = 5
+jumpscaresound.TimePosition = 0.3
+jumpscaresound.Parent = background
+
 image.Parent = background
+wait(0.1)
+if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+	screenGui.Enabled = false
+	jumpscaresound.Volume = 0
+end
 
 local randomsize = math.random(1, 7)
 
@@ -225,11 +236,6 @@ local zoomTween = TweenService:Create(image, tweenInfo, targetSize)
 
 local function playJumpscare()
 image.ImageTransparency = 0.5
-    local jumpscaresound = Instance.new("Sound")
-    jumpscaresound.Volume = 5
-    jumpscaresound.TimePosition = 0.3
-    jumpscaresound.Parent = background
-    jumpscaresound.SoundId = "rbxassetid://133651202885353"
     jumpscaresound:Play()
     zoomTween:Play()
     
