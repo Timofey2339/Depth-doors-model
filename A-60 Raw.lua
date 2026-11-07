@@ -36,7 +36,7 @@ pitch.Parent = sound
 pitch.Octave = 0.935
 
 sound:Play()
-sound.Stopped:Wait()
+sound.Ended:Wait()
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()	
 local entity = spawner.Create({
         Entity = {
