@@ -113,11 +113,12 @@ moveConnection = RunService.RenderStepped:Connect(function(dt)
 
     local char = player.Character
     if char and char:FindFirstChild("HumanoidRootPart") then
-        local targetPos = char.HumanoidRootPart.Position + Vector3.new(0, 2, 0)
+        local targetPos = char.HumanoidRootPart.Position + Vector3.new(0, 0, 0)
         local currentPos = result:GetPivot().Position
-        local speed = 0.1
         
-        local newPos = currentPos:Lerp(targetPos, dt * speed)
+        local speed = 0.15
+        
+        local newPos = currentPos:Lerp(targetPos, math.clamp(dt * speed, 0, 1))
         result:PivotTo(CFrame.new(newPos))
     end
 end)
