@@ -113,7 +113,9 @@ moveConnection = RunService.RenderStepped:Connect(function(dt)
 
     local char = player.Character
     if char and char:FindFirstChild("HumanoidRootPart") then
-        local targetPos = char.HumanoidRootPart.Position + Vector3.new(0, 0, 0)
+        local rootPart = char.HumanoidRootPart
+        
+        local targetPos = rootPart.Position
         local currentPos = result:GetPivot().Position
         
         local speed = 0.15
