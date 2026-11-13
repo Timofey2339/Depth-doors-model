@@ -142,6 +142,13 @@ if ModelEntity then
 end
 scare:Play()
 local v4 = math.random(1, 2)
+local images = {"rbxassetid://106315857531566",
+	"rbxassetid://12485576742",
+	"rbxassetid://118191359258589",
+	"rbxassetid://11929096845",
+	"rbxassetid://82473404750784"
+}
+
 for v5 = 1, 30 do
 	local randint = math.random(1, 3)
 	if randint == 1 then
@@ -157,6 +164,7 @@ for v5 = 1, 30 do
 		Background.BorderColor3 = Color3.fromRGB(81, 0, 0)
 		Face.ImageColor3 = Color3.new(0.67451, 0.376471, 0.376471)
 	end
+	Face.Image = images[math.random(1, #images)]
 	Face.Position = UDim2.new(v2:NextNumber(0.4, 0.6), 0, v2:NextNumber(0.4, 0.6), 0)
 	Face.Size += UDim2.new(0, SizeValue.Value, 0, SizeValue.Value)
 	Face.Rotation = math.random(-45, 45)
