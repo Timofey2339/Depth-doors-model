@@ -63,12 +63,12 @@ local entity = spawner.Create({
         Earthquake = { Enabled = true },
         CameraShake = { Enabled = true, Range = 100, Values = {5, 5, 0.1, 1} },
         Movement = { Speed = 200, Delay = 12, Reversed = false },
-        Rebounding = { Enabled = true, Type = "Ambush", Min = 7, Max = 7, Delay = 1.0 },
+        Rebounding = { Enabled = true, Type = "Ambush", Min = 4, Max = 4, Delay = 1.0 },
         Damage = { Enabled = true, Range = 40, Amount = 125 },
         Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
         Death = {
             Type = "Curious",
-            Hints = {"You died by Spark", "he can rebound 7 times", "if you hear scream all whats you need its hide","Bye Bye"}, 
+            Hints = {"You died by Spark", "he can rebound 4 times", "if you hear scream all whats you need its hide","Bye Bye"}, 
             Cause = "Spark"
         }
     })
