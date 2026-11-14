@@ -1,27 +1,29 @@
-local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
-   local Url = GithubSoundPath
+local function loadGitSound(GithubSoundPath: string, AssetName: string): string
+    local fileName = AssetName .. ".mp3"
 
-    if not isfile(AssetName..".mp3") then 
-        writefile(AssetName..".mp3", game:HttpGet(Url)) 
+    if not isfile(fileName) then 
+        writefile(fileName, game:HttpGet(GithubSoundPath)) 
     end
 
-    local Sound = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music:FindFirstChild(AssetName)
-    if Sound then
-        Sound.SoundId = getcustomasset(AssetName..".mp3", true)
-    end
-    return Sound 
+    return getcustomasset(fileName, true)
 end
 
-local CustomMusicYellow = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CuriousLightRemake.mp3", "Yellow")
-if CustomMusicYellow then
-    CustomMusicYellow.Looped = true
-    CustomMusicYellow.Volume = 2
+local yellowCustomId = loadGitSound("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CuriousLightRemake.mp3", "Curios")
+local yellowSound = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music.Yellow
+
+if yellowSound then
+    yellowSound.SoundId = yellowCustomId
+    yellowSound.Looped = true
+    yellowSound.Volume = 2
 end
 
-local CustomMusicBlue = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/GuidingLightRemake.mp3", "Blue")
-if CustomMusicBlue then
-    CustomMusicBlue.Looped = true
-    CustomMusicBlue.Volume = 2
+local blueCustomId = loadGitSound("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/GuidingLightRemake.mp3", "Guiding")
+local blueSound = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Music.Blue
+
+if blueSound then
+    blueSound.SoundId = blueCustomId
+    blueSound.Looped = true
+    blueSound.Volume = 2
 end
 	
 coroutine.wrap(function()
