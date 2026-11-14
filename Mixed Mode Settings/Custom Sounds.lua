@@ -12,13 +12,13 @@ local function getGitSoundId(GithubSoundPath: string, AssetName: string): Sound
     return Sound 
 end
 
-local CustomMusicYellow = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CustomDedMusic.mp3", "Yellow")
+local CustomMusicYellow = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CuriousLightRemake.mp3", "Yellow")
 if CustomMusicYellow then
     CustomMusicYellow.Looped = true
     CustomMusicYellow.Volume = 2
 end
 
-local CustomMusicBlue = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/CustomDedMusic.mp3", "Blue")
+local CustomMusicBlue = getGitSoundId("https://github.com/Timofey2339/Depth-doors-model/raw/refs/heads/main/GuidingLightRemake.mp3", "Blue")
 if CustomMusicBlue then
     CustomMusicBlue.Looped = true
     CustomMusicBlue.Volume = 2
