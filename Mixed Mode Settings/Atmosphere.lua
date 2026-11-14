@@ -8,7 +8,7 @@ sound:Play()
 local sound2 = Instance.new("Sound")
 sound2.Parent = workspace
 sound2.SoundId = "rbxassetid://9125351901"
-sound2.Volume = 0.5
+sound2.Volume = 1
 sound2.Looped = true
 sound2.PlaybackSpeed = 1
 sound2:Play()
