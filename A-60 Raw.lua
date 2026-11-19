@@ -61,28 +61,44 @@ local entity = spawner.Create({
         }
     })
 
-    entity:SetCallback("OnSpawned", function()
-wait(5)
+     entity:SetCallback("OnSpawned", function()
+    if typeof(SetAtmosphere) == "function" then
         SetAtmosphere(Color3.fromRGB(100, 150, 255), 0.5)
-        local model = game.Workspace:FindFirstChild("Rage A-60")
-        if model then
-            for _, v in pairs(model:GetDescendants()) do
-                if v:IsA("Sound") then
-                    v.SoundId = "rbxassetid://111930358743197"
-                    v.Volume = 2
-                    v.PlaybackSpeed = 1
-                elseif v:IsA("BasePart") then
-                    v.Color = Color3.fromRGB(0, 0, 80)
-                    v.Material = Enum.Material.Neon
-                    local light = Instance.new("PointLight", v)
-                    light.Color = Color3.fromRGB(0, 255, 255)
-                    light.Range = 60; light.Brightness = 6; light.Shadows = true
-                elseif v:IsA("Decal") then
-                    v.Texture = "rbxassetid://11118765532"
-                end
+    end
+
+    local model = game.Workspace:WaitForChild("Rage A-60", 5)
+    
+    if model then
+        for _, part in ipairs(model:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
             end
         end
-    end)
+
+        task.spawn(function()
+            local rushMoving = model:FindFirstChild("RushNew")
+            local attachment = rushMoving and rushMoving:FindFirstChild("Attachment")
+            local face = attachment and attachment:FindFirstChild("ParticleEmitter")
+
+            if face then
+                local textures = {
+                    "rbxassetid://106315857531566",
+                    "rbxassetid://12485576742",
+                    "rbxassetid://118191359258589",
+                    "rbxassetid://11929096845",
+                    "rbxassetid://82473404750784"
+                }
+                while model and model.Parent == game.Workspace do
+                    for _, textureId in ipairs(textures) do
+                        if not model or model.Parent ~= game.Workspace then break end
+                        face.Texture = textureId
+                        task.wait(0.1)
+                    end
+                end
+            end
+        end)
+    end
+end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
