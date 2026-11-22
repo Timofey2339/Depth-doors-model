@@ -31,7 +31,7 @@ TextUpdate.TextSize = 8
 TextUpdate.RichText = true
 TextUpdate.TextWrapped = true
 TextUpdate.TextScaled = true
-TextUpdate.Text = "Version 2.5, added new entity called (Shockwave) and A-60 got updated"
+TextUpdate.Text = "Version 2.55, added new entity called (Breeze) and A-60 Face Change script got fixed"
 
 local buttonClose = Instance.new("TextButton") 
 buttonClose.BackgroundTransparency = 0.5
